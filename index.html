@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,500i,700,900&amp;subset=cyrillic" rel="stylesheet">
+<style type="text/css">
+body {
+  margin:0;
+  padding:0;
+  background-color:rgb(215,220,215);
+  overflow-x:hidden;
+}
+#cont {
+  width:100%;
+  background-color: rgb(30,30,30);
+}
+#first {
+  position:fixed;
+  top:-50vh;
+  -webkit-filter: blur(55px);
+  -webkit-transform: translate3d(0,0,0);
+}
+#coverBlur {
+  width:100%;
+  overflow:hidden;
+}
+#coverBlur img {
+  width:100vw;
+  height:auto;
+  left:0vw;
+  z-index:0;
+}
+#second {
+  position:relative;
+  z-index:1;
+  bottom: -40vh;
+  width:100%;
+  -webkit-clip-path: polygon(
+  	0px 60px,
+  	1920px 0px,
+  	1920px 1685px,
+  	0px 1685px,
+  	0px 1450px,
+  	1920px 1395px,
+  	1920px 1195px,
+  	0px 1145px
+  );
+  background-color:rgb(251,251,251);
+  overflow:hidden;
+}
+#second img {
+  width:130%;
+  height:auto;
+  opacity:.04;
+  filter: grayscale(100%);
+}
+#socialBg {
+  background-color:rgba(240,0,0,.25);
+  position: fixed;
+  z-index: 1;
+  bottom:-18vh;
+  right:20vw;
+  width:35vw;
+  height: 13vw;
+  border-radius: 35px;
+}
+</style>    
+</head>	
+<body>
+<div id='cont'>
+  <div id='first'>
+    <div id='socialBg'></div>
+    <div id='coverBlur'>
+      <img src='http://images.says.com/uploads/story_source/source_image/33850/35e1.jpeg' id='bgBlur'/>
+    </div>
+  </div>
+  <div id='second'>
+    <img src='images/community_image_1418402204.png'/>
+  </div>
+</div>		
+<script>
+$('document').ready(function(){
+  var 
+    bh = $('body').height(),
+    wh = $(window).height();
+    console.log(bh,wh);
+  $('#cont').height(wh*2);
+  $('#second').height((wh*60)/100+wh);
+});
+</script>
+</body>
+</html>
