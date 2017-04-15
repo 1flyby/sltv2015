@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>	  
+	<title>centerSegment</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,500i,700,900&amp;subset=cyrillic" rel="stylesheet">
+<style>
+body {
+	margin:0;
+  padding:0;
+  background-color:rgb(215,220,215);
+}
+#mainCont {
+	margin: 156px 0px 0px 456px;
+	width: 987px;
+	height: 2188px;
+}
+#mainSlider {
+	overflow: hidden;
+	width: 987px;
+	height: 422px;
+	background-color: rgb(16,26,24);
+	clip-path: polygon(
+  	0px 10px,
+  	1920px 0px,
+  	1920px 1685px,
+  	0px 1685px
+  );
+  -webkit-clip-path: polygon(
+  	21px 0px,
+  	966px 0px,
+  	987px 422px,
+  	0px 422px
+  );
+}
+#slideWrapper {
+	width: 2961px;
+	overflow: hidden;
+}		
+.slide {
+	float: left;
+	height: 419px;
+	width: 0px;
+	background-image: url(slide.png);
+	background-repeat: no-repeat;
+	background-position: center; 
+	background-size: 100%;
+}	
+.slide:nth-child(1) {
+	width: 987px;
+}
+#mainSliderFooter {
+	position: relative;
+	height: 233px;
+	width:987px;
+	top: -233px;
+	background: -moz-linear-gradient(bottom,rgba(25,30,30,1) 0%,rgba(25,30,30,1) 35%,rgba(25,30,30,.4) 60%,rgba(25,30,30,.1) 70%);
+  background: -webkit-linear-gradient(bottom,rgba(25,30,30,1) 0%,rgba(25,30,30,1) 35%,rgba(25,30,30,.4) 60%,rgba(25,30,30,.1) 70%);
+  background: -o-linear-gradient(bottom,rgba(25,30,30,1) 0%,rgba(25,30,30,1) 35%,rgba(25,30,30,.4) 60%,rgba(25,30,30,.1) 70%);
+  background: -ms-linear-gradient(bottom,rgba(25,30,30,1) 0%,rgba(25,30,30,1) 35%,rgba(25,30,30,.4) 60%,rgba(25,30,30,.1) 70%);
+  background: linear-gradient(bottom,rgba(25,30,30,1) 0%,rgba(25,30,30,1) 35%,rgba(25,30,30,.4) 60%,rgba(25,30,30,.1) 70%);
+}
+#runner {
+	position: relative;
+	top: -233px;
+	height: 3px;
+	background-color: rgb(244,0,40);
+	animation: sliderTimeline 11s linear infinite;
+	-webkit-animation: sliderTimeline 11s linear infinite;
+}
+@keyframes sliderTimeline {
+	0% {width:0px;}
+	28% {width:329px;}
+	33% {width:329px;}
+	61% {width:658px;}
+	66% {width:658px;}
+	95% {width:987px;}
+	100% {width:987px;}
+}
+@-webkit-keyframes sliderTimeline {
+	0% {width:0px;}
+	26% {width:329px;}
+	33% {width:329px;}
+	59% {width:658px;}
+	66% {width:658px;}
+	93% {width:987px;}
+	100% {width:987px;}
+}
+</style>
+</head>
+<body>
+<div id='mainCont'>
+	<div id='mainSlider'>
+		<div id='slideWrapper'>
+			<div class='slide'></div>
+			<div class='slide'></div>
+			<div class='slide'></div>
+		</div>
+		<div id='mainSliderFooter'></div>
+		<div id='runner'></div>
+	</div>
+</div>
+</body>
+</html>
