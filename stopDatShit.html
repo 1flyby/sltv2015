@@ -3,28 +3,31 @@
 <head>
   <title></title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
-
 <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
-<style type="text/css">
+<style type='text/css'>
 body {
   margin:0;
   padding:0;
   width:100vw;
   height:114vw;
   background-color:rgb(0,0,0);
-  overflow-x:hidden;
+  overflow:hidden;
 }
 header {
   position:fixed;
+  z-index:4;
   background-color: rgb(70,70,70);
   width:100%;
   height:3.33vw;
-  z-index:3;
+  top:-3.33vw;
+  transition: top 550ms ease-out;
   color:white;
   font-weight: 800;
   font-size:3vw;
+}
+.headerIn {
+  top:0vw;
 }
 #topHeaderFragment {
   margin:0;
@@ -49,98 +52,70 @@ header {
 }
 #mainWrapper {
   width:100%;
+  height: 114vw;
   overflow:hidden;
   z-index:0;
+  /*background-image: url(sltv_main_12.jpg);
+  background-size: 100%;*/
 }
 #mainCoverCont {
   position:fixed;
-  top:3vw;
-  width:100%;
-  overflow:hidden;
-}
-
-.mainCoverBlur {
-  filter: blur(24px);
-  transform: translate3d(0,0,0);
-  -webkit-filter: blur(24px);
-  -webkit-transform: translate3d(0,0,0);
-  animation: mainCoverBlurAnimation 1400ms linear forwards;
-  -webkit-animation: mainCoverBlurAnimation 1400ms linear forwards;
-}
-@keyframes mainCoverBlurAnimation {
-  0%,10%,100% {opacity:1}
-  43%,65% {opacity:0}
-
-}
-@-webkit-keyframes mainCoverBlurAnimation {
-  0%,10%,100% {opacity:1}
-  43%,65%{opacity:0}
-}
-#mainCoverCont img {
-  position: relative;
   z-index:0;
   width:100vw;
-  top:-25vw;
-  height:auto;
+  height:114vw;
+  /*top:-50vw;*/
+  overflow:hidden;
+  filter: blur(45px);
+  transform: translate3d(0,0,0);
+  -webkit-filter: blur(45px);
+  -webkit-transform: translate3d(0,0,0);
+}
+/*.unhideMainCover {
+  transition: top 600ms ease-out 400ms;
+  top:0vw !important;
+}*/
+.slidesPreloading {
+  display: none;
+}
+.slidesPreLoading:nth-child(1) {
+  display: inline;
+}
+#secondaryCoverCont {
+  position:relative;
+  z-index:1;
+  width:100vw;
+  height:114vw;
+  top:-30vw;
+  transition: top 900ms ease-out 800ms;
+}
+#secondaryCoverCont svg {
+  filter:contrast(1) saturate(0);
+  -webkit-filter: contrast(1) saturate(0);
+  transform: translate3d(0,0,0);
+  -webkit-transform: translate3d(0,0,0);
+}
+#secondaryCoverCont svg use{
+  opacity: .05;
 }
 #svgCont {
-  position: relative;
+  position:relative;
   z-index:2;
-  top:-17vw;
+  top:-114vw;
   width:100vw;
   height:114vw;
 }
 svg {
   width:100%;
   height:100%;
+  font-family: 'Roboto Condensed', sans-serif;
 }
-#mainSliderTimeline {
-  stroke-dasharray:1020;
-  stroke-dashoffset:1020;
+#mainSlider {
+  transform:translateY(1400px);
+  transition: transform 800ms ease-out 900ms;
 }
-.mainTimelineRun0 {
-  animation: timelinePosition0 1500ms ease-out forwards;
-  -webkit-animation: timelinePosition0 1500ms ease-out forwards;
+.unhideMainSlider {
 }
-@keyframes timelinePosition0 {
-  0% {stroke-dashoffset:1020}
-  90% {stroke-dashoffset:680;}
-  100% {stroke-dashoffset:680;}
-}
-@-webkit-keyframes timelinePosition0 {
-  0% {stroke-dashoffset:1020}
-  90% {stroke-dashoffset:680;}  
-  100% {stroke-dashoffset:680;}
-}
-.mainTimelineRun1 {
-  animation: timelinePosition1 1500ms ease-out forwards;
-  -webkit-animation: timelinePosition1 1500ms ease-out forwards;
-}
-@keyframes timelinePosition1 {
-  0%  {stroke-dashoffset:680;}
-  90% {stroke-dashoffset:340;}
-  100% {stroke-dashoffset:340;}
-}
-@-webkit-keyframes timelinePosition1 {
-  0%  {stroke-dashoffset:680;}
-  90% {stroke-dashoffset:340;}  
-  100% {stroke-dashoffset:340;}
-}
-.mainTimelineRun2 {
-  animation: timelinePosition2 1500ms ease-out forwards;
-  -webkit-animation: timelinePosition2 1500ms ease-out forwards;
-}
-@keyframes timelinePosition2 {
-  0% {stroke-dashoffset:340;}
-  90% {stroke-dashoffset:0;}
-  100% {stroke-dashoffset:0;}
-}
-@-webkit-keyframes timelinePosition2 {
-  0% {stroke-dashoffset:340;}
-  90% {stroke-dashoffset:0;}  
-  100% {stroke-dashoffset:0;}
-}
-.contentFadeRecharge {
+.mainSlideAnimation {
   animation: slideFade 1500ms ease-out forwards;
   -webkit-animation: slideFade 1500ms ease-out forwards;
 }
@@ -155,40 +130,52 @@ svg {
 #leaguesTitle, #mainSliderTitle tspan:nth-child(1) {
   font-size: 20px;
   font-weight: 800;
-  font-family: 'Roboto Condensed', sans-serif;
   fill:rgb(213,0,0);
 }
 #mainSliderTitle tspan:nth-child(2) {
   font-size: 50px;
   font-weight: 800;
   fill:rgb(255,255,255);
-  font-family: 'Roboto Condensed', sans-serif;
 }
-#arrowTraps use {
+.mainArrowTrap {
   cursor:pointer;
   fill:rgba(0,0,0,0);
 }
+#mainSliderTimeline {
+  stroke-dasharray:1020;
+  stroke-dashoffset:1020;
+}
+.mainTimelineAnimation {
+  stroke-dasharray:1020px;
+  stroke-dashoffset:1020px;
+  animation: timelineRun 850ms ease-out forwards;
+  -webkit-animation: timelineRun 850ms ease-out forwards;
+  --dashoffset-begin:1020px;
+  --dashoffset-end:1020px;
+}
+@keyframes timelineRun {
+  0% {stroke-dashoffset:var(--dashoffset-begin);}
+  100% {stroke-dashoffset:var(--dashoffset-end);}
+}
+#secondaryContent {
+  opacity: 0;
+  transition: opacity 800ms ease-out 1650ms;
+}
 #semiSliderTitle {
-  font-family: 'Roboto Condensed', sans-serif;
   color:white;
   font-weight:400;
   font-size:34px;
 }
 #newsHeader {
-  font-family: 'Roboto Condensed', sans-serif;
 }
 #newsHeader tspan:nth-child(1) {
   font-size:20px;
   font-weight:800;
 }
 #newsHeader tspan:nth-child(2) {
-  font-family: 'Roboto Condensed', sans-serif;
 }
-.newsRow tspan {
-  font-family: 'Roboto Condensed', sans-serif;
-}
+.newsRow tspan {}
 .newsRow tspan:nth-child(1) {
-  font-family: 'Roboto Condensed', sans-serif;
   font-size: 18px;
   font-weight:600;
 }
@@ -198,7 +185,6 @@ svg {
   fill: rgb(143,143,143);
 }
 #matchesHeader tspan {
-  font-family: 'Roboto Condensed', sans-serif;
 }
 #matchesHeader tspan:nth-child(1) {
   font-size:20px;
@@ -219,7 +205,6 @@ svg {
   fill: rgb(80,80,80);
 }
 .teamA, .teamB {
-  font-family: 'Roboto Condensed', sans-serif;
   font-size: 18px;
   font-weight:600;
 }
@@ -229,7 +214,6 @@ svg {
   font-size: 14px;
 }
 #leaguesRow tspan {
-  font-family: 'Roboto Condensed', sans-serif;
   font-size: 18px;
   font-weight:800;
   fill: rgb(143,143,143);
@@ -245,7 +229,6 @@ svg {
   opacity:1;
 }
 #locationRow tspan {
-  font-family: 'Roboto Condensed', sans-serif;
   font-size: 23px;
   font-weight:800;
   fill: rgb(43,41,41);
@@ -288,7 +271,6 @@ svg {
   text-decoration: underline;
 }
 #footerRow tspan {
-  font-family: 'Roboto Condensed', sans-serif;
   fill: rgb(247,247,247);
   font-size: 14px;
   font-weight:800;
@@ -304,9 +286,8 @@ svg {
   fill: rgb(143,143,143);
   font-size: 11px;
   font-weight:800;
-
 }
-</style>    
+</style>   
 </head> 
 <body>
 <header>
@@ -314,104 +295,248 @@ svg {
   <div id='bottomHeaderFragment'></div>
 </header>
 <div id='mainWrapper'>
-  <div id='mainCoverCont' class='mainCoverBlur'>
-    <svg viewBox='110 380 1700 1700' preserveAspectRatio='xMidYMax meet'>
-    <image id='mainCoverImg' x='0' y='0' width='1920' height='1080' xlink:href='http://images.says.com/uploads/story_source/source_image/33850/35e1.jpeg'/>
+  <div id='mainCoverCont'>
+    <svg viewBox='0 633 1920 1080' preserveAspectRatio='xMidYMax meet'>
+      <g id='slidesPreloading'>
+        <image xlink:href='images/mainSlide0.png' width='0' hieght='0' x='0' y='0'/>
+        <image xlink:href='images/mainSlide1.png' width='0' hieght='0' x='0' y='0'/>
+        <image xlink:href='images/mainSlide2.png' width='0' hieght='0' x='0' y='0'/>
+        <image xlink:href='images/mainSlide3.png' width='0' hieght='0' x='0' y='0'/>
+      </g>
+      <g class='forAnimationClassRefresh'>  
+        <image class='mainSlideAnimation' xlink:href='images/mainSlide0.png' x='-155' y='-780' width='2250' height='1100'/>
+      </g>
+    </svg>
+  </div>
+  <div id='secondaryCoverCont'>
+    <svg class='scrollViewBox' viewBox='0 625 1920 1080' preserveAspectRatio='xMidYMax meet'>
+    <defs>
+      <mask id='secondaryCoverMask' maskUnits='objectBoundingBox'>
+        <path d='m -2,50 l 1924,-40 0,1400 -1924,0 z' stroke='none' fill='rgba(255,255,255,1)'/>
+      </mask>
+    </defs>
+      <path d='m -2,50 l 1924,-40 0,1400 -1924,0 z' stroke='none' fill='rgba(244,244,244,1)'/>
     </svg>
   </div>
   <div id='svgCont'>
-  <svg viewBox='0 305 1920 1080' preserveAspectRatio='xMidYMax meet'>
+  <svg class='scrollViewBox' viewBox='0 625 1920 1080' preserveAspectRatio='xMidYMax meet'>
     <defs>
       <mask id='mainSliderMask'>
         <path d='m 477,-370 l 966,0 21,469 -1008,0 z' fill='white'/>
       </mask>
-      </defs>
+      <path id='mainArrowTrap' d='m 455,-80 l 105,55 50,120 -285,0 z' fill='rgba(0,0,0,0)'/>
+      <linearGradient id='mainSliderShadow' x1='1' y1='1'>
+        <stop offset='0%'  stop-color='rgba(40,40,40,1)'/>
+        <stop offset='10%' stop-color='rgba(40,40,40,1)'/>
+        <stop offset='30%' stop-color='rgba(40,40,40,.6)'/>
+        <stop offset='40%' stop-color='rgba(40,40,40,.4)'/>
+        <stop offset='95%' stop-color='rgba(40,40,40,0)'/>
+      </linearGradient>
+    </defs>
       <g id='mainSlider'>
         <path d='m 477,-370 l 966,0 21,469 -1008,0 z' fill='black'/>
-        <path id='mainSliderTimelineCover' stroke='rgb(175,175,175)' stroke-width='3' d='m 456,101 l 1008,0'/>
-        <path id='mainSliderTimeline' stroke='rgb(224,27,27)' stroke-width='3' d='m 456,101 l 1008,0'/>
-        <g id='mainSliderContent' mask='url(#mainSliderMask)'>  
-          <image class='contentFadeRecharge' xlink:href='http://summerstreet.pp.ua/testquest/images/mainSlide1.png' x='455' y='-373' width='1010' height='475'/>
+        <g class='forAnimationClassRefresh' mask='url(#mainSliderMask)'>  
+          <image class='mainSlideAnimation' xlink:href='images/mainSlide0.png' x='455' y='-373' width='1010' height='475'/>
         </g>
-        <g id='mainSliderUi'>
-          <image xlink:href='http://summerstreet.pp.ua/testquest/images/mainSliderShadow.png' x='453' y='-408' width='1012' height='540'/> 
-          <g id='arrowTraps'>
-            <path  d='m 470,-160 l -10,260 200,0 z'/>
-            <path  d='m 1450,-160 l 10,260 -200,0 z'/>
-          </g>
-          <text id='mainSliderTitle' text-anchor='middle'>
-            <tspan x='960' y='-23'>SLTV SEA PLAY-OFF</tspan>
-            <tspan x='960' y='37'>TEAM MALAYSIA ADVANCE</tspan>
+        <g id='mainSliderUi' mask='url(#mainSliderMask)'>
+          <rect x='455' y='-370' width='1010' height='470' fill='url(#mainSliderShadow)'/> 
+          <image xlink:href='images/leftArrow.png' x='515' y='5' width='9' height='14'/>
+          <image xlink:href='images/rightArrow.png' x='1397' y='5' width='9' height='14'/>
+          <g class='forAnimationClassRefresh'>
+          <text id='mainSliderTitle' class='mainSlideAnimation' text-anchor='middle'>
+            <tspan x='960' y='-15' >TEAM MALAYSIA ADVANCE</tspan>
+            <tspan x='960' y='45'>SLTV SEA PLAY-OFF</tspan>
           </text>
+          </g>
+          <g>
+            <use class='mainArrowTrap' href='#mainArrowTrap'/>
+            <use class='mainArrowTrap' href='#mainArrowTrap' transform="translate(780,0) scale(-1, 1)" transform-origin='570 -0'/>
+          </g>
+          <path d='m 455.3,105 l 23.5,-474 962.8,0 23.1,474' style='stroke:rgb(50,50,50);stroke-width:1.5px;fill:none'/>
+        </g>
+        <path id='mainSliderTimelineCover' stroke='rgb(175,175,175)' stroke-width='3' d='m 455,102 l 1010,0'/>
+        <g class='forAnimationClassRefresh'>
+          <path id='mainSliderTimeline' class='mainTimelineAnimation' stroke='rgb(224,27,27)' stroke-width='4' d='m 455,101 l 1010,0'/>
         </g>
       </g>
-  </svg>
-</div>
+      <g id='secondaryContent'>
+      <image xlink:href='images/ellipse.png' x='445' y='115' width='1010' height='20'/>
+      <image xlink:href='images/partners.png' x='490' y='145' width='940' height='75'/>
+      </g>
+  </svg>  
+  </div>
 </div>
 <script>
-
-var i=0, mainSliderContentLinks = [
-     "https://image.redbull.com/rbcom/052/2017-06-29/31667fdc-d922-4fec-b576-111e55134712/0012/0/0/14/720/1094/1100/1/meracle-with-mineski-dota.jpg",
-      "http://wiki.teamliquid.net/commons/images/thumb/0/05/Team_Secret_Roster_RedBull_BG.jpg/600px-Team_Secret_Roster_RedBull_BG.jpg",
-      "http://www.doteros.com/wp-content/uploads/2013/08/Team-Dignitas.jpg",
-      "http://summerstreet.pp.ua/testquest/images/mainSlide1.png"
-],
+var i = 0,
+screenSwitcher = 'main',
 mainObj = {
   "mainSlider" : [
-    ["href","title","semiTitle"],
-    ["href","title","semiTitle"],
-    ["href","title","semiTitle"],
-    ["href","title","semiTitle"]
+    ["mainSlide0","TEAM MALAYSIA ADVANCE","SLTV SEA PLAY-OFF"],
+    ["mainSlide1","gameplay update","backdoor regen increased!"],
+    ["mainSlide2","Resolut1on","in da OG house!"],
+    ["mainSlide3","Dota Summit 8","Смотри вместе с нами!"]
   ],
-  "secondSlider" : [
-    ["href","title","semiTitle"],
-    ["href","title","semiTitle"],
-    ["href","title","semiTitle"],
-    ["href","title","semiTitle"]
+  "secondarySlider" : [
+    ["secondarySlide0","title","semiTitle"],
+    ["secondarySlide1","title","semiTitle"],
+    ["secondarySlide2","title","semiTitle"],
+    ["secondarySlide3","title","semiTitle"]
   ]
-};
+},
+viewY = 0,
+wheelArray = [],
+lastDeltaY = 0,
+arrayKoef = 0,
+position = 0;
 $('document').ready(function(){
-  mainSliderRecharge();
+  $('.slidesPreloading image').ready(function(){
+    setTimeout(sliderRecharge(),1000);
+  });
 });
-function mainSliderRecharge() {
+function sliderRecharge() {
   var i = 0;
-  setInterval(function(){
-    mainCoverRefade();
-    mainSliderRefade();
-    mainTimelineAddClass();
+  $(window).scrollTop(0);
+  $('header').addClass('headerIn');
+  $('#secondaryCoverCont').css('top','0vw');
+  $('#mainSlider').css('transform','translateY(0px)');
+  $('#secondaryContent').css('opacity','1');
+  scenario = setInterval(function(){
+    timelineRunForward();
+    contentRefresh();
   },4500);
 }
-function mainCoverRefade () {
-  var el = $('#mainCoverCont'),
-  newone = el.clone(true);
-  el.before(newone);
-  $('.' + el.attr('class')+':last').remove();
+function contentRefresh() {
+  $('.forAnimationClassRefresh').children(0).each(function(){
+    var el = $(this),
+    newone = el.clone(true);
+    el.before(newone);
+    $(this).remove();
+  });
   setTimeout(function(){
-    $('#mainCoverImg').attr('xlink:href',mainSliderContentLinks[i]);
+    if (i<3) {
+      i++; 
+      $('.forAnimationClassRefresh image').attr('xlink:href','images/'+Object.values(mainObj)[0][i][0]+'.png');
+      $('#mainSliderTitle tspan').eq(0).text(Object.values(mainObj)[0][i][2].toUpperCase());
+      $('#mainSliderTitle tspan').eq(1).text(Object.values(mainObj)[0][i][1].toUpperCase());
+      }
+    else {
+      i=0;
+      $('.forAnimationClassRefresh image').attr('xlink:href','images/'+Object.values(mainObj)[0][i][0]+'.png');
+      $('#mainSliderTitle tspan').eq(0).text(Object.values(mainObj)[0][i][2].toUpperCase());
+      $('#mainSliderTitle tspan').eq(1).text(Object.values(mainObj)[0][i][1].toUpperCase());
+    }
   },700);
 }
-function mainSliderRefade () {
-  var el = $('#mainSliderContent image'),  
-  newone = el.clone(true);
-  el.before(newone);
-  $("." + el.attr("class") + ":last").remove();
-  setTimeout(function(){
-    $('#mainSliderContent image').attr('xlink:href',mainSliderContentLinks[i]);
-  },700);
-}
-function mainTimelineAddClass() {
-  $('#mainSliderTimeline').attr('class','').addClass('mainTimelineRun0');
-  if (i<=1) { 
-    $('#mainSliderTimeline').attr('class','');
-    $('#mainSliderTimeline').addClass('mainTimelineRun'+i);
-    i++;
+$(document).on('click','.mainArrowTrap',function(){
+  sliderFreeze();
+  if ($(this).index()==0) {
+    if (i>0) {
+      i=i-2;
+      timelineRunBack();
+      contentRefresh();
+    }
+    else {
+      i = 2;
+      timelineRunBack();
+      contentRefresh();
+    }
   }
   else {
-    $('#mainSliderTimeline').attr('class','');
-    $('#mainSliderTimeline').addClass('mainTimelineRun'+i);
-    i=0;
+    timelineRunForward();
+    contentRefresh();
+  }
+});
+function sliderFreeze() {
+  clearInterval(scenario);
+  setTimeout(sliderRecharge(),4500);
+}
+function timelineRunForward() {
+  if (i<3) {
+    $('.mainTimelineAnimation').get(0).style.setProperty('--dashoffset-begin',1020-340*(i)+'px');
+    $('.mainTimelineAnimation').get(0).style.setProperty('--dashoffset-end',1020-340*(i+1)+'px');
+  }
+  else {
+    $('.mainTimelineAnimation').get(0).style.setProperty('--dashoffset-begin','0px');
+    $('.mainTimelineAnimation').get(0).style.setProperty('--dashoffset-end','1020px');
   }
 }
+function timelineRunBack() {
+  if (i<2) {
+    $('.mainTimelineAnimation').get(0).style.setProperty('--dashoffset-begin',1020-340*(i+2)+'px');
+    $('.mainTimelineAnimation').get(0).style.setProperty('--dashoffset-end',1020-340*(i+1)+'px');
+  }
+  else {
+    $('.mainTimelineAnimation').get(0).style.setProperty('--dashoffset-begin','1020px');
+    $('.mainTimelineAnimation').get(0).style.setProperty('--dashoffset-end','0px');
+  }
+}
+$(window).bind('mousewheel DOMMouseScroll', function(event){
+  var delta = Math.round(event.originalEvent.deltaY);
+  if (viewY <= 2008) {
+    viewY = viewY+delta;
+    if (viewY >= 0) {
+      $('header').removeClass('headerIn');
+      //$('.scrollViewBox').attr('viewBox','0 '+(viewY+625)+' 1920 1080');
+      wheelArray.push(viewY);
+      setTimeout(function(){ //w8ing for wheelCombo
+        if (wheelArray[1]<2008||wheelArray[1]==undefined&&wheelArray[0]!==undefined) {
+          console.log(
+            ' viewY= '+viewY,'\n',
+            'wheelArray= '+wheelArray,'\n',
+          );
+          scrollLerp();
+          sliderFreeze();
+          lastDeltaY = wheelArray[wheelArray.length-1];
+          arrayKoef = wheelArray.length;
+          wheelArray=[];
+        }
+        else {
+          wheelArray=[];
+        }
+      },500);
+    }
+    else if (viewY < 0) {
+      viewY=0;
+      $('.scrollViewBox').attr('viewBox','0 625 1920 1080');
+    }
+  }
+  else {
+    viewY = 2008;
+  }
+});
+function scrollLerp() {
+  var step = Math.round((wheelArray[wheelArray.length-1]-lastDeltaY)/33.33),
+  viewBox = $('.scrollViewBox').attr('viewBox');
+  target = wheelArray[wheelArray.length-1];
+  var lerpCycle = setInterval(function(){
+    if (position>=0&&position<=2008&&arrayKoef!=0) {
+      position = position + step;
+      $('.scrollViewBox').attr('viewBox','0 '+(position*2+625)+' 1920 1080');
+      console.log(position,target);
+      arrayKoef--;
+      /*console.log(
+      'step= ',step,'\n',
+      'position= ',position,'\n',
+      'arrayKoef= ',arrayKoef,'\n',
+      'viewBox= ',viewBox
+      );*/
+    }
+    else {
+      if (position<0) {
+        position=0;
+      }
+      clearInterval(lerpCycle);
+    }
+    /*else if (position>2008){
+      position = 2008;
+      clearInterval(lerpCycle);
+    }
+    else if (position<0){
+      position = 0;
+      clearInterval(lerpCycle);
+    }*/
+  },6);
+};
 </script>
 </body>
 </html>
