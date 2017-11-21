@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>stratification</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -25,16 +25,14 @@ header {
   width:100%;
   height:3.33vw;
   top:-3.33vw;
-  transition: top 550ms ease-out;
+  transition: top 500ms ease-out;
   color:white;
   font-weight: 800;
   font-size:3vw;
 }
-/*
 .headerIn {
   top:0vw;
 }
-*/
 #topHeaderFragment {
   margin:0;
   padding:0;
@@ -96,7 +94,7 @@ header {
 }
 #secondaryCoverCont svg {
   filter:contrast(1) saturate(0);
-  -webkit-filter: contrast(1) saturate(0);
+  -webkit-filter: contrast(1) saturate(0) ;
   transform: translate3d(0,0,0);
   -webkit-transform: translate3d(0,0,0);
 }
@@ -132,7 +130,7 @@ svg {
 
 
 #mainGlobalGroup,#secondaryCoverGroup {
-  transition: transform 500ms ease-out;
+  transition: transform 450ms ease-out;
   transform:translateY(var(--scroll));
 }
 .scroll {
@@ -176,6 +174,7 @@ svg {
 #leaguesTitle, #mainSliderTitle tspan:nth-child(1) {
   font-size: 20px;
   font-weight: 800;
+  stroke:none;
   fill:rgb(213,0,0);
 }
 #mainSliderTitle tspan:nth-child(2) {
@@ -349,7 +348,7 @@ svg {
         <image xlink:href='images/mainSlide2.png' width='0' hieght='0' x='0' y='0'/>
         <image xlink:href='images/mainSlide3.png' width='0' hieght='0' x='0' y='0'/>
       </g>
-      <g class='forAnimationClassRefresh'>  
+      <g class='mainAnimationClassRefresh'>  
         <image class='mainSlideAnimation' xlink:href='images/mainSlide0.png' x='-155' y='-780' width='2250' height='1100'/>
       </g>
     </svg>
@@ -358,11 +357,12 @@ svg {
     <svg viewBox='0 625 1920 1080' preserveAspectRatio='xMidYMax meet'>
     <defs>
       <mask id='secondaryCoverMask' maskUnits='objectBoundingBox'>
-        <path d='m -2,50 l 1924,-40 0,1400 -1924,0 z' stroke='none' fill='rgba(255,255,255,1)'/>
+        <path d='m -2,50 l 1924,-40 0,1400 -1924,0 z' stroke='none' fill='rgba(255,255,255,.065)'/>
       </mask>
     </defs>
     <g id='secondaryCoverGroup' class='scroll'>
       <path d='m -2,50 l 1924,-40 0,1400 -1924,0 z' stroke='none' fill='rgba(244,244,244,1)'/>
+      <image class='secondaryAnimationClassRefresh' class='mainSlideAnimation' mask='url(#secondaryCoverMask)' xlink:href='images/mainSlide0.png' x='-155' y='-15' width='2250' height='1100'/>
     </g>
     </svg>
   </div>
@@ -384,14 +384,14 @@ svg {
     <g id='mainGlobalGroup' class='scroll'>
       <g id='mainSlider'>
         <path d='m 477,-370 l 966,0 21,469 -1008,0 z' fill='black'/>
-        <g class='forAnimationClassRefresh' mask='url(#mainSliderMask)'>  
+        <g class='mainAnimationClassRefresh' mask='url(#mainSliderMask)'>  
           <image class='mainSlideAnimation' xlink:href='images/mainSlide0.png' x='455' y='-373' width='1010' height='475'/>
         </g>
         <g id='mainSliderUi' mask='url(#mainSliderMask)'>
           <rect x='455' y='-370' width='1010' height='470' fill='url(#mainSliderShadow)'/> 
           <image xlink:href='images/leftArrow.png' x='515' y='5' width='9' height='14'/>
           <image xlink:href='images/rightArrow.png' x='1397' y='5' width='9' height='14'/>
-          <g class='forAnimationClassRefresh'>
+          <g class='mainAnimationClassRefresh'>
           <text id='mainSliderTitle' class='mainSlideAnimation' text-anchor='middle'>
             <tspan x='960' y='-15' >TEAM MALAYSIA ADVANCE</tspan>
             <tspan x='960' y='45'>SLTV SEA PLAY-OFF</tspan>
@@ -404,13 +404,12 @@ svg {
           <path d='m 455.3,105 l 23.5,-474 962.8,0 23.1,474' style='stroke:rgb(50,50,50);stroke-width:1.5px;fill:none'/>
         </g>
         <path id='mainSliderTimelineCover' stroke='rgb(175,175,175)' stroke-width='3' d='m 455,102 l 1010,0'/>
-        <g class='forAnimationClassRefresh'>
+        <g class='mainAnimationClassRefresh'>
           <path id='mainSliderTimeline' class='mainTimelineAnimation' stroke='rgb(224,27,27)' stroke-width='4' d='m 455,101 l 1010,0'/>
         </g>
       </g>
       <g id='secondaryContent'>
-      <image xlink:href='images/ellipse.png' x='445' y='115' width='1010' height='20'/>
-      <image xlink:href='images/partners.png' x='490' y='145' width='940' height='75'/>
+        <image id='partnersAndEllipse' xlink:href='images/partnersAndEllipse.png' x='445' y='114' width='1010' height='135'/>
       </g>
     </g>
   </svg>  
@@ -437,7 +436,8 @@ viewY = 0,
 wheelArray = [],
 oldDelta = -1,
 arrayKoef = 0,
-scrollData = 0;
+scrollData = 0,
+scrollCycle = null;
 $('document').ready(function(){
   $('.slidesPreloading image').ready(function(){
     setTimeout(sliderRecharge(),1000);
@@ -448,7 +448,7 @@ function sliderRecharge() {
   $(window).scrollTop(0);
   $('header').addClass('headerIn');
   $('#secondaryCoverCont').css('top','0vw');
-  $('#mainSlider').css('transform','translateY(0px)');
+  $('#'+screenSwitcher+'Slider').css('transform','translateY(0px)');
   $('#secondaryContent').css('opacity','1');
   scenario = setInterval(function(){
     timelineRunForward();
@@ -456,7 +456,7 @@ function sliderRecharge() {
   },4500);
 }
 function contentRefresh() {
-  $('.forAnimationClassRefresh').children(0).each(function(){
+  $('.mainAnimationClassRefresh').children(0).each(function(){
     var el = $(this),
     newone = el.clone(true);
     el.before(newone);
@@ -465,19 +465,19 @@ function contentRefresh() {
   setTimeout(function(){
     if (i<3) {
       i++; 
-      $('.forAnimationClassRefresh image').attr('xlink:href','images/'+Object.values(mainObj)[0][i][0]+'.png');
-      $('#mainSliderTitle tspan').eq(0).text(Object.values(mainObj)[0][i][2].toUpperCase());
-      $('#mainSliderTitle tspan').eq(1).text(Object.values(mainObj)[0][i][1].toUpperCase());
+      $('.mainAnimationClassRefresh image').attr('xlink:href','images/'+Object.values(mainObj)[0][i][0]+'.png');
+      $('#'+screenSwitcher+'Title tspan').eq(0).text(Object.values(mainObj)[0][i][2].toUpperCase());
+      $('#'+screenSwitcher+'Title tspan').eq(1).text(Object.values(mainObj)[0][i][1].toUpperCase());
       }
     else {
       i=0;
-      $('.forAnimationClassRefresh image').attr('xlink:href','images/'+Object.values(mainObj)[0][i][0]+'.png');
-      $('#mainSliderTitle tspan').eq(0).text(Object.values(mainObj)[0][i][2].toUpperCase());
-      $('#mainSliderTitle tspan').eq(1).text(Object.values(mainObj)[0][i][1].toUpperCase());
+      $('.mainAnimationClassRefresh image').attr('xlink:href','images/'+Object.values(mainObj)[0][i][0]+'.png');
+      $('#'+screenSwitcher+'SliderTitle tspan').eq(0).text(Object.values(mainObj)[0][i][2].toUpperCase());
+      $('#'+screenSwitcher+'SliderTitle tspan').eq(1).text(Object.values(mainObj)[0][i][1].toUpperCase());
     }
   },700);
 }
-$(document).on('click','.mainArrowTrap',function(){
+$(document).on('click','.'+screenSwitcher+'ArrowTrap',function(){
   sliderFreeze();
   if ($(this).index()==0) {
     if (i>0) {
@@ -502,63 +502,54 @@ function sliderFreeze() {
 }
 function timelineRunForward() {
   if (i<3) {
-    $('.mainTimelineAnimation').get(0).style.setProperty('--dashoffset-begin',1020-340*(i)+'px');
+    $('.'+screenSwitcher+'TimelineAnimation').get(0).style.setProperty('--dashoffset-begin',1020-340*(i)+'px');
     $('.mainTimelineAnimation').get(0).style.setProperty('--dashoffset-end',1020-340*(i+1)+'px');
   }
   else {
-    $('.mainTimelineAnimation').get(0).style.setProperty('--dashoffset-begin','0px');
-    $('.mainTimelineAnimation').get(0).style.setProperty('--dashoffset-end','1020px');
+    $('.'+screenSwitcher+'TimelineAnimation').get(0).style.setProperty('--dashoffset-begin','0px');
+    $('.'+screenSwitcher+'TimelineAnimation').get(0).style.setProperty('--dashoffset-end','1020px');
   }
 }
 function timelineRunBack() {
   if (i<2) {
-    $('.mainTimelineAnimation').get(0).style.setProperty('--dashoffset-begin',1020-340*(i+2)+'px');
-    $('.mainTimelineAnimation').get(0).style.setProperty('--dashoffset-end',1020-340*(i+1)+'px');
+    $('.'+screenSwitcher+'TimelineAnimation').get(0).style.setProperty('--dashoffset-begin',1020-340*(i+2)+'px');
+    $('.'+screenSwitcher+'TimelineAnimation').get(0).style.setProperty('--dashoffset-end',1020-340*(i+1)+'px');
   }
   else {
-    $('.mainTimelineAnimation').get(0).style.setProperty('--dashoffset-begin','1020px');
-    $('.mainTimelineAnimation').get(0).style.setProperty('--dashoffset-end','0px');
+    $('.'+screenSwitcher+'TimelineAnimation').get(0).style.setProperty('--dashoffset-begin','1020px');
+    $('.'+screenSwitcher+'TimelineAnimation').get(0).style.setProperty('--dashoffset-end','0px');
   }
 }
 
-
-function scroll(){
+$(window).on('mousewheel', function(event){
+  clearInterval(scenario);
+  var delta = Math.round(event.originalEvent.deltaY);
+  wheelArray.push(delta);
+  clearTimeout(scrollCycle);
+  scrollCycle = setTimeout(function (){
+  if (wheelArray.length<5||scrollData==-608) {
+    if (delta>oldDelta) {
+      if (scrollData==0) {scrollData = -608;$('header').css('top','-3.33vw');}
+      else if (scrollData==-608) {scrollData= -1308;}
+      oldDelta = delta-1;
+    }
+    else if (delta<oldDelta) {
+      if (scrollData> -1308&&scrollData< 0) {scrollData= 0;$('header').css('top','0vw');}
+      else if (scrollData== -1308) {scrollData= -543;$('header').css('top','0vw');}
+      oldDelta = delta+1;
+    }
+  }
+  else {
+    if (delta>oldDelta) {scrollData = -1308;$('header').css('top','-3.33vw');}
+    else {scrollData = 0;$('header').css('top','0vw');}
+  }
   $('#mainGlobalGroup').get(0).style.setProperty('transform','translateY('+scrollData+'px');
   setTimeout(function(){
     $('#secondaryCoverGroup').get(0).style.setProperty('transform','translateY('+scrollData+'px');
+    wheelArray = [];
   },450);
-}
-$(window).bind('mousewheel DOMMouseScroll', function(event){
   sliderFreeze();
-  var delta = Math.round(event.originalEvent.deltaY);
-  wheelArray.push(delta);
-  console.log(
-    'delta= ',delta,'\n',
-    'oldDelta= ',oldDelta,'\n',
-    'scrollData',scrollData
-  );
-  if (delta>oldDelta) {
-    if (scrollData==0) {
-      scrollData = scrollData - 608;
-      scroll();
-    }
-    else if (scrollData==-608) {
-      scrollData = scrollData - 700;
-      scroll();
-    }
-    oldDelta = delta-10;
-  }
-  else  if (delta<oldDelta) {
-    if (scrollData==-608) {
-      scrollData = scrollData + 608;
-      scroll();
-    }
-    else if (scrollData==-1308) {
-      scrollData = scrollData + 700;
-      scroll();
-    }
-    oldDelta = delta+10;
-  }
+},350);
 });
 
   
@@ -595,7 +586,7 @@ $(window).bind('mousewheel DOMMouseScroll', function(event){
   else {
     viewY = 2008;
   }*/
-  
+
 /*function scrollLerp() {
   var step = Math.round((wheelArray[wheelArray.length-1]-lastDeltaY)/33.33),
   target = wheelArray[wheelArray.length-1];
