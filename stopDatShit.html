@@ -7,6 +7,9 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
 <style type='text/css'>
+:root {
+  --scrollData;
+}
 body {
   margin:0;
   padding:0;
@@ -112,6 +115,46 @@ svg {
   height:100%;
   font-family: 'Roboto Condensed', sans-serif;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#mainGlobalGroup,#secondaryCoverGroup {
+  transition: transform 500ms ease-out;
+  transform:translateY(var(--scroll));
+}
+.scroll {
+  --scroll:calc(var(--scroll) + var(--scroll));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #mainSlider {
   transform:translateY(1400px);
   transition: transform 800ms ease-out 900ms;
@@ -312,17 +355,19 @@ svg {
     </svg>
   </div>
   <div id='secondaryCoverCont'>
-    <svg class='scrollViewBox' viewBox='0 625 1920 1080' preserveAspectRatio='xMidYMax meet'>
+    <svg viewBox='0 625 1920 1080' preserveAspectRatio='xMidYMax meet'>
     <defs>
       <mask id='secondaryCoverMask' maskUnits='objectBoundingBox'>
         <path d='m -2,50 l 1924,-40 0,1400 -1924,0 z' stroke='none' fill='rgba(255,255,255,1)'/>
       </mask>
     </defs>
+    <g id='secondaryCoverGroup' class='scroll'>
       <path d='m -2,50 l 1924,-40 0,1400 -1924,0 z' stroke='none' fill='rgba(244,244,244,1)'/>
+    </g>
     </svg>
   </div>
   <div id='svgCont'>
-  <svg class='scrollViewBox' viewBox='0 625 1920 1080' preserveAspectRatio='xMidYMax meet'>
+  <svg viewBox='0 625 1920 1080' preserveAspectRatio='xMidYMax meet'>
     <defs>
       <mask id='mainSliderMask'>
         <path d='m 477,-370 l 966,0 21,469 -1008,0 z' fill='white'/>
@@ -336,6 +381,7 @@ svg {
         <stop offset='95%' stop-color='rgba(40,40,40,0)'/>
       </linearGradient>
     </defs>
+    <g id='mainGlobalGroup' class='scroll'>
       <g id='mainSlider'>
         <path d='m 477,-370 l 966,0 21,469 -1008,0 z' fill='black'/>
         <g class='forAnimationClassRefresh' mask='url(#mainSliderMask)'>  
@@ -366,6 +412,7 @@ svg {
       <image xlink:href='images/ellipse.png' x='445' y='115' width='1010' height='20'/>
       <image xlink:href='images/partners.png' x='490' y='145' width='940' height='75'/>
       </g>
+    </g>
   </svg>  
   </div>
 </div>
@@ -388,9 +435,9 @@ mainObj = {
 },
 viewY = 0,
 wheelArray = [],
-lastDeltaY = 0,
+oldDelta = -1,
 arrayKoef = 0,
-position = 0;
+scrollData = 0;
 $('document').ready(function(){
   $('.slidesPreloading image').ready(function(){
     setTimeout(sliderRecharge(),1000);
@@ -473,8 +520,49 @@ function timelineRunBack() {
     $('.mainTimelineAnimation').get(0).style.setProperty('--dashoffset-end','0px');
   }
 }
+
+
+function scroll(){
+  $('#mainGlobalGroup').get(0).style.setProperty('transform','translateY('+scrollData+'px');
+  setTimeout(function(){
+    $('#secondaryCoverGroup').get(0).style.setProperty('transform','translateY('+scrollData+'px');
+  },450);
+}
 $(window).bind('mousewheel DOMMouseScroll', function(event){
+  sliderFreeze();
   var delta = Math.round(event.originalEvent.deltaY);
+  wheelArray.push(delta);
+  console.log(
+    'delta= ',delta,'\n',
+    'oldDelta= ',oldDelta,'\n',
+    'scrollData',scrollData
+  );
+  if (delta>oldDelta) {
+    if (scrollData==0) {
+      scrollData = scrollData - 608;
+      scroll();
+    }
+    else if (scrollData==-608) {
+      scrollData = scrollData - 700;
+      scroll();
+    }
+    oldDelta = delta-10;
+  }
+  else  if (delta<oldDelta) {
+    if (scrollData==-608) {
+      scrollData = scrollData + 608;
+      scroll();
+    }
+    else if (scrollData==-1308) {
+      scrollData = scrollData + 700;
+      scroll();
+    }
+    oldDelta = delta+10;
+  }
+});
+
+  
+  /*var delta = Math.round(event.originalEvent.deltaY);
   if (viewY <= 2008) {
     viewY = viewY+delta;
     if (viewY >= 0) {
@@ -506,9 +594,9 @@ $(window).bind('mousewheel DOMMouseScroll', function(event){
   }
   else {
     viewY = 2008;
-  }
-});
-function scrollLerp() {
+  }*/
+  
+/*function scrollLerp() {
   var step = Math.round((wheelArray[wheelArray.length-1]-lastDeltaY)/33.33),
   target = wheelArray[wheelArray.length-1];
   var tl = new TimelineMax({delay:0}),
@@ -516,7 +604,7 @@ function scrollLerp() {
     TweenMax.set(svgRoot,{attr:{viewBox:'0 625 1920 1080'}});
       tl.to(svgRoot, 1, {attr:{ viewBox:'0 1233 1920 1080'}});
   
-        /*var lerpCycle = setInterval(function(){
+        var lerpCycle = setInterval(function(){
     if (position<=target) {
       if (position>=lastDeltaY&&position>=0) {
         position = position + step;
@@ -540,8 +628,8 @@ function scrollLerp() {
         clearInterval(lerpCycle);
       }
     }
-  },10);*/
-};
+  },10);
+};*/
 </script>
 </body>
 </html>
