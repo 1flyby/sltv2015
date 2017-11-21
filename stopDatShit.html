@@ -5,6 +5,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
 <style type='text/css'>
 body {
   margin:0;
@@ -26,9 +27,11 @@ header {
   font-weight: 800;
   font-size:3vw;
 }
+/*
 .headerIn {
   top:0vw;
 }
+*/
 #topHeaderFragment {
   margin:0;
   padding:0;
@@ -479,10 +482,11 @@ $(window).bind('mousewheel DOMMouseScroll', function(event){
       //$('.scrollViewBox').attr('viewBox','0 '+(viewY+625)+' 1920 1080');
       wheelArray.push(viewY);
       setTimeout(function(){ //w8ing for wheelCombo
-        if (wheelArray[1]<2008||wheelArray[1]==undefined&&wheelArray[0]!==undefined) {
+        if (wheelArray[1]<=2008||wheelArray[1]==undefined&&wheelArray[0]!==undefined) {
           console.log(
-            ' viewY= '+viewY,'\n',
-            'wheelArray= '+wheelArray,'\n',
+            ' viewY= ',viewY,'\n',
+            'wheelArray= ',wheelArray,'\n',
+            'position= ',position,'\n'
           );
           scrollLerp();
           sliderFreeze();
@@ -506,36 +510,37 @@ $(window).bind('mousewheel DOMMouseScroll', function(event){
 });
 function scrollLerp() {
   var step = Math.round((wheelArray[wheelArray.length-1]-lastDeltaY)/33.33),
-  viewBox = $('.scrollViewBox').attr('viewBox');
   target = wheelArray[wheelArray.length-1];
-  var lerpCycle = setInterval(function(){
-    if (position>=0&&position<=2008&&arrayKoef!=0) {
-      position = position + step;
-      $('.scrollViewBox').attr('viewBox','0 '+(position*2+625)+' 1920 1080');
-      console.log(position,target);
-      arrayKoef--;
-      /*console.log(
-      'step= ',step,'\n',
-      'position= ',position,'\n',
-      'arrayKoef= ',arrayKoef,'\n',
-      'viewBox= ',viewBox
-      );*/
-    }
-    else {
-      if (position<0) {
-        position=0;
+  var tl = new TimelineMax({delay:0}),
+    svgRoot = $('.scrollViewBox');
+    TweenMax.set(svgRoot,{attr:{viewBox:'0 625 1920 1080'}});
+      tl.to(svgRoot, 1, {attr:{ viewBox:'0 1233 1920 1080'}});
+  
+        /*var lerpCycle = setInterval(function(){
+    if (position<=target) {
+      if (position>=lastDeltaY&&position>=0) {
+        position = position + step;
+        $('.scrollViewBox').attr('viewBox','0 '+(625-position)+' 1920 1080');
+        console.log(position,target,'\n',
+        'step= ',step,'\n',
+        'position= ',position,'\n',
+        'arrayKoef= ',arrayKoef,'\n',
+        'viewBox= ',viewBox
+        );
       }
-      clearInterval(lerpCycle);
+      else if (position<=lastDeltaY&&position<=2008) {
+        position = position + step;
+        $('.scrollViewBox').attr('viewBox','0 '+(position+625)+' 1920 1080');
+        console.log(position,target,step);
+      }
+      else {
+        if (position<0) {
+          position=0;
+        }
+        clearInterval(lerpCycle);
+      }
     }
-    /*else if (position>2008){
-      position = 2008;
-      clearInterval(lerpCycle);
-    }
-    else if (position<0){
-      position = 0;
-      clearInterval(lerpCycle);
-    }*/
-  },6);
+  },10);*/
 };
 </script>
 </body>
