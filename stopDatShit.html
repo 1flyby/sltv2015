@@ -206,6 +206,10 @@ svg {
   opacity: 0;
   transition: opacity 800ms ease-out 1650ms;
 }
+#secondaryCoverImage {
+  opacity: 0;
+  transition: opacity 500ms ease-out;
+}
 #semiSliderTitle {
   color:white;
   font-weight:400;
@@ -342,14 +346,8 @@ svg {
 <div id='mainWrapper'>
   <div id='mainCoverCont'>
     <svg viewBox='0 633 1920 1080' preserveAspectRatio='xMidYMax meet'>
-      <g id='slidesPreloading'>
-        <image xlink:href='images/mainSlide0.png' width='0' hieght='0' x='0' y='0'/>
-        <image xlink:href='images/mainSlide1.png' width='0' hieght='0' x='0' y='0'/>
-        <image xlink:href='images/mainSlide2.png' width='0' hieght='0' x='0' y='0'/>
-        <image xlink:href='images/mainSlide3.png' width='0' hieght='0' x='0' y='0'/>
-      </g>
       <g class='mainAnimationClassRefresh'>  
-        <image class='mainSlideAnimation' xlink:href='images/mainSlide0.png' x='-155' y='-780' width='2250' height='1100'/>
+        <image id='mainSlideCover' class='mainSlideAnimation' xlink:href='' x='-155' y='-780' width='2250' height='1100'/>
       </g>
     </svg>
   </div>
@@ -357,12 +355,12 @@ svg {
     <svg viewBox='0 625 1920 1080' preserveAspectRatio='xMidYMax meet'>
     <defs>
       <mask id='secondaryCoverMask' maskUnits='objectBoundingBox'>
-        <path d='m -2,50 l 1924,-40 0,1400 -1924,0 z' stroke='none' fill='rgba(255,255,255,.065)'/>
+        <path id='secondaryCoverImage' d='m -2,50 l 1924,-40 0,1400 -1924,0 z' stroke='none' fill='rgba(255,255,255,.065)'/>
       </mask>
     </defs>
     <g id='secondaryCoverGroup' class='scroll'>
       <path d='m -2,50 l 1924,-40 0,1400 -1924,0 z' stroke='none' fill='rgba(244,244,244,1)'/>
-      <image class='secondaryAnimationClassRefresh' class='mainSlideAnimation' mask='url(#secondaryCoverMask)' xlink:href='images/mainSlide0.png' x='-155' y='-15' width='2250' height='1100'/>
+      <image class='secondaryAnimationClassRefresh' class='mainSlideAnimation' mask='url(#secondaryCoverMask)' xlink:href='' x='-155' y='-15' width='2250' height='1100'/>
     </g>
     </svg>
   </div>
@@ -385,7 +383,7 @@ svg {
       <g id='mainSlider'>
         <path d='m 477,-370 l 966,0 21,469 -1008,0 z' fill='black'/>
         <g class='mainAnimationClassRefresh' mask='url(#mainSliderMask)'>  
-          <image class='mainSlideAnimation' xlink:href='images/mainSlide0.png' x='455' y='-373' width='1010' height='475'/>
+          <image id='mainSlide' class='mainSlideAnimation' xlink:href='' x='455' y='-373' width='1010' height='475'/>
         </g>
         <g id='mainSliderUi' mask='url(#mainSliderMask)'>
           <rect x='455' y='-370' width='1010' height='470' fill='url(#mainSliderShadow)'/> 
@@ -415,41 +413,71 @@ svg {
   </svg>  
   </div>
 </div>
+<div id='cashCont'>
+</div>
 <script>
 var i = 0,
+scenario = null,
 screenSwitcher = 'main',
 mainObj = {
   "mainSlider" : [
-    ["mainSlide0","TEAM MALAYSIA ADVANCE","SLTV SEA PLAY-OFF"],
-    ["mainSlide1","gameplay update","backdoor regen increased!"],
-    ["mainSlide2","Resolut1on","in da OG house!"],
-    ["mainSlide3","Dota Summit 8","Смотри вместе с нами!"]
-  ],
-  "secondarySlider" : [
-    ["secondarySlide0","title","semiTitle"],
-    ["secondarySlide1","title","semiTitle"],
-    ["secondarySlide2","title","semiTitle"],
-    ["secondarySlide3","title","semiTitle"]
+    ["images/slide0.png","TEAM MALAYSIA ADVANCE","SLTV SEA PLAY-OFF"],
+    ["images/slide1.png","gameplay update","backdoor regen increased!"],
+    ["images/slide2.png","Resolut1on","in da OG house!"],
+    ["images/slide3.png","Dota Summit 8","Смотри вместе с нами!"],
+    ["images/slide4.png","title","semiTitle"],
+    ["images/slide5.png","title","semiTitle"]
   ]
 },
-viewY = 0,
 wheelArray = [],
 oldDelta = -1,
-arrayKoef = 0,
 scrollData = 0,
 scrollCycle = null;
 $('document').ready(function(){
-  $('.slidesPreloading image').ready(function(){
-    setTimeout(sliderRecharge(),1000);
-  });
-});
-function sliderRecharge() {
-  var i = 0;
   $(window).scrollTop(0);
   $('header').addClass('headerIn');
+  initiation();
+  //sliderRecharge();
+});
+
+function cash0() {
+  console.log('cash0','\n','cashedImg.src',Object.values(mainObj)[0][i][0]);
+  $('#mainSlide,#mainSlideCover').attr('xlink:href',Object.values(mainObj)[0][i][0]);
+}
+function cash1() {
+  console.log('cash1','\n','cashedImg.src',Object.values(mainObj)[0][4][0]);
+  $('.secondaryAnimationClassRefresh').attr('xlink:href',Object.values(mainObj)[0][4][0]);
+}
+function cash2() {
+  console.log('cash2','\n','cashedImg.src',Object.values(mainObj)[0][i-1][0]);
+  $('#mainSlider').css('transform','translateY(0px)');
   $('#secondaryCoverCont').css('top','0vw');
-  $('#'+screenSwitcher+'Slider').css('transform','translateY(0px)');
-  $('#secondaryContent').css('opacity','1');
+}
+function cash3() {
+  console.log('cash3','\n','cashedImg.src',Object.values(mainObj)[0][3][0]);
+}
+function cash4() {
+  console.log('cash4','\n','cashedImg.src',Object.values(mainObj)[0][5][0]);
+}
+function cash5() {
+  console.log('cash5','\n','cashedImg.src',Object.values(mainObj)[0][2][0]);
+  sliderRecharge();
+  $('#secondaryCoverImage').css('opacity',1);
+}
+
+function initiation() {
+  $.each(mainObj.mainSlider, function() {
+    var preloadStep = window['cash'+i];
+    cashedImg = new Image();
+    cashedImg.onload = setTimeout(preloadStep(),4);
+    cashedImg.src = Object.values(mainObj)[0][i][0];
+    $('#cashCont').append(cashedImg);
+    i++;
+  });
+  i=0;
+}
+
+function sliderRecharge() {
   scenario = setInterval(function(){
     timelineRunForward();
     contentRefresh();
@@ -465,13 +493,13 @@ function contentRefresh() {
   setTimeout(function(){
     if (i<3) {
       i++; 
-      $('.mainAnimationClassRefresh image').attr('xlink:href','images/'+Object.values(mainObj)[0][i][0]+'.png');
+      $('.'+screenSwitcher+'AnimationClassRefresh image').attr('xlink:href',Object.values(mainObj)[0][i][0]);
       $('#'+screenSwitcher+'Title tspan').eq(0).text(Object.values(mainObj)[0][i][2].toUpperCase());
       $('#'+screenSwitcher+'Title tspan').eq(1).text(Object.values(mainObj)[0][i][1].toUpperCase());
       }
     else {
       i=0;
-      $('.mainAnimationClassRefresh image').attr('xlink:href','images/'+Object.values(mainObj)[0][i][0]+'.png');
+      $('.'+screenSwitcher+'AnimationClassRefresh image').attr('xlink:href',Object.values(mainObj)[0][i][0]);
       $('#'+screenSwitcher+'SliderTitle tspan').eq(0).text(Object.values(mainObj)[0][i][2].toUpperCase());
       $('#'+screenSwitcher+'SliderTitle tspan').eq(1).text(Object.values(mainObj)[0][i][1].toUpperCase());
     }
@@ -503,7 +531,7 @@ function sliderFreeze() {
 function timelineRunForward() {
   if (i<3) {
     $('.'+screenSwitcher+'TimelineAnimation').get(0).style.setProperty('--dashoffset-begin',1020-340*(i)+'px');
-    $('.mainTimelineAnimation').get(0).style.setProperty('--dashoffset-end',1020-340*(i+1)+'px');
+    $('.'+screenSwitcher+'TimelineAnimation').get(0).style.setProperty('--dashoffset-end',1020-340*(i+1)+'px');
   }
   else {
     $('.'+screenSwitcher+'TimelineAnimation').get(0).style.setProperty('--dashoffset-begin','0px');
@@ -551,76 +579,6 @@ $(window).on('mousewheel', function(event){
   sliderFreeze();
 },350);
 });
-
-  
-  /*var delta = Math.round(event.originalEvent.deltaY);
-  if (viewY <= 2008) {
-    viewY = viewY+delta;
-    if (viewY >= 0) {
-      $('header').removeClass('headerIn');
-      //$('.scrollViewBox').attr('viewBox','0 '+(viewY+625)+' 1920 1080');
-      wheelArray.push(viewY);
-      setTimeout(function(){ //w8ing for wheelCombo
-        if (wheelArray[1]<=2008||wheelArray[1]==undefined&&wheelArray[0]!==undefined) {
-          console.log(
-            ' viewY= ',viewY,'\n',
-            'wheelArray= ',wheelArray,'\n',
-            'position= ',position,'\n'
-          );
-          scrollLerp();
-          sliderFreeze();
-          lastDeltaY = wheelArray[wheelArray.length-1];
-          arrayKoef = wheelArray.length;
-          wheelArray=[];
-        }
-        else {
-          wheelArray=[];
-        }
-      },500);
-    }
-    else if (viewY < 0) {
-      viewY=0;
-      $('.scrollViewBox').attr('viewBox','0 625 1920 1080');
-    }
-  }
-  else {
-    viewY = 2008;
-  }*/
-
-/*function scrollLerp() {
-  var step = Math.round((wheelArray[wheelArray.length-1]-lastDeltaY)/33.33),
-  target = wheelArray[wheelArray.length-1];
-  var tl = new TimelineMax({delay:0}),
-    svgRoot = $('.scrollViewBox');
-    TweenMax.set(svgRoot,{attr:{viewBox:'0 625 1920 1080'}});
-      tl.to(svgRoot, 1, {attr:{ viewBox:'0 1233 1920 1080'}});
-  
-        var lerpCycle = setInterval(function(){
-    if (position<=target) {
-      if (position>=lastDeltaY&&position>=0) {
-        position = position + step;
-        $('.scrollViewBox').attr('viewBox','0 '+(625-position)+' 1920 1080');
-        console.log(position,target,'\n',
-        'step= ',step,'\n',
-        'position= ',position,'\n',
-        'arrayKoef= ',arrayKoef,'\n',
-        'viewBox= ',viewBox
-        );
-      }
-      else if (position<=lastDeltaY&&position<=2008) {
-        position = position + step;
-        $('.scrollViewBox').attr('viewBox','0 '+(position+625)+' 1920 1080');
-        console.log(position,target,step);
-      }
-      else {
-        if (position<0) {
-          position=0;
-        }
-        clearInterval(lerpCycle);
-      }
-    }
-  },10);
-};*/
 </script>
 </body>
 </html>
