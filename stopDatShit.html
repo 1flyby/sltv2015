@@ -424,8 +424,8 @@ mainObj = {
     ["images/slide0.png","TEAM MALAYSIA ADVANCE","SLTV SEA PLAY-OFF"],
     ["images/slide1.png","gameplay update","backdoor regen increased!"],
     ["images/slide2.png","Resolut1on","in da OG house!"],
-    ["images/slide3.png","Dota Summit 8","Смотри вместе с нами!"],
-    ["images/slide4.png","title","semiTitle"],
+    ["images/slide3.png","title","semiTitle"],
+    ["images/slide4.png","Dota Summit 8","Смотри вместе с нами!"],
     ["images/slide5.png","title","semiTitle"]
   ]
 },
@@ -441,26 +441,20 @@ $('document').ready(function(){
 });
 
 function cash0() {
-  console.log('cash0','\n','cashedImg.src',Object.values(mainObj)[0][i][0]);
   $('#mainSlide,#mainSlideCover').attr('xlink:href',Object.values(mainObj)[0][i][0]);
 }
 function cash1() {
-  console.log('cash1','\n','cashedImg.src',Object.values(mainObj)[0][4][0]);
   $('.secondaryAnimationClassRefresh').attr('xlink:href',Object.values(mainObj)[0][4][0]);
 }
 function cash2() {
-  console.log('cash2','\n','cashedImg.src',Object.values(mainObj)[0][i-1][0]);
   $('#mainSlider').css('transform','translateY(0px)');
   $('#secondaryCoverCont').css('top','0vw');
 }
 function cash3() {
-  console.log('cash3','\n','cashedImg.src',Object.values(mainObj)[0][3][0]);
 }
 function cash4() {
-  console.log('cash4','\n','cashedImg.src',Object.values(mainObj)[0][5][0]);
 }
 function cash5() {
-  console.log('cash5','\n','cashedImg.src',Object.values(mainObj)[0][2][0]);
   sliderRecharge();
   $('#secondaryCoverImage').css('opacity',1);
 }
@@ -494,14 +488,16 @@ function contentRefresh() {
     if (i<3) {
       i++; 
       $('.'+screenSwitcher+'AnimationClassRefresh image').attr('xlink:href',Object.values(mainObj)[0][i][0]);
-      $('#'+screenSwitcher+'Title tspan').eq(0).text(Object.values(mainObj)[0][i][2].toUpperCase());
-      $('#'+screenSwitcher+'Title tspan').eq(1).text(Object.values(mainObj)[0][i][1].toUpperCase());
+      $('#'+screenSwitcher+'SliderTitle tspan').eq(0).text(Object.values(mainObj)[0][i][2].toUpperCase());
+      $('#'+screenSwitcher+'SliderTitle tspan').eq(1).text(Object.values(mainObj)[0][i][1].toUpperCase());
+      console.log(Object.values(mainObj)[0][i][1],Object.values(mainObj)[0][i][2],$('#'+screenSwitcher+'Title tspan').eq(0).text());
       }
     else {
       i=0;
       $('.'+screenSwitcher+'AnimationClassRefresh image').attr('xlink:href',Object.values(mainObj)[0][i][0]);
       $('#'+screenSwitcher+'SliderTitle tspan').eq(0).text(Object.values(mainObj)[0][i][2].toUpperCase());
       $('#'+screenSwitcher+'SliderTitle tspan').eq(1).text(Object.values(mainObj)[0][i][1].toUpperCase());
+      console.log(Object.values(mainObj)[0][i][1],Object.values(mainObj)[0][i][2],$('#'+screenSwitcher+'Title tspan').eq(1).text());
     }
   },700);
 }
