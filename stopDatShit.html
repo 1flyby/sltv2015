@@ -10,6 +10,10 @@
 :root {
   --scrollData;
 }
+#cashCont img {
+  width: 1px;
+  height: 1px;
+}
 body {
   margin:0;
   padding:0;
@@ -203,7 +207,7 @@ svg {
   100% {stroke-dashoffset:var(--dashoffset-end);}
 }
 #secondaryContent {
-  opacity: 0;
+  opacity: 1;
   transition: opacity 800ms ease-out 1650ms;
 }
 #secondaryCoverImage {
@@ -355,7 +359,7 @@ svg {
     <svg viewBox='0 625 1920 1080' preserveAspectRatio='xMidYMax meet'>
     <defs>
       <mask id='secondaryCoverMask' maskUnits='objectBoundingBox'>
-        <path id='secondaryCoverImage' d='m -2,50 l 1924,-40 0,1400 -1924,0 z' stroke='none' fill='rgba(255,255,255,.065)'/>
+        <path id='secondaryCoverImage' d='m -2,50 l 1924,-40 0,1400 -1924,0 z' stroke='none' fill='rgba(255,255,255,.045)'/>
       </mask>
     </defs>
     <g id='secondaryCoverGroup' class='scroll'>
@@ -367,6 +371,8 @@ svg {
   <div id='svgCont'>
   <svg viewBox='0 625 1920 1080' preserveAspectRatio='xMidYMax meet'>
     <defs>
+    <filter id='mainCoverFilter'>
+    </filter>
       <mask id='mainSliderMask'>
         <path d='m 477,-370 l 966,0 21,469 -1008,0 z' fill='white'/>
       </mask>
@@ -456,7 +462,6 @@ function cash4() {
 }
 function cash5() {
   sliderRecharge();
-  $('#secondaryCoverImage').css('opacity',1);
 }
 
 function initiation() {
@@ -490,14 +495,12 @@ function contentRefresh() {
       $('.'+screenSwitcher+'AnimationClassRefresh image').attr('xlink:href',Object.values(mainObj)[0][i][0]);
       $('#'+screenSwitcher+'SliderTitle tspan').eq(0).text(Object.values(mainObj)[0][i][2].toUpperCase());
       $('#'+screenSwitcher+'SliderTitle tspan').eq(1).text(Object.values(mainObj)[0][i][1].toUpperCase());
-      console.log(Object.values(mainObj)[0][i][1],Object.values(mainObj)[0][i][2],$('#'+screenSwitcher+'Title tspan').eq(0).text());
-      }
+    }
     else {
       i=0;
       $('.'+screenSwitcher+'AnimationClassRefresh image').attr('xlink:href',Object.values(mainObj)[0][i][0]);
       $('#'+screenSwitcher+'SliderTitle tspan').eq(0).text(Object.values(mainObj)[0][i][2].toUpperCase());
       $('#'+screenSwitcher+'SliderTitle tspan').eq(1).text(Object.values(mainObj)[0][i][1].toUpperCase());
-      console.log(Object.values(mainObj)[0][i][1],Object.values(mainObj)[0][i][2],$('#'+screenSwitcher+'Title tspan').eq(1).text());
     }
   },700);
 }
@@ -553,12 +556,12 @@ $(window).on('mousewheel', function(event){
   scrollCycle = setTimeout(function (){
   if (wheelArray.length<5||scrollData==-608) {
     if (delta>oldDelta) {
-      if (scrollData==0) {scrollData = -608;$('header').css('top','-3.33vw');}
+      if (scrollData==0) {scrollData = -608;$('#secondaryCoverImage').css('opacity',1);$('header').css('top','-3.33vw');}
       else if (scrollData==-608) {scrollData= -1308;}
       oldDelta = delta-1;
     }
     else if (delta<oldDelta) {
-      if (scrollData> -1308&&scrollData< 0) {scrollData= 0;$('header').css('top','0vw');}
+      if (scrollData> -1308&&scrollData< 0) {scrollData= 0;$('header').css('top','0vw');$('#secondaryCoverImage').css('opacity',0);}
       else if (scrollData== -1308) {scrollData= -543;$('header').css('top','0vw');}
       oldDelta = delta+1;
     }
