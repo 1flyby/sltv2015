@@ -95,14 +95,17 @@ header {
   top:-30vw;
   transition: top 900ms ease-out 800ms;
 }
-#secondaryCoverCont svg {
-  /*filter:contrast(1) saturate(0);
+.saturatedSecondCover {
+  filter:contrast(1) saturate(0);
   -webkit-filter: contrast(1) saturate(0) ;
   transform: translate3d(0,0,0);
-  -webkit-transform: translate3d(0,0,0);*/
+  -webkit-transform: translate3d(0,0,0);
 }
 #secondaryCoverCont svg use{
-  opacity: .05;
+  opacity: 1;
+}
+#preloader {
+  transition: opacity 400ms ease-out;
 }
 #svgCont {
   position:relative;
@@ -116,22 +119,6 @@ svg {
   height:100%;
   font-family: 'Roboto Condensed', sans-serif;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #mainGlobalGroup,#secondaryCoverGroup {
   transition: transform 450ms ease-out;
   transform:translateY(var(--scroll));
@@ -139,23 +126,6 @@ svg {
 .scroll {
   --scroll:calc(var(--scroll) + var(--scroll));
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #mainSlider {
   transform:translateY(1400px);
   transition: transform 800ms ease-out 900ms;
@@ -363,15 +333,19 @@ svg {
     </defs>
     <g id='secondaryCoverGroup' class='scroll'>
       <path d='m -2,50 l 1924,-40 0,1400 -1924,0 z' stroke='none' fill='rgba(244,244,244,1)'/>
-      <image class='secondaryAnimationClassRefresh' class='mainSlideAnimation' mask='url(#secondaryCoverMask)' xlink:href='' x='-155' y='-15' width='2250' height='1100'/>
+      <image class='mainSlideAnimation secondaryAnimationClassRefresh' mask='url(#secondaryCoverMask)' xlink:href='' x='-155' y='-15' width='2250' height='1100'/>
+      <g id='preloader'>
+        <image id='preloadImage' xlink:href='http://summerstreet.pp.ua/testquest/images/starseries.png' x='785' y='450' width='336' height='329'/>
+        <use href='#preloadImage' filter='url(#preloadFilter)'/>
+      </g>
     </g>
     </svg>
   </div>
   <div id='svgCont'>
   <svg viewBox='0 625 1920 1080' preserveAspectRatio='xMidYMax meet'>
     <defs>
-    <filter id='mainCoverFilter'>
-
+    <filter id='preloadFilter' height='1'>
+      <fecolormatrix type='saturate' values='0'/>
     </filter>
       <mask id='mainSliderMask'>
         <path d='m 477,-370 l 966,0 21,469 -1008,0 z' fill='white'/>
@@ -411,9 +385,9 @@ svg {
         <g class='mainAnimationClassRefresh'>
           <path id='mainSliderTimeline' class='mainTimelineAnimation' stroke='rgb(224,27,27)' stroke-width='4' d='m 455,101 l 1010,0'/>
         </g>
+        <image id='partnersAndEllipse' xlink:href='images/partnersAndEllipse.png' x='445' y='114' width='1010' height='135'/>
       </g>
       <g id='secondaryContent'>
-        <image id='partnersAndEllipse' xlink:href='images/partnersAndEllipse.png' x='445' y='114' width='1010' height='135'/>
       </g>
     </g>
   </svg>  
@@ -422,60 +396,103 @@ svg {
 <div id='cashCont'>
 </div>
 <script>
-var i = 0,
-scenario = null,
-screenSwitcher = 'main',
+var i = 0, //through counter
+preloadStep = .66, //this is saturate filter position on preload star
+scenario = null, //contain setInterval with slider recharges
+screenSwitcher = 'main', //animating class console
 mainObj = {
   "mainSlider" : [
     ["images/slide0.png","TEAM MALAYSIA ADVANCE","SLTV SEA PLAY-OFF"],
     ["images/slide1.png","gameplay update","backdoor regen increased!"],
     ["images/slide2.png","Resolut1on","in da OG house!"],
-    ["images/slide3.png","title","semiTitle"],
+    ["images/slide3.png","We got a partner!","DreamTeam Partners with StarLadder"],
     ["images/slide4.png","Dota Summit 8","Смотри вместе с нами!"],
     ["images/slide5.png","title","semiTitle"]
   ]
 },
-wheelArray = [],
-oldDelta = -1,
-scrollData = 0,
+wheelArray = [], //wheel steps counter
+oldDelta = -1, //last wheel position
+scrollData = 0, 
 scrollCycle = null;
 $('document').ready(function(){
   $(window).scrollTop(0);
   $('header').addClass('headerIn');
+  i=0;
   initiation();
+  //preload();
   //sliderRecharge();
 });
 
+//THIS STUFF FOR FREEZE SLIDER RECHARGE WHILE USER IS DOING SOMETHING
+function sliderFreeze() {clearInterval(scenario);setTimeout(sliderRecharge(),4500);}
+//THIS STUFF FOR FREEZE SLIDER RECHARGE WHILE USER IS DOING SOMETHING
+
+//PRELOADING SECTION
+function initiation() {
+  var preloadStep = window['cash'+i];
+  cashedImg = new Image();
+  cashedImg.onload = function(){preloadStep();}
+  cashedImg.src = Object.values(mainObj)[0][i][0];
+  $('#cashCont').append(cashedImg);
+}
+//preloading steps
 function cash0() {
   $('#mainSlide,#mainSlideCover').attr('xlink:href',Object.values(mainObj)[0][i][0]);
+  preloadCycle = setInterval(function(){
+    if (i>preloadStep) {
+    $('#preloadFilter').attr('height',i);
+    i=i-.008;
+    }
+    else {
+      clearInterval(preloadCycle);
+      i=1,preloadStep=.33;
+      initiation();
+    }
+  },15);
+  console.log('cash0!',i,preloadStep);
 }
 function cash1() {
   $('.secondaryAnimationClassRefresh').attr('xlink:href',Object.values(mainObj)[0][4][0]);
+  i=.66;
+  preloadCycle = setInterval(function(){
+    if (i>preloadStep) {
+      $('#preloadFilter').attr('height',i);
+      i=i-.008;
+    }
+    else {
+      clearInterval(preloadCycle);
+      i=2,preloadStep=0;
+      setTimeout(initiation(),400);
+    }
+  },15);
+  console.log('cash1!',i,preloadStep);
 }
 function cash2() {
+  i=.33;
+  preloadCycle = setInterval(function(){
+    if (i>preloadStep) {
+      $('#preloadFilter').attr('height',i);
+      i=i-.008;
+    }
+    else {
+      clearInterval(preloadCycle);
+      i=3;
+      setTimeout(initiation(),sliderRecharge(),400);
+    }
+  },15);
   $('#mainSlider').css('transform','translateY(0px)');
   $('#secondaryCoverCont').css('top','0vw');
 }
-function cash3() {
-}
-function cash4() {
-}
-function cash5() {
-  sliderRecharge();
-}
+function cash3() {$('#preloader').css('opacity',0);i++;initiation();}
+function cash4() {i++;initiation();$('#saturatedSecondCover')}
+function cash5() {i=0;setTimeout(function(){
+  $('#preloader').remove();
+  $('#secondaryCoverCont').addClass('saturatedSecondCover');
 
-function initiation() {
-  $.each(mainObj.mainSlider, function() {
-    var preloadStep = window['cash'+i];
-    cashedImg = new Image();
-    cashedImg.onload = setTimeout(preloadStep(),4);
-    cashedImg.src = Object.values(mainObj)[0][i][0];
-    $('#cashCont').append(cashedImg);
-    i++;
-  });
-  i=0;
-}
+},400);}
+//PRELOADING SECTION
 
+//SLIDER RECHARGE SECTION
 function sliderRecharge() {
   scenario = setInterval(function(){
     timelineRunForward();
@@ -504,29 +521,9 @@ function contentRefresh() {
     }
   },700);
 }
-$(document).on('click','.'+screenSwitcher+'ArrowTrap',function(){
-  sliderFreeze();
-  if ($(this).index()==0) {
-    if (i>0) {
-      i=i-2;
-      timelineRunBack();
-      contentRefresh();
-    }
-    else {
-      i = 2;
-      timelineRunBack();
-      contentRefresh();
-    }
-  }
-  else {
-    timelineRunForward();
-    contentRefresh();
-  }
-});
-function sliderFreeze() {
-  clearInterval(scenario);
-  setTimeout(sliderRecharge(),4500);
-}
+//SLIDER RECHARGE SECTION
+
+//TIMELINE RUN SECTION
 function timelineRunForward() {
   if (i<3) {
     $('.'+screenSwitcher+'TimelineAnimation').get(0).style.setProperty('--dashoffset-begin',1020-340*(i)+'px');
@@ -547,37 +544,83 @@ function timelineRunBack() {
     $('.'+screenSwitcher+'TimelineAnimation').get(0).style.setProperty('--dashoffset-end','0px');
   }
 }
+//TIMELINE RUN SECTION
 
+//MAIN SLIDER ARROWS CLICK
+$(document).on('click','.'+screenSwitcher+'ArrowTrap',function(){
+  sliderFreeze();
+  if ($(this).index()==0) {
+    if (i>0) {
+      i=i-2;
+      timelineRunBack();
+      contentRefresh();
+    }
+    else {
+      i = 2;
+      timelineRunBack();
+      contentRefresh();
+    }
+  }
+  else {
+    timelineRunForward();
+    contentRefresh();
+  }
+});
+//MAIN SLIDER ARROWS CLICK
+
+//MOUSEWHEEL SECTION
 $(window).on('mousewheel', function(event){
   clearInterval(scenario);
   var delta = Math.round(event.originalEvent.deltaY);
   wheelArray.push(delta);
   clearTimeout(scrollCycle);
   scrollCycle = setTimeout(function (){
-  if (wheelArray.length<5||scrollData==-608) {
-    if (delta>oldDelta) {
-      if (scrollData==0) {scrollData = -608;$('#secondaryCoverImage').css('opacity',1);$('header').css('top','-3.33vw');}
-      else if (scrollData==-608) {scrollData= -1308;}
-      oldDelta = delta-1;
+    if (wheelArray.length<5||scrollData==-608) {
+      if (delta>oldDelta) {
+        if (scrollData==0) {
+          scrollData = -608;
+          $('#secondaryCoverImage').css('opacity',1); //unhide second slider cover
+          $('header').css('top','-3.33vw'); //hide header
+        }
+        else if (scrollData==-608) {
+          scrollData= -1308;
+        }
+        oldDelta = delta-1;
+      }
+      else if (delta<oldDelta) {
+        if (scrollData> -1308&&scrollData< 0) {
+          scrollData= 0;
+          $('header').css('top','0vw'); //unhide header
+          $('#secondaryCoverImage').css('opacity',0); //hide second slider cover
+        }
+        else if (scrollData== -1308) {
+          scrollData= -543;
+          $('header').css('top','0vw'); //unhide header
+        }
+        oldDelta = delta+1;
+      }
     }
-    else if (delta<oldDelta) {
-      if (scrollData> -1308&&scrollData< 0) {scrollData= 0;$('header').css('top','0vw');$('#secondaryCoverImage').css('opacity',0);}
-      else if (scrollData== -1308) {scrollData= -543;$('header').css('top','0vw');}
-      oldDelta = delta+1;
+    else {
+      if (delta>oldDelta) {
+        scrollData = -1308;
+        $('header').css('top','-3.33vw'); //hide header
+        $('#secondaryCoverImage').css('opacity',1); //unhide second slider cover
+      }
+      else {
+        scrollData = 0;
+        $('header').css('top','0vw'); //unhide header
+        $('#secondaryCoverImage').css('opacity',0); //unhide second slider cover
+      }
     }
-  }
-  else {
-    if (delta>oldDelta) {scrollData = -1308;$('header').css('top','-3.33vw');}
-    else {scrollData = 0;$('header').css('top','0vw');}
-  }
-  $('#mainGlobalGroup').get(0).style.setProperty('transform','translateY('+scrollData+'px');
-  setTimeout(function(){
-    $('#secondaryCoverGroup').get(0).style.setProperty('transform','translateY('+scrollData+'px');
-    wheelArray = [];
-  },450);
-  sliderFreeze();
-},350);
+    $('#mainGlobalGroup').get(0).style.setProperty('transform','translateY('+scrollData+'px');
+    setTimeout(function(){
+      $('#secondaryCoverGroup').get(0).style.setProperty('transform','translateY('+scrollData+'px');
+      wheelArray = [];
+    },450);
+    sliderFreeze();
+  },350);
 });
+//MOUSEWHEEL SECTION
 </script>
 </body>
 </html>
