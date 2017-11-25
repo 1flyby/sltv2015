@@ -17,7 +17,7 @@ body {
   margin:0;
   padding:0;
   width:100vw;
-  height:114vw;
+  height:100vh;
   background-color:rgb(0,0,0);
   overflow:hidden;
 }
@@ -41,7 +41,7 @@ header {
   padding:0;
   height:1.11vw;
   width:100%;
-  background-image: url(images/headerCoverFirst.png);
+  background-image: url(images/ui/headerCoverFirst.png);
   background-size: 100%;
   background-position: center center;
   background-repeat: no-repeat;
@@ -51,7 +51,7 @@ header {
   padding:0;
   height:2.22vw;
   width:100%;
-  background-image: url(images/headerCoverSecond.png);
+  background-image: url(images/ui/headerCoverSecond.png);
   background-size: 100%;
   background-position: center center;
   background-repeat: no-repeat;
@@ -358,6 +358,9 @@ svg {
         <stop offset='40%' stop-color='rgba(40,40,40,.4)'/>
         <stop offset='95%' stop-color='rgba(40,40,40,0)'/>
       </linearGradient>
+      <mask id='secondarySliderMask'>
+        <rect id='secondarySliderCover' x='721' y='523' width='796' height='480' fill='white'/>
+      </mask>
     </defs>
     <g id='mainGlobalGroup' class='scroll'>
       <g id='mainSlider'>
@@ -385,9 +388,29 @@ svg {
         <g class='mainAnimationClassRefresh'>
           <path id='mainSliderTimeline' class='mainTimelineAnimation' stroke='rgb(224,27,27)' stroke-width='4' d='m 455,101 l 1010,0'/>
         </g>
-        <image id='partnersAndEllipse' xlink:href='images/partnersAndEllipse.png' x='445' y='114' width='1010' height='135'/>
+        <image id='partnersAndEllipse' xlink:href='images/partnersAndEllipse.png' x='455' y='114' width='1010' height='135'/>
       </g>
       <g id='secondaryContent'>
+        <g id='secondaryCovers'>
+          <image id='partnersAndEllipse' xlink:href='images/ui/newsCover.png' x='445' y='280' width='518' height='596'/>
+          <image id='partnersAndEllipse' xlink:href='images/ui/tableMatchesCover.png' x='960' y='340' width='517' height='465'/>
+        </g>
+        <g id='secondaryTitles'>
+          <text id='redTitles'>
+            <tspan x='498' y='320'>NEWS</tspan>
+            <tspan x='1002' y='320'>MATCHES</tspan>
+          </text>
+          <text id='blackTitles'>
+            <tspan x='864' y='320'>All news</tspan>
+            <tspan x='1346' y='320'>All matches</tspan>
+          </text>
+          <g id='secondarySlider'>
+            <rect id='secondarySliderCover' x='457' y='332' width='506' height='300' fill='black'/>
+            <g class='secondaryAnimationClassRefresh' mask='url(#secondarySliderMask)'transform='scale(.635)'>  
+              <image id='secondarySlide' class='secondarySlideAnimation' xlink:href='images/slides/slide4.png' x='610' y='520' width='1010' height='475'/>
+            </g>
+          </g>
+        </g>
       </g>
     </g>
   </svg>  
@@ -402,12 +425,12 @@ scenario = null, //contain setInterval with slider recharges
 screenSwitcher = 'main', //animating class console
 mainObj = {
   "mainSlider" : [
-    ["images/slide0.png","TEAM MALAYSIA ADVANCE","SLTV SEA PLAY-OFF"],
-    ["images/slide1.png","gameplay update","backdoor regen increased!"],
-    ["images/slide2.png","Resolut1on","in da OG house!"],
-    ["images/slide3.png","We got a partner!","DreamTeam Partners with StarLadder"],
-    ["images/slide4.png","Dota Summit 8","Смотри вместе с нами!"],
-    ["images/slide5.png","title","semiTitle"]
+    ["images/slides/slide0.png","TEAM MALAYSIA ADVANCE","SLTV SEA PLAY-OFF"],
+    ["images/slides/slide1.png","gameplay update","backdoor regen increased!"],
+    ["images/slides/slide2.png","Resolut1on","in da OG house!"],
+    ["images/slides/slide3.png","We got a partner!","DreamTeam Partners with StarLadder"],
+    ["images/slides/slide4.png","Dota Summit 8","Смотри вместе с нами!"],
+    ["images/slides/slide5.png","title","semiTitle"]
   ]
 },
 wheelArray = [], //wheel steps counter
@@ -446,7 +469,7 @@ function cash0() {
     else {
       clearInterval(preloadCycle);
       i=1,preloadStep=.33;
-      initiation();
+      setTimeout(initiation(),400);
     }
   },15);
   console.log('cash0!',i,preloadStep);
@@ -462,7 +485,7 @@ function cash1() {
     else {
       clearInterval(preloadCycle);
       i=2,preloadStep=0;
-      setTimeout(initiation(),400);
+      initiation();
     }
   },15);
   console.log('cash1!',i,preloadStep);
@@ -477,7 +500,8 @@ function cash2() {
     else {
       clearInterval(preloadCycle);
       i=3;
-      setTimeout(initiation(),sliderRecharge(),400);
+      initiation();
+      sliderRecharge();
     }
   },15);
   $('#mainSlider').css('transform','translateY(0px)');
