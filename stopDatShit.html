@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--0679115150 mursia kiev white volvo <area shape="" coords="" href="">3083bi-->
 <html>
 <head>
   <title>stratification</title>
@@ -96,8 +97,8 @@ header {
   transition: top 900ms ease-out 800ms;
 }
 .saturatedSecondCover {
-  filter:contrast(1) saturate(0);
-  -webkit-filter: contrast(1) saturate(0) ;
+  filter:contrast(1) saturate(.3);
+  -webkit-filter: contrast(1) saturate(.3) ;
   transform: translate3d(0,0,0);
   -webkit-transform: translate3d(0,0,0);
 }
@@ -126,7 +127,7 @@ svg {
 .scroll {
   --scroll:calc(var(--scroll) + var(--scroll));
 }
-#mainSlider {
+#mainGlobalGroup {
   transform:translateY(1400px);
   transition: transform 800ms ease-out 900ms;
 }
@@ -175,6 +176,8 @@ svg {
   0% {stroke-dashoffset:var(--dashoffset-begin);}
   100% {stroke-dashoffset:var(--dashoffset-end);}
 }
+/*THIS IS THE END OF MAIN SLIDER+COVER PROPERTIES*/
+
 #secondaryContent {
   opacity: 1;
   transition: opacity 800ms ease-out 1650ms;
@@ -188,29 +191,48 @@ svg {
   font-weight:400;
   font-size:34px;
 }
-#newsHeader {
-}
-#newsHeader tspan:nth-child(1) {
+#redTitles {
   font-size:20px;
   font-weight:800;
+  fill: rgb(224,27,27);
 }
-#newsHeader tspan:nth-child(2) {
+#blackTitles {
+  font-family: 'Roboto', sans-serif;
+  font-size:16px;
+  font-weight:400;
 }
-.newsRow tspan {}
+#matchesDay,#matchesDayData {
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  fill: rgb(143,143,143);
+}
+#today g use {
+  display: none;
+}
+#today g text tspan:nth-child(4) {
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 .newsRow tspan:nth-child(1) {
   font-size: 18px;
   font-weight:600;
 }
 #sliderData,.newsRow tspan:nth-child(2) {
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  fill: rgb(143,143,143);
 }
 #matchesHeader tspan {
 }
 #matchesHeader tspan:nth-child(1) {
-  font-size:20px;
-  font-weight:800;
 }
 #matchesHeader tspan:nth-child(2) {
 }
@@ -328,7 +350,7 @@ svg {
     <svg viewBox='0 625 1920 1080' preserveAspectRatio='xMidYMax meet'>
     <defs>
       <mask id='secondaryCoverMask' maskUnits='objectBoundingBox'>
-        <path id='secondaryCoverImage' d='m -2,50 l 1924,-40 0,1400 -1924,0 z' stroke='none' fill='rgba(255,255,255,.045)'/>
+        <path id='secondaryCoverImage' d='m -2,50 l 1924,-40 0,1400 -1924,0 z' stroke='none' fill='rgba(255,255,255,.07)'/>
       </mask>
     </defs>
     <g id='secondaryCoverGroup' class='scroll'>
@@ -352,15 +374,17 @@ svg {
       </mask>
       <path id='mainArrowTrap' d='m 455,-80 l 105,55 50,120 -285,0 z' fill='rgba(0,0,0,0)'/>
       <linearGradient id='mainSliderShadow' x1='1' y1='1'>
-        <stop offset='0%'  stop-color='rgba(40,40,40,1)'/>
-        <stop offset='10%' stop-color='rgba(40,40,40,1)'/>
-        <stop offset='30%' stop-color='rgba(40,40,40,.6)'/>
-        <stop offset='40%' stop-color='rgba(40,40,40,.4)'/>
-        <stop offset='95%' stop-color='rgba(40,40,40,0)'/>
+        <stop offset='0%'  stop-color='rgba(20,20,20,1)'/>
+        <stop offset='10%' stop-color='rgba(20,20,20,1)'/>
+        <stop offset='30%' stop-color='rgba(20,20,20,.6)'/>
+        <stop offset='40%' stop-color='rgba(20,20,20,.4)'/>
+        <stop offset='95%' stop-color='rgba(20,20,20,0)'/>
       </linearGradient>
       <mask id='secondarySliderMask'>
-        <rect id='secondarySliderCover' x='721' y='523' width='796' height='480' fill='white'/>
+        <path d='m 720,534 l 795,0 0,460 -793,0 z' fill='rgba(255,255,255,1)'/>
       </mask>
+      <image id='liveIcon' xlink:href='images/ui/liveIcon.png' x='0' y='388' width='45' height='23'/>
+      <image id='twitchIcon' xlink:href='images/ui/twitchIcon.png' x='389' y='392' width='15' height='16'/>
     </defs>
     <g id='mainGlobalGroup' class='scroll'>
       <g id='mainSlider'>
@@ -388,27 +412,67 @@ svg {
         <g class='mainAnimationClassRefresh'>
           <path id='mainSliderTimeline' class='mainTimelineAnimation' stroke='rgb(224,27,27)' stroke-width='4' d='m 455,101 l 1010,0'/>
         </g>
-        <image id='partnersAndEllipse' xlink:href='images/partnersAndEllipse.png' x='455' y='114' width='1010' height='135'/>
       </g>
       <g id='secondaryContent'>
+        <image id='partnersAndEllipse' xlink:href='images/partnersAndEllipse.png' x='455' y='114' width='1010' height='135'/>
         <g id='secondaryCovers'>
           <image id='partnersAndEllipse' xlink:href='images/ui/newsCover.png' x='445' y='280' width='518' height='596'/>
-          <image id='partnersAndEllipse' xlink:href='images/ui/tableMatchesCover.png' x='960' y='340' width='517' height='465'/>
+          <image id='partnersAndEllipse' xlink:href='images/ui/tableMatchesCover.png' x='960' y='335' width='517' height='465'/>
+        </g>
+        <g id='statickIcons'>
+          <image xlink:href='images/ui/allNewsIcon.png' x='840' y='309' width='14' height='14'/>
+          <image xlink:href='images/ui/allMatchesIcon.png' x='1327' y='309' width='14' height='14'/>
         </g>
         <g id='secondaryTitles'>
           <text id='redTitles'>
-            <tspan x='498' y='320'>NEWS</tspan>
-            <tspan x='1002' y='320'>MATCHES</tspan>
+            <tspan x='498' y='323'>NEWS</tspan>
+            <tspan x='1002' y='323' text-anchor='start'>MATCHES</tspan>
           </text>
           <text id='blackTitles'>
-            <tspan x='864' y='320'>All news</tspan>
-            <tspan x='1346' y='320'>All matches</tspan>
+            <tspan x='864' y='323'>All news</tspan>
+            <tspan x='1430' y='323' text-anchor='end'>All matches</tspan>
           </text>
-          <g id='secondarySlider'>
-            <rect id='secondarySliderCover' x='457' y='332' width='506' height='300' fill='black'/>
-            <g class='secondaryAnimationClassRefresh' mask='url(#secondarySliderMask)'transform='scale(.635)'>  
-              <image id='secondarySlide' class='secondarySlideAnimation' xlink:href='images/slides/slide4.png' x='610' y='520' width='1010' height='475'/>
+          <text id='matchesDay'>
+            <tspan x='1002' y='363' text-anchor='start'>Today</tspan>
+            <tspan x='1002' y='614' text-anchor='start'>Tomorrow</tspan>
+          </text>
+          <text id='matchesDayData'>
+            <tspan x='1430' y='363' text-anchor='end'>26 Nov 2017, Sunday</tspan>
+            <tspan x='1430' y='614' text-anchor='end'>27 Nov 2017, Monday</tspan>
+          </text>
+        </g>
+        <g id='secondarySlider'>
+          <!--<rect id='secondarySliderCover' x='457' y='333' width='505' height='299' fill='black'/>
+          <path d='m 457,340 l 505,0 0,300 -505,0 z' fill='rgba(165,225,70,.6)'/>-->
+          <g class='secondaryAnimationClassRefresh' mask='url(#secondarySliderMask)' transform='scale(.635)'>  
+            <image id='secondarySlide' class='secondarySlideAnimation' xlink:href='images/slides/slide4.png' x='610' y='520' width='980' height='440'/>
+          </g>
+          <path d='m 457,339 l 505,0 0,270 -505,0 z' fill='rgba(0,0,0,.32)'/>
+        </g>
+        <g id='matches'>
+          <g id='today' transform='translate(1000)'>
+            <g>
+              <text y='405'>
+                <tspan x='23'  text-anchor='middle'></tspan>
+                <tspan x='173' text-anchor='end'></tspan>
+                <tspan x='254' text-anchor='start'></tspan>
+                <tspan x='425' text-anchor='end'></tspan>
+                <tspan x='212' text-anchor='middle'>vs</tspan>
+              </text>
+              <use href='#liveIcon'/>
+              <use href='#twitchIcon'/>
             </g>
+            <g transform='translate(0,42)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text><use href='#liveIcon'/><use href='#twitchIcon'/></g>
+            <g transform='translate(0,84)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text><use href='#liveIcon'/><use href='#twitchIcon'/></g>
+            <g transform='translate(0,126)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text><use href='#liveIcon'/><use href='#twitchIcon'/></g>
+            <g transform='translate(0,168)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text><use href='#liveIcon'/><use href='#twitchIcon'/></g>
+          </g>
+          <g id='tomorrow' transform='translate(1006)'>
+            <g></g>
+            <g></g>
+            <g></g>
+            <g></g>
+            <g></g>
           </g>
         </g>
       </g>
@@ -420,23 +484,50 @@ svg {
 </div>
 <script>
 var i = 0, //through counter
+range = 3, //slider recharge range (main have 3, secondary have 5)
 preloadStep = .66, //this is saturate filter position on preload star
 scenario = null, //contain setInterval with slider recharges
 screenSwitcher = 'main', //animating class console
 mainObj = {
   "mainSlider" : [
-    ["images/slides/slide0.png","TEAM MALAYSIA ADVANCE","SLTV SEA PLAY-OFF"],
-    ["images/slides/slide1.png","gameplay update","backdoor regen increased!"],
-    ["images/slides/slide2.png","Resolut1on","in da OG house!"],
-    ["images/slides/slide3.png","We got a partner!","DreamTeam Partners with StarLadder"],
-    ["images/slides/slide4.png","Dota Summit 8","Смотри вместе с нами!"],
-    ["images/slides/slide5.png","title","semiTitle"]
-  ]
+    ["images/slides/slide0.png","TEAM MALAYSIA ADVANCE","SLTV SEA PLAY-OFF","Today"],
+    ["images/slides/slide1.png","backdoor regen increased!","gameplay update","Today"],
+    ["images/slides/slide2.png","Resolut1on","in da OG house!","Today"],
+    ["images/slides/slide3.png","We got a partner!","DreamTeam Partners with StarLadder","Today"],
+    ["images/slides/slide4.png","Dota Summit 8","Смотри вместе с нами!","Today"],
+    ["images/slides/slide5.png","title","semiTitle","Easterday"]
+  ],
+  "matches":{ 
+    "today":[
+      ["00:00","Virtus Pro","Rox.KIS",1],
+      ["00:00","Hellraisers","Natus Vincere",2],
+      ["00:00","RNC","Natus Vincere",3],
+      ["18:30","DF","iLight",0],
+      ["20:00","Moskow 5","NiP",0]
+    ],
+    "tomorrow":[
+      ["16:00","Hellraisers","Natus Vincere",0],
+      ["17:30","Virtus Pro","Rox.KIS",0],
+      ["19:00","RNC","Natus Vincere",0],
+      ["20:00","DF","iLight",0],
+      ["20:30","Moskow 5","NiP",0]
+    ]
+  }
 },
+date = new Date(),
+datePref = {
+  'day':'numeric',
+  'weekday':'long',
+  'month':'short',
+  'year':'numeric'
+},
+dateArray = [],
 wheelArray = [], //wheel steps counter
 oldDelta = -1, //last wheel position
 scrollData = 0, 
 scrollCycle = null;
+
+//DOC READY
 $('document').ready(function(){
   $(window).scrollTop(0);
   $('header').addClass('headerIn');
@@ -445,10 +536,12 @@ $('document').ready(function(){
   //preload();
   //sliderRecharge();
 });
+//DOC READY
 
-//THIS STUFF FOR FREEZE SLIDER RECHARGE WHILE USER IS DOING SOMETHING
-function sliderFreeze() {clearInterval(scenario);setTimeout(sliderRecharge(),4500);}
-//THIS STUFF FOR FREEZE SLIDER RECHARGE WHILE USER IS DOING SOMETHING
+
+//////////////////////////////////////////////////////////////////////
+//IMAGES PRECASH AND AJAX REQUEST DATA DISTRIBUTION
+/////////////////////////////////////////////////////////////////////
 
 //PRELOADING SECTION
 function initiation() {
@@ -472,7 +565,6 @@ function cash0() {
       setTimeout(initiation(),400);
     }
   },15);
-  console.log('cash0!',i,preloadStep);
 }
 function cash1() {
   $('.secondaryAnimationClassRefresh').attr('xlink:href',Object.values(mainObj)[0][4][0]);
@@ -488,7 +580,6 @@ function cash1() {
       initiation();
     }
   },15);
-  console.log('cash1!',i,preloadStep);
 }
 function cash2() {
   i=.33;
@@ -504,17 +595,54 @@ function cash2() {
       sliderRecharge();
     }
   },15);
-  $('#mainSlider').css('transform','translateY(0px)');
+  $('#mainGlobalGroup').css('transform','translateY(0px)');
   $('#secondaryCoverCont').css('top','0vw');
 }
-function cash3() {$('#preloader').css('opacity',0);i++;initiation();}
-function cash4() {i++;initiation();$('#saturatedSecondCover')}
+function cash3() {$('#preloader').css('opacity',0);i++;initiation();matchesParsing();}
+function cash4() {i++;initiation();}
 function cash5() {i=0;setTimeout(function(){
   $('#preloader').remove();
   $('#secondaryCoverCont').addClass('saturatedSecondCover');
-
 },400);}
 //PRELOADING SECTION
+
+//
+function matchesParsing() {
+  dateSetter();
+  $('#today g').each(function(){
+    var i=0,gIndex=$(this).index();
+    while (i<=3) {
+      $(this).find('tspan').eq(i).text(Object.values(mainObj.matches.today)[gIndex][i]);
+      console.log(Object.values(mainObj.matches.today)[gIndex][i]);
+      i++; 
+    }
+    if (Object.values(mainObj.matches.today)[gIndex][3]!=0) {
+      $(this).children('use').show();
+      $(this).find('text tspan').eq(3).show();
+    }
+  });
+}
+//
+
+//THIS IS DATE SETTER SECTION
+function dateSetter() {
+  dateArray = date.toLocaleString("en-US", datePref).replace(/[,]/g, '').split(' ');
+  $('#matchesDayData tspan').eq(0).text(dateArray[2]+' '+dateArray[1]+' '+dateArray[3]+', '+dateArray[0]);
+  date = new Date();
+  date.setDate(date.getDate()+1);
+  dateArray = date.toLocaleString("en-US", datePref).replace(/[,]/g, '').split(' ');
+  $('#matchesDayData tspan').eq(1).text(dateArray[2]+' '+dateArray[1]+' '+dateArray[3]+', '+dateArray[0]);
+}
+//THIS IS DATE SETTER SECTION
+
+
+//////////////////////////////////////////////////////////////////////
+//ANIMATION CYCLES AND USER'S EVENTS
+/////////////////////////////////////////////////////////////////////
+
+//THIS STUFF FOR FREEZE SLIDER RECHARGE WHILE USER IS DOING SOMETHING
+function sliderFreeze() {clearInterval(scenario);setTimeout(sliderRecharge(),4500);}
+//THIS STUFF FOR FREEZE SLIDER RECHARGE WHILE USER IS DOING SOMETHING
 
 //SLIDER RECHARGE SECTION
 function sliderRecharge() {
@@ -605,9 +733,11 @@ $(window).on('mousewheel', function(event){
           scrollData = -608;
           $('#secondaryCoverImage').css('opacity',1); //unhide second slider cover
           $('header').css('top','-3.33vw'); //hide header
+          $('#mainCoverCont,#mainSlider').delay(1500).hide(1);
         }
         else if (scrollData==-608) {
           scrollData= -1308;
+          clearInterval(scenario);
         }
         oldDelta = delta-1;
       }
@@ -616,8 +746,10 @@ $(window).on('mousewheel', function(event){
           scrollData= 0;
           $('header').css('top','0vw'); //unhide header
           $('#secondaryCoverImage').css('opacity',0); //hide second slider cover
+          $('#mainCoverCont,#mainSlider').show();
         }
         else if (scrollData== -1308) {
+          sliderFreeze();
           scrollData= -543;
           $('header').css('top','0vw'); //unhide header
         }
@@ -627,13 +759,17 @@ $(window).on('mousewheel', function(event){
     else {
       if (delta>oldDelta) {
         scrollData = -1308;
+        clearInterval(scenario);
         $('header').css('top','-3.33vw'); //hide header
         $('#secondaryCoverImage').css('opacity',1); //unhide second slider cover
+        $('#mainCoverCont,#mainSlider').delay(1500).hide(1);
       }
       else {
         scrollData = 0;
+        sliderFreeze();
         $('header').css('top','0vw'); //unhide header
         $('#secondaryCoverImage').css('opacity',0); //unhide second slider cover
+        $('#mainCoverCont,#mainSlider').show();
       }
     }
     $('#mainGlobalGroup').get(0).style.setProperty('transform','translateY('+scrollData+'px');
