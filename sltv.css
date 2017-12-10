@@ -1,0 +1,326 @@
+
+:root {--scrollData;--scrollTime:800ms;}
+#cashCont img {
+  width: 1px;
+  height: 1px;
+}
+body {
+	--scrollData;
+	--scrollTime:400ms;
+  margin:0;
+  padding:0;
+  width:100vw;
+  height:100vh;
+  background-color:rgb(0,0,0);
+  overflow:hidden;
+}
+header {
+  position:fixed;
+  z-index:4;
+  background-color: rgb(70,70,70);
+  width:100%;
+  height:3.33vw;
+  top:-3.33vw;
+  transition: top 500ms ease-out;
+  color:white;
+  font-weight: 800;
+  font-size:3vw;
+}
+.headerIn {
+  top:0vw;
+}
+#topHeaderFragment {
+  margin:0;
+  padding:0;
+  height:1.11vw;
+  width:100%;
+  background-image: url(images/ui/headerCoverFirst.png);
+  background-size: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+#bottomHeaderFragment {
+  margin:0;
+  padding:0;
+  height:2.22vw;
+  width:100%;
+  background-image: url(images/ui/headerCoverSecond.png);
+  background-size: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+}
+#mainWrapper {
+  width:100%;
+  height: 114vw;
+  overflow:hidden;
+  z-index:0;
+  /*background-image: url(sltv_main_12.jpg);
+  background-size: 100%;*/
+}
+#mainCoverCont {
+  position:fixed;
+  z-index:0;
+  width:100vw;
+  height:114vw;
+  /*top:-50vw;*/
+  overflow:hidden;
+  filter: blur(45px);
+  transform: translate3d(0,0,0);
+  -webkit-filter: blur(45px);
+  -webkit-transform: translate3d(0,0,0);
+}
+/*.unhideMainCover {
+  transition: top 600ms ease-out 400ms;
+  top:0vw !important;
+}*/
+.slidesPreloading {
+  display: none;
+}
+.slidesPreLoading:nth-child(1) {
+  display: inline;
+}
+#secondaryCoverCont {
+  position:relative;
+  z-index:1;
+  width:100vw;
+  height:114vw;
+  top:-30vw;
+}
+.saturatedSecondaryCover {
+  filter:contrast(1) saturate(.3);
+  -webkit-filter: contrast(1) saturate(.3) ;
+  transform: translate3d(0,0,0);
+  -webkit-transform: translate3d(0,0,0);
+}
+#secondaryCoverCont svg use{
+  opacity: 1;
+}
+#preloader {
+  transition: opacity 400ms ease-out;
+}
+#svgCont {
+  position:relative;
+  z-index:2;
+  top:-114vw;
+  width:100vw;
+  height:114vw;
+}
+svg {
+  width:100%;
+  height:100%;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+#mainGlobalGroup,#secondaryCoverGroup {
+  transition:transform var(--scrollTime) ease-out;	
+  transform:translateY(0px);
+}
+.mainSlideAnimation {
+  animation: slideFade 1500ms ease-out forwards;
+  -webkit-animation: slideFade 1500ms ease-out forwards;
+}
+@keyframes slideFade {
+  0%,5%,95%,100% {opacity:1}
+  48%,60% {opacity:0}
+}
+@-webkit-keyframes slideFade {
+  0%,5%,95%,100% {opacity:1}
+  48%,60% {opacity:0}
+}
+#leaguesTitle, #mainSliderTitle tspan:nth-child(1) {
+  font-size: 20px;
+  font-weight: 800;
+  stroke:none;
+  fill:rgb(213,0,0);
+}
+#mainSliderTitle tspan:nth-child(2) {
+  font-size: 50px;
+  font-weight: 800;
+  fill:rgb(255,255,255);
+}
+.mainArrowTrap {
+  cursor:pointer;
+  fill:rgba(0,0,0,0);
+}
+#mainSliderTimeline {
+  stroke-dasharray:1020;
+  stroke-dashoffset:1020;
+}
+.mainTimelineAnimation {
+  stroke-dasharray:1020px;
+  stroke-dashoffset:1020px;
+  animation: timelineRun 850ms ease-out forwards;
+  -webkit-animation: timelineRun 850ms ease-out forwards;
+  --dashoffset-begin:1020px;
+  --dashoffset-end:1020px;
+}
+@keyframes timelineRun {
+  0% {stroke-dashoffset:var(--dashoffset-begin);}
+  100% {stroke-dashoffset:var(--dashoffset-end);}
+}
+/*THIS IS THE END OF MAIN SLIDER+COVER PROPERTIES*/
+
+#secondaryContent {
+  opacity: 1;
+  transition: opacity 800ms ease-out 1650ms;
+}
+#secondaryCoverImage {
+  opacity: 0;
+  transition: opacity 500ms ease-out;
+}
+#semiSliderTitle {
+  color:white;
+  font-weight:400;
+  font-size:34px;
+}
+#redTitles {
+  font-size:20px;
+  font-weight:800;
+  fill: rgb(224,27,27);
+}
+#blackTitles {
+  font-family: 'Roboto', sans-serif;
+  font-size:16px;
+  font-weight:400;
+}
+#matchesDay,#matchesDayData {
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  fill: rgb(143,143,143);
+}
+#today g use {
+  display: none;
+}
+#today g text tspan:nth-child(4) {
+  display: none;
+}
+#news text tspan:nth-child(1) {
+	font-weight: 800;
+	font-size: 18px;
+}
+.row text tspan:nth-child(2) {
+	font-weight: 800;
+	font-size: 18px;
+}
+.row text tspan:nth-child(3) {
+	font-weight: 800;
+	font-size: 18px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.newsRow tspan:nth-child(1) {
+  font-size: 18px;
+  font-weight:600;
+}
+#sliderData,.newsRow tspan:nth-child(2) {
+}
+#matchesHeader tspan {
+}
+#matchesHeader tspan:nth-child(1) {
+}
+#matchesHeader tspan:nth-child(2) {
+}
+.dateRow tspan {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+}
+.dateRow tspan:nth-child(2) {
+  fill: rgb(143,143,143);
+}
+.date {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  fill: rgb(80,80,80);
+}
+.teamA, .teamB {
+  font-size: 18px;
+  font-weight:600;
+}
+.twich,.matchesRow tspan:nth-child(3) {
+  font-family: 'Roboto', sans-serif;
+  fill: rgb(80,80,80);
+  font-size: 14px;
+}
+#leaguesRow tspan {
+  font-size: 18px;
+  font-weight:800;
+  fill: rgb(143,143,143);
+}
+#leaguesRow tspan:nth-child(odd){
+  fill: rgb(247,247,247);
+}
+.seriesCover {
+  cursor:pointer;
+  opacity:.6;
+}
+.activeSeries {
+  opacity:1;
+}
+#locationRow tspan {
+  font-size: 23px;
+  font-weight:800;
+  fill: rgb(43,41,41);
+}
+#description tspan {
+  font-family: 'Roboto', sans-serif;
+  fill: rgb(120,120,120);
+  font-size: 17px;
+  font-weight:300
+}
+#series  {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight:800;
+}
+#series tspan:nth-child(1) {
+   fill:rgb(224,27,27);
+}
+#series tspan:nth-child(2) {
+   fill:rgb(43,41,41);
+}
+#learnMore tspan {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+}
+#learnMore tspan:nth-child(1) {
+  cursor:pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight:800;
+}
+
+#learnMore tspan:nth-child(2) {
+  font-family: 'Roboto', sans-serif;
+  fill: rgb(110,110,110);
+  font-size: 14px;
+  font-weight:300;
+}
+#clickLearnMore:hover {
+  text-decoration: underline;
+}
+#footerRow tspan {
+  fill: rgb(247,247,247);
+  font-size: 14px;
+  font-weight:800;
+}
+#footerDescr {
+  font-family: 'Roboto', sans-serif;
+  fill: rgb(143,143,143);
+  font-size: 15px;
+  font-weight:300;
+}
+#copy {
+  font-family: 'Roboto', sans-serif;
+  fill: rgb(143,143,143);
+  font-size: 11px;
+  font-weight:800;
+}

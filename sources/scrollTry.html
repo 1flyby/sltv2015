@@ -4,9 +4,10 @@
 	<title>scrollTry</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
 <style>
-:root {--scrollTime;}
+
+:root {--scrollData;--scrollTime:400ms;}
+rect {transition:transform var(--scrollTime) linear;}
 body {
---scrollTime:400ms;
   margin:0;
   padding:0;
   overflow:hidden;
@@ -21,10 +22,7 @@ svg {
 }
 rect {
  cursor:pointer;
- transition:transform var(--scrollTime) linear;
-}
-rect {
-  fill:rgba(50,50,50,1);
+ fill:rgba(50,50,50,1);
 }
 </style>
 </head>

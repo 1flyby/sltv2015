@@ -6,7 +6,332 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
-<link rel='stylesheet' type='text/css' href='sltv.css'>
+<style type='text/css'>
+:root {
+  --scrollData;
+}
+#cashCont img {
+  width: 1px;
+  height: 1px;
+}
+body {
+  margin:0;
+  padding:0;
+  width:100vw;
+  height:100vh;
+  background-color:rgb(0,0,0);
+  overflow:hidden;
+}
+header {
+  position:fixed;
+  z-index:4;
+  background-color: rgb(70,70,70);
+  width:100%;
+  height:3.33vw;
+  top:-3.33vw;
+  transition: top 500ms ease-out;
+  color:white;
+  font-weight: 800;
+  font-size:3vw;
+}
+.headerIn {
+  top:0vw;
+}
+#topHeaderFragment {
+  margin:0;
+  padding:0;
+  height:1.11vw;
+  width:100%;
+  background-image: url(images/ui/headerCoverFirst.png);
+  background-size: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+#bottomHeaderFragment {
+  margin:0;
+  padding:0;
+  height:2.22vw;
+  width:100%;
+  background-image: url(images/ui/headerCoverSecond.png);
+  background-size: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+}
+#mainWrapper {
+  width:100%;
+  height: 114vw;
+  overflow:hidden;
+  z-index:0;
+  /*background-image: url(sltv_main_12.jpg);
+  background-size: 100%;*/
+}
+#mainCoverCont {
+  position:fixed;
+  z-index:0;
+  width:100vw;
+  height:114vw;
+  /*top:-50vw;*/
+  overflow:hidden;
+  filter: blur(45px);
+  transform: translate3d(0,0,0);
+  -webkit-filter: blur(45px);
+  -webkit-transform: translate3d(0,0,0);
+}
+/*.unhideMainCover {
+  transition: top 600ms ease-out 400ms;
+  top:0vw !important;
+}*/
+.slidesPreloading {
+  display: none;
+}
+.slidesPreLoading:nth-child(1) {
+  display: inline;
+}
+#secondaryCoverCont {
+  position:relative;
+  z-index:1;
+  width:100vw;
+  height:114vw;
+  top:-30vw;
+  transition: top 900ms ease-out 800ms;
+}
+.saturatedSecondCover {
+  filter:contrast(1) saturate(.3);
+  -webkit-filter: contrast(1) saturate(.3) ;
+  transform: translate3d(0,0,0);
+  -webkit-transform: translate3d(0,0,0);
+}
+#secondaryCoverCont svg use{
+  opacity: 1;
+}
+#preloader {
+  transition: opacity 400ms ease-out;
+}
+#svgCont {
+  position:relative;
+  z-index:2;
+  top:-114vw;
+  width:100vw;
+  height:114vw;
+}
+svg {
+  width:100%;
+  height:100%;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+#mainGlobalGroup,#secondaryCoverGroup {
+  transition: transform 450ms ease-out;
+  transform:translateY(var(--scroll));
+}
+.scroll {
+  --scroll:calc(var(--scroll) + var(--scroll));
+}
+#mainGlobalGroup {
+  transform:translateY(1400px);
+  transition: transform 800ms ease-out 900ms;
+}
+.unhideMainSlider {
+}
+.mainSlideAnimation {
+  animation: slideFade 1500ms ease-out forwards;
+  -webkit-animation: slideFade 1500ms ease-out forwards;
+}
+@keyframes slideFade {
+  0%,5%,95%,100% {opacity:1}
+  48%,60% {opacity:0}
+}
+@-webkit-keyframes slideFade {
+  0%,5%,95%,100% {opacity:1}
+  48%,60% {opacity:0}
+}
+#leaguesTitle, #mainSliderTitle tspan:nth-child(1) {
+  font-size: 20px;
+  font-weight: 800;
+  stroke:none;
+  fill:rgb(213,0,0);
+}
+#mainSliderTitle tspan:nth-child(2) {
+  font-size: 50px;
+  font-weight: 800;
+  fill:rgb(255,255,255);
+}
+.mainArrowTrap {
+  cursor:pointer;
+  fill:rgba(0,0,0,0);
+}
+#mainSliderTimeline {
+  stroke-dasharray:1020;
+  stroke-dashoffset:1020;
+}
+.mainTimelineAnimation {
+  stroke-dasharray:1020px;
+  stroke-dashoffset:1020px;
+  animation: timelineRun 850ms ease-out forwards;
+  -webkit-animation: timelineRun 850ms ease-out forwards;
+  --dashoffset-begin:1020px;
+  --dashoffset-end:1020px;
+}
+@keyframes timelineRun {
+  0% {stroke-dashoffset:var(--dashoffset-begin);}
+  100% {stroke-dashoffset:var(--dashoffset-end);}
+}
+/*THIS IS THE END OF MAIN SLIDER+COVER PROPERTIES*/
+
+#secondaryContent {
+  opacity: 1;
+  transition: opacity 800ms ease-out 1650ms;
+}
+#secondaryCoverImage {
+  opacity: 0;
+  transition: opacity 500ms ease-out;
+}
+#semiSliderTitle {
+  color:white;
+  font-weight:400;
+  font-size:34px;
+}
+#redTitles {
+  font-size:20px;
+  font-weight:800;
+  fill: rgb(224,27,27);
+}
+#blackTitles {
+  font-family: 'Roboto', sans-serif;
+  font-size:16px;
+  font-weight:400;
+}
+#matchesDay,#matchesDayData {
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  fill: rgb(143,143,143);
+}
+#today g use {
+  display: none;
+}
+#today g text tspan:nth-child(4) {
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.newsRow tspan:nth-child(1) {
+  font-size: 18px;
+  font-weight:600;
+}
+#sliderData,.newsRow tspan:nth-child(2) {
+}
+#matchesHeader tspan {
+}
+#matchesHeader tspan:nth-child(1) {
+}
+#matchesHeader tspan:nth-child(2) {
+}
+.dateRow tspan {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+}
+.dateRow tspan:nth-child(2) {
+  fill: rgb(143,143,143);
+}
+.date {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  fill: rgb(80,80,80);
+}
+.teamA, .teamB {
+  font-size: 18px;
+  font-weight:600;
+}
+.twich,.matchesRow tspan:nth-child(3) {
+  font-family: 'Roboto', sans-serif;
+  fill: rgb(80,80,80);
+  font-size: 14px;
+}
+#leaguesRow tspan {
+  font-size: 18px;
+  font-weight:800;
+  fill: rgb(143,143,143);
+}
+#leaguesRow tspan:nth-child(odd){
+  fill: rgb(247,247,247);
+}
+.seriesCover {
+  cursor:pointer;
+  opacity:.6;
+}
+.activeSeries {
+  opacity:1;
+}
+#locationRow tspan {
+  font-size: 23px;
+  font-weight:800;
+  fill: rgb(43,41,41);
+}
+#description tspan {
+  font-family: 'Roboto', sans-serif;
+  fill: rgb(120,120,120);
+  font-size: 17px;
+  font-weight:300
+}
+#series  {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight:800;
+}
+#series tspan:nth-child(1) {
+   fill:rgb(224,27,27);
+}
+#series tspan:nth-child(2) {
+   fill:rgb(43,41,41);
+}
+#learnMore tspan {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+}
+#learnMore tspan:nth-child(1) {
+  cursor:pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight:800;
+}
+
+#learnMore tspan:nth-child(2) {
+  font-family: 'Roboto', sans-serif;
+  fill: rgb(110,110,110);
+  font-size: 14px;
+  font-weight:300;
+}
+#clickLearnMore:hover {
+  text-decoration: underline;
+}
+#footerRow tspan {
+  fill: rgb(247,247,247);
+  font-size: 14px;
+  font-weight:800;
+}
+#footerDescr {
+  font-family: 'Roboto', sans-serif;
+  fill: rgb(143,143,143);
+  font-size: 15px;
+  font-weight:300;
+}
+#copy {
+  font-family: 'Roboto', sans-serif;
+  fill: rgb(143,143,143);
+  font-size: 11px;
+  font-weight:800;
+}
+</style>   
 </head> 
 <body>
 <header>
@@ -123,19 +448,10 @@
             <image id='secondarySlide' class='secondarySlideAnimation' xlink:href='images/slides/slide4.png' x='610' y='520' width='980' height='440'/>
           </g>
           <path d='m 457,339 l 505,0 0,270 -505,0 z' fill='rgba(0,0,0,.32)'/>
-          <g id='news' transform='translate(485,650)'>
-            <text><tspan text-anchor='start'></tspan><tspan x='435' text-anchor='end'></tspan></text>
-            <text y='42'><tspan text-anchor='start'></tspan><tspan x='435' text-anchor='end'></tspan></text>
-            <text y='84'><tspan text-anchor='start'></tspan><tspan x='435' text-anchor='end'></tspan></text>
-            <text y='126'><tspan text-anchor='start'></tspan><tspan x='435' text-anchor='end'></tspan></text>
-            <text y='168'><tspan text-anchor='start'></tspan><tspan x='435' text-anchor='end'></tspan></text>
-          </g>
-          <image id='newsArrow' xlink:href='images/ui/newsArrow.png' x='470' width='7' y='637' height='10'/>
-          <image xlink:href='images/ui/streamIcon.png' x='825' width='14' y='765' height='10'/>
         </g>
         <g id='matches'>
           <g id='today' transform='translate(1000)'>
-            <g class='row'>
+            <g>
               <text y='405'>
                 <tspan x='23'  text-anchor='middle'></tspan>
                 <tspan x='173' text-anchor='end'></tspan>
@@ -146,22 +462,23 @@
               <use href='#liveIcon'/>
               <use href='#twitchIcon'/>
             </g>
-            <g class='row' transform='translate(0,42)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text><use href='#liveIcon'/><use href='#twitchIcon'/></g>
-            <g class='row' transform='translate(0,84)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text><use href='#liveIcon'/><use href='#twitchIcon'/></g>
-            <g class='row' transform='translate(0,126)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text><use href='#liveIcon'/><use href='#twitchIcon'/></g>
-            <g class='row' transform='translate(0,168)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text><use href='#liveIcon'/><use href='#twitchIcon'/></g>
+            <g transform='translate(0,42)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text><use href='#liveIcon'/><use href='#twitchIcon'/></g>
+            <g transform='translate(0,84)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text><use href='#liveIcon'/><use href='#twitchIcon'/></g>
+            <g transform='translate(0,126)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text><use href='#liveIcon'/><use href='#twitchIcon'/></g>
+            <g transform='translate(0,168)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text><use href='#liveIcon'/><use href='#twitchIcon'/></g>
           </g>
-          <g id='tomorrow' transform='translate(1000,250)'>
-            <g class='row'><text y='405'><tspan x='23'  text-anchor='middle'></tspan><tspan x='173' text-anchor='end'></tspan><tspan x='254' text-anchor='start'></tspan><tspan x='425' text-anchor='end'></tspan><tspan x='212' text-anchor='middle'>vs</tspan></text></g>
-            <g class='row' transform='translate(0,42)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text></g>
-            <g class='row' transform='translate(0,84)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text></g>
-            <g class='row' transform='translate(0,126)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text></g>
-            <g class='row' transform='translate(0,168)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text></g>
+          <g id='tomorrow' transform='translate(1006)'>
+            <g></g>
+            <g></g>
+            <g></g>
+            <g></g>
+            <g></g>
           </g>
         </g>
       </g>
     </g>
   </svg>  
+  </div>
 </div>
 <div id='cashCont'>
 </div>
@@ -173,11 +490,11 @@ scenario = null, //contain setInterval with slider recharges
 screenSwitcher = 'main', //animating class console
 mainObj = {
   "mainSlider" : [
-    ["images/slides/slide0.png","TEAM MALAYSIA ADVANCE","SEA PLAY-OFF",false,"16:56"],
-    ["images/slides/slide1.png","Backdoor regen increased!","gameplay update",false,"18:08"],
-    ["images/slides/slide2.png","Resolut1on","in da OG house!",false,"Tomorrow"],
-    ["images/slides/slide3.png","We got a partner!","DreamTeam with us!",true,"Tomorrow"],
-    ["images/slides/slide4.png","Dota Summit 8","Смотри вместе с нами!",false,"23 Jan"],
+    ["images/slides/slide0.png","TEAM MALAYSIA ADVANCE","SLTV SEA PLAY-OFF","Today"],
+    ["images/slides/slide1.png","backdoor regen increased!","gameplay update","Today"],
+    ["images/slides/slide2.png","Resolut1on","in da OG house!","Today"],
+    ["images/slides/slide3.png","We got a partner!","DreamTeam Partners with StarLadder","Today"],
+    ["images/slides/slide4.png","Dota Summit 8","Смотри вместе с нами!","Today"],
     ["images/slides/slide5.png","title","semiTitle","Easterday"]
   ],
   "matches":{ 
@@ -208,7 +525,6 @@ dateArray = [],
 wheelArray = [], //wheel steps counter
 oldDelta = -1, //last wheel position
 scrollData = 0, 
-scrollTime = 800,
 scrollCycle = null;
 
 //DOC READY
@@ -286,16 +602,18 @@ function cash3() {$('#preloader').css('opacity',0);i++;initiation();matchesParsi
 function cash4() {i++;initiation();}
 function cash5() {i=0;setTimeout(function(){
   $('#preloader').remove();
-  $('#secondaryCoverCont').addClass('saturatedSecondaryCover');
+  $('#secondaryCoverCont').addClass('saturatedSecondCover');
 },400);}
 //PRELOADING SECTION
 
-//PARSING OF MATCHES DATA
+//
 function matchesParsing() {
+  dateSetter();
   $('#today g').each(function(){
     var i=0,gIndex=$(this).index();
     while (i<=3) {
       $(this).find('tspan').eq(i).text(Object.values(mainObj.matches.today)[gIndex][i]);
+      console.log(Object.values(mainObj.matches.today)[gIndex][i]);
       i++; 
     }
     if (Object.values(mainObj.matches.today)[gIndex][3]!=0) {
@@ -303,21 +621,8 @@ function matchesParsing() {
       $(this).find('text tspan').eq(3).show();
     }
   });
-  $('#tomorrow g').each(function(){
-    var i=0,gIndex=$(this).index();
-    while (i<=3) {
-      $(this).find('tspan').eq(i).text(Object.values(mainObj.matches.tomorrow)[gIndex][i]);
-      i++; 
-    }
-    if (Object.values(mainObj.matches.tomorrow)[gIndex][3]!=0) {
-      $(this).children('use').show();
-      $(this).find('text tspan').eq(3).show();
-    }
-  });
-  dateSetter();
-  newsParsing();
 }
-//PARSING OF MATCHES DATA
+//
 
 //THIS IS DATE SETTER SECTION
 function dateSetter() {
@@ -329,18 +634,6 @@ function dateSetter() {
   $('#matchesDayData tspan').eq(1).text(dateArray[2]+' '+dateArray[1]+' '+dateArray[3]+', '+dateArray[0]);
 }
 //THIS IS DATE SETTER SECTION
-
-//NEWS DATA PARSING FOR NEWS TABLE
-function newsParsing() {
-  $('#news text').each(function(){
-    var newsIndex=$(this).index();
-    $(this).find('tspan').eq(0).text(Object.values(mainObj.mainSlider)[newsIndex][2]+': '+Object.values(mainObj.mainSlider)[newsIndex][1]);
-    $(this).find('tspan').eq(1).text(Object.values(mainObj.mainSlider)[newsIndex][4]);
-  });
-  
-}
-//NEWS DATA PARSING FOR NEWS TABLE
-
 
 
 //////////////////////////////////////////////////////////////////////
@@ -428,41 +721,10 @@ $(document).on('click','.'+screenSwitcher+'ArrowTrap',function(){
 //MAIN SLIDER ARROWS CLICK
 
 //MOUSEWHEEL SECTION
-
-$(window).on('mousewheel', function(event){
-  clearInterval(scenario);
-  var delta = Math.round(event.originalEvent.deltaY);
-  scrollData = scrollData - delta*2;
-  if (scrollData<=0&&scrollData>=-2008) {
-  wheelArray.push(delta);
-  scrollTime = scrollTime-(scrollTime/wheelArray.length)/4;
-  clearTimeout(scrollCycle);
-  scrollCycle = 
-  setTimeout(function() {
-    setTimeout(function() {
-      wheelArray=[];
-      scrollTime = 600;
-    },100)
-    $('body').get(0).style.setProperty('--scrollTime',scrollTime+'ms');
-    wheelArray.splice(/*wheelArray.length-1*/0,1);
-  },100)
-  $('#mainGlobalGroup').css('transform','translateY('+scrollData+'px');
-  setTimeout(function(){
-    $('#secondaryCoverCont').css({
-      'transform':'translateY('+scrollData+'px',
-      'transition':'transform 450ms ease-out'
-    });
-  },700);
-  }
-  else {scrollData=0;}
-  sliderFreeze();
-});
-/*
 $(window).on('mousewheel', function(event){
   clearInterval(scenario);
   var delta = Math.round(event.originalEvent.deltaY);
   wheelArray.push(delta);
-  scrollTime = scrollTime-(scrollTime/wheelArray.length)/4;
   clearTimeout(scrollCycle);
   scrollCycle = setTimeout(function (){
     if (wheelArray.length<5||scrollData==-608) {
@@ -518,7 +780,6 @@ $(window).on('mousewheel', function(event){
     sliderFreeze();
   },450);
 });
-*/
 //MOUSEWHEEL SECTION
 </script>
 </body>
