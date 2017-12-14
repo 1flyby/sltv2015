@@ -11,8 +11,8 @@ body {
   padding:0;
   width:100vw;
   height:100vh;
-  background-color:rgb(0,0,0);
-  overflow:hidden;
+  background-color:rgb(11,10,10);
+  overflow-x:hidden;
 }
 header {
   position:fixed;
@@ -59,16 +59,14 @@ header {
   background-size: 100%;*/
 }
 #mainCoverCont {
-  position:fixed;
+  position:relative;
   z-index:0;
   width:100vw;
   height:114vw;
+  opacity: .05;
+  filter: saturate(.1) blur(2px);
+  -webkit-filter: saturate(.1) blur(2px);
   /*top:-50vw;*/
-  overflow:hidden;
-  filter: blur(45px);
-  transform: translate3d(0,0,0);
-  -webkit-filter: blur(45px);
-  -webkit-transform: translate3d(0,0,0);
 }
 /*.unhideMainCover {
   transition: top 600ms ease-out 400ms;
@@ -85,13 +83,11 @@ header {
   z-index:1;
   width:100vw;
   height:114vw;
-  top:-30vw;
+  top:-114vw;
 }
 .saturatedSecondaryCover {
-  filter:contrast(1) saturate(.3);
-  -webkit-filter: contrast(1) saturate(.3) ;
-  transform: translate3d(0,0,0);
-  -webkit-transform: translate3d(0,0,0);
+  filter: saturate(.2);
+  -webkit-filter: saturate(.2);
 }
 #secondaryCoverCont svg use{
   opacity: 1;
@@ -102,7 +98,7 @@ header {
 #svgCont {
   position:relative;
   z-index:2;
-  top:-114vw;
+  top:-229vw;
   width:100vw;
   height:114vw;
 }
@@ -111,11 +107,18 @@ svg {
   height:100%;
   font-family: 'Roboto Condensed', sans-serif;
 }
-#mainGlobalGroup,#secondaryCoverGroup {
-  transition:transform var(--scrollTime) ease-out;	
-  transform:translateY(0px);
+#mainGlobalGroup {
 }
-.mainSlideAnimation {
+#mainCoverCont,#mainGlobalGroup,#secondaryCoverGroup,#cheker {
+  transition:transform var(--scrollTime) ease-out;	
+}
+#cheker {
+	font-weight: 800;
+	font-size: 50px;
+  font-family: 'Roboto Condensed', sans-serif;
+  fill:green;
+}
+.mainSlideRefresh,.secondarySlideRefresh {
   animation: slideFade 1500ms ease-out forwards;
   -webkit-animation: slideFade 1500ms ease-out forwards;
 }
@@ -142,31 +145,23 @@ svg {
   cursor:pointer;
   fill:rgba(0,0,0,0);
 }
-#mainSliderTimeline {
-  stroke-dasharray:1020;
-  stroke-dashoffset:1020;
+.timelineCover {
+	stroke:rgb(175,175,175);
 }
-.mainTimelineAnimation {
+#mainTimeline,#secondaryTimeline {
+  transition: stroke-dashoffset 6000ms ease-out 1400ms;
   stroke-dasharray:1020px;
   stroke-dashoffset:1020px;
-  animation: timelineRun 850ms ease-out forwards;
-  -webkit-animation: timelineRun 850ms ease-out forwards;
-  --dashoffset-begin:1020px;
-  --dashoffset-end:1020px;
 }
-@keyframes timelineRun {
-  0% {stroke-dashoffset:var(--dashoffset-begin);}
-  100% {stroke-dashoffset:var(--dashoffset-end);}
+.timeline {
+	stroke:rgb(224,27,27);
+	stroke-width:4px;
 }
 /*THIS IS THE END OF MAIN SLIDER+COVER PROPERTIES*/
 
 #secondaryContent {
   opacity: 1;
   transition: opacity 800ms ease-out 1650ms;
-}
-#secondaryCoverImage {
-  opacity: 0;
-  transition: opacity 500ms ease-out;
 }
 #semiSliderTitle {
   color:white;
@@ -176,7 +171,7 @@ svg {
 #redTitles {
   font-size:20px;
   font-weight:800;
-  fill: rgb(224,27,27);
+  fill:rgb(224,27,27);
 }
 #blackTitles {
   font-family: 'Roboto', sans-serif;
@@ -197,6 +192,15 @@ svg {
 #news text tspan:nth-child(1) {
 	font-weight: 800;
 	font-size: 18px;
+  fill:rgb(20,20,20);
+	transition: fill 200ms ease-in;
+}
+.newsRow tspan:nth-child(1) {
+  font-size: 18px;
+  font-weight:600;
+}
+#newsArrow {
+	transition: transform 250ms ease-out;
 }
 .row text tspan:nth-child(2) {
 	font-weight: 800;
@@ -204,30 +208,7 @@ svg {
 }
 .row text tspan:nth-child(3) {
 	font-weight: 800;
-	font-size: 18px;
-}
-
-
-
-
-
-
-
-
-
-
-
-.newsRow tspan:nth-child(1) {
-  font-size: 18px;
-  font-weight:600;
-}
-#sliderData,.newsRow tspan:nth-child(2) {
-}
-#matchesHeader tspan {
-}
-#matchesHeader tspan:nth-child(1) {
-}
-#matchesHeader tspan:nth-child(2) {
+	font-size: 18px;	
 }
 .dateRow tspan {
   font-family: 'Roboto', sans-serif;

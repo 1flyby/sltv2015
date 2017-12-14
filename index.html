@@ -16,23 +16,25 @@
 <div id='mainWrapper'>
   <div id='mainCoverCont'>
     <svg viewBox='0 633 1920 1080' preserveAspectRatio='xMidYMax meet'>
-      <g class='mainAnimationClassRefresh'>  
-        <image id='mainSlideCover' class='mainSlideAnimation' xlink:href='' x='-155' y='-780' width='2250' height='1100'/>
-      </g>
+      <!--<g class='mainSlideRefresh'>  
+        <image class='' class='mainSlideAnimation' xlink:href='' x='-5' y='-650' width='1930' height='1100'/>
+      </g>-->
     </svg>
   </div>
   <div id='secondaryCoverCont'>
     <svg viewBox='0 625 1920 1080' preserveAspectRatio='xMidYMax meet'>
     <defs>
       <mask id='secondaryCoverMask' maskUnits='objectBoundingBox'>
-        <path id='secondaryCoverImage' d='m -2,50 l 1924,-40 0,1400 -1924,0 z' stroke='none' fill='rgba(255,255,255,.07)'/>
+        <path d='m -2,50 l 1924,-40 0,1400 -1924,0 z' stroke='none' fill='rgba(255,255,255,.08)'/>
       </mask>
     </defs>
     <g id='secondaryCoverGroup' class='scroll'>
       <path d='m -2,50 l 1924,-40 0,1400 -1924,0 z' stroke='none' fill='rgba(244,244,244,1)'/>
-      <image class='mainSlideAnimation secondaryAnimationClassRefresh' mask='url(#secondaryCoverMask)' xlink:href='' x='-155' y='-15' width='2250' height='1100'/>
+      <!--<g class='secondarySlideRefresh'> 
+        <image class='secondarySlide' mask='url(#secondaryCoverMask)' xlink:href='' x='-155' y='-15' width='2250' height='1100'/>
+      </g>-->
       <g id='preloader'>
-        <image id='preloadImage' xlink:href='http://summerstreet.pp.ua/testquest/images/starseries.png' x='785' y='450' width='336' height='329'/>
+        <image id='preloadImage' xlink:href='images/ui/starseries.png' x='785' y='450' width='336' height='329'/>
         <use href='#preloadImage' filter='url(#preloadFilter)'/>
       </g>
     </g>
@@ -56,7 +58,7 @@
         <stop offset='95%' stop-color='rgba(20,20,20,0)'/>
       </linearGradient>
       <mask id='secondarySliderMask'>
-        <path d='m 720,534 l 795,0 0,460 -793,0 z' fill='rgba(255,255,255,1)'/>
+        <path d='m 720,534 l 795,0 0,426 -793,0 z' fill='rgba(255,255,255,1)'/>
       </mask>
       <image id='liveIcon' xlink:href='images/ui/liveIcon.png' x='0' y='388' width='45' height='23'/>
       <image id='twitchIcon' xlink:href='images/ui/twitchIcon.png' x='389' y='392' width='15' height='16'/>
@@ -64,15 +66,15 @@
     <g id='mainGlobalGroup' class='scroll'>
       <g id='mainSlider'>
         <path d='m 477,-370 l 966,0 21,469 -1008,0 z' fill='black'/>
-        <g class='mainAnimationClassRefresh' mask='url(#mainSliderMask)'>  
-          <image id='mainSlide' class='mainSlideAnimation' xlink:href='' x='455' y='-373' width='1010' height='475'/>
+        <g class='mainSlideRefresh' mask='url(#mainSliderMask)'>  
+          <image class='mainSlide' xlink:href='' x='455' y='-373' width='1010' height='475'/>
         </g>
         <g id='mainSliderUi' mask='url(#mainSliderMask)'>
           <rect x='455' y='-370' width='1010' height='470' fill='url(#mainSliderShadow)'/> 
           <image xlink:href='images/leftArrow.png' x='515' y='5' width='9' height='14'/>
           <image xlink:href='images/rightArrow.png' x='1397' y='5' width='9' height='14'/>
-          <g class='mainAnimationClassRefresh'>
-          <text id='mainSliderTitle' class='mainSlideAnimation' text-anchor='middle'>
+          <g class='mainSlideRefresh'>
+          <text id='mainSliderTitle' text-anchor='middle'>
             <tspan x='960' y='-15' >TEAM MALAYSIA ADVANCE</tspan>
             <tspan x='960' y='45'>SLTV SEA PLAY-OFF</tspan>
           </text>
@@ -83,10 +85,8 @@
           </g>
           <path d='m 455.3,105 l 23.5,-474 962.8,0 23.1,474' style='stroke:rgb(50,50,50);stroke-width:1.5px;fill:none'/>
         </g>
-        <path id='mainSliderTimelineCover' stroke='rgb(175,175,175)' stroke-width='3' d='m 455,102 l 1010,0'/>
-        <g class='mainAnimationClassRefresh'>
-          <path id='mainSliderTimeline' class='mainTimelineAnimation' stroke='rgb(224,27,27)' stroke-width='4' d='m 455,101 l 1010,0'/>
-        </g>
+        <path class='timelineCover' stroke-width='4px' d='m 456,101 l 1008,0'/>
+        <path id='mainTimeline' class='timeline' d='m 456,101 l 1008,0'/>
       </g>
       <g id='secondaryContent'>
         <image id='partnersAndEllipse' xlink:href='images/partnersAndEllipse.png' x='455' y='114' width='1010' height='135'/>
@@ -100,7 +100,7 @@
         </g>
         <g id='secondaryTitles'>
           <text id='redTitles'>
-            <tspan x='498' y='323'>NEWS</tspan>
+            <tspan x='495' y='323'>NEWS</tspan>
             <tspan x='1002' y='323' text-anchor='start'>MATCHES</tspan>
           </text>
           <text id='blackTitles'>
@@ -116,25 +116,34 @@
             <tspan x='1430' y='614' text-anchor='end'>27 Nov 2017, Monday</tspan>
           </text>
         </g>
-        <g id='secondarySlider'>
+        <g id='secondarySlider' transform='scale(.635)'>
           <!--<rect id='secondarySliderCover' x='457' y='333' width='505' height='299' fill='black'/>
-          <path d='m 457,340 l 505,0 0,300 -505,0 z' fill='rgba(165,225,70,.6)'/>-->
-          <g class='secondaryAnimationClassRefresh' mask='url(#secondarySliderMask)' transform='scale(.635)'>  
-            <image id='secondarySlide' class='secondarySlideAnimation' xlink:href='images/slides/slide4.png' x='610' y='520' width='980' height='440'/>
+          <path d='m 457,340 l 505,0 0,300 -505,0 z' fill='rgba(165,225,70,.6)'/>
+          <path d='m 457,339 l 505,0 0,270 -505,0 z' fill='rgba(0,0,0,.32)'/>-->
+          <path d='m 720,534 l 795,0 0,426 -793,0 z' fill='black'/>
+          <g class='secondarySlideRefresh' mask='url(#secondarySliderMask)'>  
+            <image class='secondarySlide' xlink:href='images/slides/slide4.png' x='630' y='520' width='980' height='440'/>
           </g>
-          <path d='m 457,339 l 505,0 0,270 -505,0 z' fill='rgba(0,0,0,.32)'/>
-          <g id='news' transform='translate(485,650)'>
-            <text><tspan text-anchor='start'></tspan><tspan x='435' text-anchor='end'></tspan></text>
+          <path class='timelineCover' d='m 920,1225 l 1010,0' stroke-width='5' transform='scale(.785)'/>
+          <path id='secondaryTimeline' class='timeline' d='m 920,1225 l 1010,0' stroke-width='5' transform='scale(.785)'/>
+        </g>
+          <g id='news' transform='translate(495,650)'>
+            <text><tspan text-anchor='start' style='fill:rgb(224,27,27);'></tspan><tspan x='435' text-anchor='end'></tspan></text>
             <text y='42'><tspan text-anchor='start'></tspan><tspan x='435' text-anchor='end'></tspan></text>
             <text y='84'><tspan text-anchor='start'></tspan><tspan x='435' text-anchor='end'></tspan></text>
             <text y='126'><tspan text-anchor='start'></tspan><tspan x='435' text-anchor='end'></tspan></text>
             <text y='168'><tspan text-anchor='start'></tspan><tspan x='435' text-anchor='end'></tspan></text>
+            <image id='newsArrow' xlink:href='images/ui/newsArrow.png' x='-19' width='9' y='-12' height='12'/>
+            <image xlink:href='images/ui/streamIcon.png' x='340' width='24' y='157' height='10'/>
           </g>
-          <image id='newsArrow' xlink:href='images/ui/newsArrow.png' x='470' width='7' y='637' height='10'/>
-          <image xlink:href='images/ui/streamIcon.png' x='825' width='14' y='765' height='10'/>
-        </g>
         <g id='matches'>
           <g id='today' transform='translate(1000)'>
+            <g id='data'>
+              <text>
+                <tspan></tspan>
+                <tspan></tspan>
+              </text>
+            </g>
             <g class='row'>
               <text y='405'>
                 <tspan x='23'  text-anchor='middle'></tspan>
@@ -152,15 +161,20 @@
             <g class='row' transform='translate(0,168)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text><use href='#liveIcon'/><use href='#twitchIcon'/></g>
           </g>
           <g id='tomorrow' transform='translate(1000,250)'>
-            <g class='row'><text y='405'><tspan x='23'  text-anchor='middle'></tspan><tspan x='173' text-anchor='end'></tspan><tspan x='254' text-anchor='start'></tspan><tspan x='425' text-anchor='end'></tspan><tspan x='212' text-anchor='middle'>vs</tspan></text></g>
-            <g class='row' transform='translate(0,42)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text></g>
-            <g class='row' transform='translate(0,84)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text></g>
-            <g class='row' transform='translate(0,126)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text></g>
-            <g class='row' transform='translate(0,168)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text></g>
+            <g class='row'><text y='405'><tspan x='23' text-anchor='middle'></tspan><tspan x='173' text-anchor='end'></tspan><tspan x='254' text-anchor='start'></tspan><tspan x='212' text-anchor='middle'>vs</tspan></text></g>
+            <g class='row' transform='translate(0,42)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='212' text-anchor='middle'>vs</tspan></text></g>
+            <g class='row' transform='translate(0,84)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='212' text-anchor='middle'>vs</tspan></text></g>
+            <g class='row' transform='translate(0,126)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='212' text-anchor='middle'>vs</tspan></text></g>
+            <g class='row' transform='translate(0,168)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='212' text-anchor='middle'>vs</tspan></text></g>
           </g>
         </g>
       </g>
+      <g id='leagues'>
+        <text x='495' y='910' style='font-size:20px;font-weight:800;fill:rgb(224,27,27);'>LEAGUES</text>
+        <image id='starseries' xlink:href='images/ui/starseries.png' x='560' width='336' y='895' height='329'/>
+      </g>
     </g>
+    <text id='cheker' x='1600' y='100'>ZONE A</text>
   </svg>  
 </div>
 <div id='cashCont'>
@@ -200,7 +214,7 @@ mainObj = {
 date = new Date(),
 datePref = {
   'day':'numeric',
-  'weekday':'long',
+  'weekday':'short',
   'month':'short',
   'year':'numeric'
 },
@@ -237,7 +251,7 @@ function initiation() {
 }
 //preloading steps
 function cash0() {
-  $('#mainSlide,#mainSlideCover').attr('xlink:href',Object.values(mainObj)[0][i][0]);
+  $('.mainSlide').attr('xlink:href',Object.values(mainObj)[0][i][0]);
   preloadCycle = setInterval(function(){
     if (i>preloadStep) {
     $('#preloadFilter').attr('height',i);
@@ -279,14 +293,16 @@ function cash2() {
       sliderRecharge();
     }
   },15);
-  $('#mainGlobalGroup').css('transform','translateY(0px)');
-  $('#secondaryCoverCont').css('top','0vw');
 }
 function cash3() {$('#preloader').css('opacity',0);i++;initiation();matchesParsing();}
-function cash4() {i++;initiation();}
+function cash4() {
+  //$('#secondaryCoverCont').css('transform','translateY(0px)');
+  i++;initiation();
+}
 function cash5() {i=0;setTimeout(function(){
   $('#preloader').remove();
   $('#secondaryCoverCont').addClass('saturatedSecondaryCover');
+  //$('#mainGlobalGroup').css('transform','translateY(0px)');
 },400);}
 //PRELOADING SECTION
 
@@ -356,27 +372,33 @@ function sliderRecharge() {
   scenario = setInterval(function(){
     timelineRunForward();
     contentRefresh();
-  },4500);
+  },6000);
 }
 function contentRefresh() {
-  $('.mainAnimationClassRefresh').children(0).each(function(){
+  $('.'+screenSwitcher+'SlideRefresh').each(function(){
     var el = $(this),
     newone = el.clone(true);
     el.before(newone);
     $(this).remove();
   });
   setTimeout(function(){
-    if (i<3) {
+    if (i<range) {
+      $('#news text').eq(i).children(0).css('fill','rgb(20,20,20)');
       i++; 
-      $('.'+screenSwitcher+'AnimationClassRefresh image').attr('xlink:href',Object.values(mainObj)[0][i][0]);
+      $('.'+screenSwitcher+'Slide').attr('xlink:href',Object.values(mainObj)[0][i][0]);
       $('#'+screenSwitcher+'SliderTitle tspan').eq(0).text(Object.values(mainObj)[0][i][2].toUpperCase());
       $('#'+screenSwitcher+'SliderTitle tspan').eq(1).text(Object.values(mainObj)[0][i][1].toUpperCase());
+      $('#news text').eq(i).children(0).css('fill','rgb(224,27,27)');
+      $('#newsArrow').css('transform','translateY('+42*i+'px)');
     }
     else {
+      $('#news text').eq(i).children(0).css('fill','rgb(20,20,20)');
       i=0;
-      $('.'+screenSwitcher+'AnimationClassRefresh image').attr('xlink:href',Object.values(mainObj)[0][i][0]);
+      $('.'+screenSwitcher+'Slide').attr('xlink:href',Object.values(mainObj)[0][i][0]);
       $('#'+screenSwitcher+'SliderTitle tspan').eq(0).text(Object.values(mainObj)[0][i][2].toUpperCase());
       $('#'+screenSwitcher+'SliderTitle tspan').eq(1).text(Object.values(mainObj)[0][i][1].toUpperCase());
+      $('#news text').eq(0).children(0).css('fill','rgb(224,27,27)');
+      $('#newsArrow').css('transform','translateY(0px)');
     }
   },700);
 }
@@ -384,24 +406,14 @@ function contentRefresh() {
 
 //TIMELINE RUN SECTION
 function timelineRunForward() {
-  if (i<3) {
-    $('.'+screenSwitcher+'TimelineAnimation').get(0).style.setProperty('--dashoffset-begin',1020-340*(i)+'px');
-    $('.'+screenSwitcher+'TimelineAnimation').get(0).style.setProperty('--dashoffset-end',1020-340*(i+1)+'px');
-  }
-  else {
-    $('.'+screenSwitcher+'TimelineAnimation').get(0).style.setProperty('--dashoffset-begin','0px');
-    $('.'+screenSwitcher+'TimelineAnimation').get(0).style.setProperty('--dashoffset-end','1020px');
-  }
+  var timelinePosion=1020-1020/range*(i+1);
+  if (i<range) {$('#'+screenSwitcher+'Timeline').css('stroke-dashoffset',timelinePosion+'px');}
+  else {$('#'+screenSwitcher+'Timeline').css('stroke-dashoffset','1020px');}
 }
 function timelineRunBack() {
-  if (i<2) {
-    $('.'+screenSwitcher+'TimelineAnimation').get(0).style.setProperty('--dashoffset-begin',1020-340*(i+2)+'px');
-    $('.'+screenSwitcher+'TimelineAnimation').get(0).style.setProperty('--dashoffset-end',1020-340*(i+1)+'px');
-  }
-  else {
-    $('.'+screenSwitcher+'TimelineAnimation').get(0).style.setProperty('--dashoffset-begin','1020px');
-    $('.'+screenSwitcher+'TimelineAnimation').get(0).style.setProperty('--dashoffset-end','0px');
-  }
+  var timelinePosion=1020-1020/range*(i+1);
+  if (i<range-1) {$('#'+screenSwitcher+'Timeline').css('stroke-dashoffset',timelinePosion+'px');}
+  else {$('#'+screenSwitcher+'Timeline').css('stroke-dashoffset','0px');}
 }
 //TIMELINE RUN SECTION
 
@@ -421,43 +433,47 @@ $(document).on('click','.'+screenSwitcher+'ArrowTrap',function(){
     }
   }
   else {
-    timelineRunForward();
     contentRefresh();
+    timelineRunForward();
   }
 });
 //MAIN SLIDER ARROWS CLICK
 
 //MOUSEWHEEL SECTION
 
+/*
 $(window).on('mousewheel', function(event){
   clearInterval(scenario);
   var delta = Math.round(event.originalEvent.deltaY);
   scrollData = scrollData - delta*2;
-  if (scrollData<=0&&scrollData>=-2008) {
+  if (scrollData<=0&&scrollData>=-1150) {
+    if (scrollData>-530) {
+      $('#cheker').text('ZONE A '+scrollData).css('fill','green');
+      screenSwitcher='main';
+      range=3;
+    }
+    else if (scrollData>-840&&scrollData<=-530) {
+      $('#cheker').text('ZONE B '+scrollData).css('fill','blue');
+      screenSwitcher='secondary';
+      range=4;
+    }
+    else  {
+      $('#cheker').text('ZONE C '+scrollData).css('fill','red');
+      screenSwitcher='footer';
+    }
   wheelArray.push(delta);
   scrollTime = scrollTime-(scrollTime/wheelArray.length)/4;
-  clearTimeout(scrollCycle);
-  scrollCycle = 
-  setTimeout(function() {
-    setTimeout(function() {
-      wheelArray=[];
-      scrollTime = 600;
-    },100)
-    $('body').get(0).style.setProperty('--scrollTime',scrollTime+'ms');
-    wheelArray.splice(/*wheelArray.length-1*/0,1);
-  },100)
+  
   $('#mainGlobalGroup').css('transform','translateY('+scrollData+'px');
-  setTimeout(function(){
-    $('#secondaryCoverCont').css({
-      'transform':'translateY('+scrollData+'px',
-      'transition':'transform 450ms ease-out'
-    });
-  },700);
-  }
-  else {scrollData=0;}
+  $('#secondaryCoverCont').css({
+    'transform':'translateY('+scrollData+'px',
+    'transition':'transform 450ms ease-out'
+  });
   sliderFreeze();
+  }
+  else if (scrollData>0 ){scrollData=0;sliderFreeze();}
+  else if (scrollData<=-1150){scrollData=-1150;sliderFreeze();}
 });
-/*
 $(window).on('mousewheel', function(event){
   clearInterval(scenario);
   var delta = Math.round(event.originalEvent.deltaY);
