@@ -3,8 +3,8 @@
 <html>
 <head>
   <title>stratification</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&amp;subset=cyrillic" rel="stylesheet">
+<script src="jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.js"></script><link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&amp;subset=cyrillic" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
 <style>
 body {
@@ -17,16 +17,6 @@ svg {
 	width:100%;
 	height:100%;
 }
-header {
-	position:fixed;
-  display:flex;
-  flex-direction: column;
-	z-index:3;
-	height:3.33vw;
-	width:100vw;
-	background-color:white;
-  font-family: 'Roboto', sans-serif;
-}
 mark { 
   font-family: 'Roboto', sans-serif;
 	font-weight: 800;
@@ -35,60 +25,41 @@ mark {
   color:rgb(82,82,82);
 	padding: 0vw .2vw 0vw .25vw;
 }
-#part1 {
-	height:1.15vw; 	
-	background-color:rgb(46,45,46);
-	font-size: 12px;
-	font-weight: 800;
-}
-#part1 ul {
-	margin: 0vw 0vw 0vw 23.5vw;
-	padding:0;
-	width:52vw;
-	height:100%;
-}
-#part1 p {
-	padding: 0;
-	margin: 0;
-}
-#part1 ul li {
-	display:inline;
-	float:left;
-	width:17.33vw;
-	height:100%;
-	margin:0;
-	padding:.25vw 0vw 0vw 0vw;
+header {
+	position:fixed;
+  display:flex;
+  flex-direction:column;
+	z-index:3;
+	height:4.6vw;
+	width:100vw;
+  font-family:'Roboto', sans-serif;
 	list-style-type:none;
-	color:rgb(122,122,122);
+	background-image: url(images/ui/headerCover.png);
+	background-size: 100%;
+	background-position:center top;
+	background-repeat: no-repeat;
 }
-#part1 ul li:nth-child(1) {
-	background-image:url(images/ui/networkIcon.png);
-	background-size:5%;
-	background-position:0% 25%;
-	background-repeat:no-repeat;
+#nav {
+  font-family:'Roboto',sans-serif;
+  font-weight:bold;
+  font-size:2.9px;
+  fill:#7a7a7a;
+  stroke:none;
 }
-#part1 ul li:nth-child(2) {
-	background-image:url(images/ui/gmtIcon.png);
-	background-size:45%;
-	background-position:50% 30%;
-	background-repeat:no-repeat;
+#bar {
+  font-family:'Roboto Condensed',sans-serif;
+  font-weight:bold;
+  font-size:4.53px;
+  text-align:start;
+  fill:#ffffff;
+  stroke:none;
 }
-#part1 ul li:nth-child(3) {
-	background-image:url(images/ui/signIcon.png);
-	background-size:4.5%;
-	background-position:62% 25%;
-	background-repeat:no-repeat;
+#traps rect {
+	fill:rgba(0,0,0,0);
+	stroke:none;
+	cursor:pointer;
 }
-#part1 ul li img {vertical-align: middle;}
-#part2 {
-	height:2.18vw; 	
-	background-color:rgb(61,61,61);
-	font-size:16px;
-	font-weight:800;
-}
-#part2 ul li {
-	display:inline;
-}
+/*
 #menu {
 	margin:.55vw 24vw;
 	padding:0;
@@ -106,6 +77,7 @@ mark {
 #disciplines,#leaguesHeader,#lang {
 	padding:0;
 }
+*/
 #mainCoverCont {
 	position: relative;
 	z-index: 0;
@@ -122,7 +94,7 @@ mark {
 	width:100vw;
 	height:113vw;
 	top:-26vw;
-	background-color: rgb(247,247,247);
+	background-color: rgb(235,235,235);
 	-webkit-clip-path: polygon(0% 5%, 100% 0%, 100% 100%, 0% 100%);
 	clip-path: polygon(0% 2%, 100% 0%, 100% 100%, 0% 100%);
 }
@@ -130,28 +102,83 @@ mark {
 	width: 130vw;
 }
 #content {
+	position:relative;
+	z-index:2;
+	top:-157.5vw;
+	display:flex;
+	flex-direction:column;
+	margin:0 auto;
+	width:52vw;
+	height:100vw;
+}
+#mainSlideUi {
 	position: relative;
-	z-index: 2;
-	top: -157.5vw;
-	margin: 0 auto;
-	width: 52vw;
-	height: 100vw;
-	display: flex;
-	flex-direction: column;
+	top:0vw;
+	width:52vw;
+	height:23.7vw;
+  font-family:'Roboto Condensed', sans-serif;
+  text-anchor: middle;
+	background-image:url(images/ui/mainSlideBase.png);
+	background-size:100%;
+	background-repeat:no-repeat;
+	background-position:50% 10%;
 }
 #primary {
 	-webkit-clip-path: polygon(2% 0%, 98% 0%, 100% 100%, 0% 100%);
 	clip-path: polygon(2% 0%, 98% 0%, 100% 100%, 0% 100%);
 	margin-bottom:1vw;
-	width:52vw;
-	height:23.7vw;
+	width:100%;
+	height:100%;
+	transform:scale(.993);
+	transition:opacity 1280ms linear 960ms;
 }
-#news_matches {
+#mainTimeline {
+	stroke-dasharray:1150px;
+	stroke-dashoffset:1150px;
+	transition:stroke-dashoffset 2880ms linear;
+}
+@keyframes blip {
+	0%,45%,100% {opacity:1}
+	70%,80% {opacity:0}
+}
+#mainSlideUi svg {
+	position:relative;
+	top:-24.9vw;
+}
+#mainSlideUi tspan:first-child {
+  font-size:23px;
+  font-weight:800;
+  stroke:none;
+  fill:rgb(213,0,0);
+}
+#mainSlideUi tspan:last-child {
+  font-size:60px;
+  font-weight:800;
+  fill:rgb(255,255,255);
+}
+#partners {
+	position:relative;
+	top:2vw;
+	width:52vw;
+	height:6.4vw;
+	background-image:url(images/ui/partnersAndEllipse.png);
+	background-size:100%;
+	background-repeat:no-repeat;
+	background-position:50% 1%;
+}
+#book {
+	position: relative;
+	top:2vw;
+	width:52.7vw;
+	height:30vw;
 	display: inline-flex;
-	margin-top:2vw;
-	width: 52.7vw;
+}
+#daily {
+	width:26vw;
+	margin:1.7vw 0vw 0vw .33vw;
 }
 #news {
+	position: relative;
 	width: 27vw;
 	height: 30.5vw;
 	margin-left:-.7vw;
@@ -160,9 +187,12 @@ mark {
 	background-position: center;
 	background-repeat: no-repeat;
 }
-#daily {
-	width:26vw;
-	margin:3.3vw 0vw 0vw .67vw;
+#news svg {
+	position: relative;
+	top: -18vw;
+}
+#newsArrow {
+	transform-origin:0px 0px;
 }
 #matches {
 	width: 27vw;
@@ -183,13 +213,13 @@ mark {
 	font-weight: 800;
 	font-size: 18px;	
 }
-#chaptersLabel {
+.redLabel {
   font-family:'Roboto Condensed', sans-serif;
   font-size:20px;
   font-weight:800;
   fill:rgb(224,27,27);
 }
-#allSome {
+.blackLabel {
   font-family: 'Roboto', sans-serif;
   font-size:16px;
   font-weight:400;
@@ -213,66 +243,115 @@ mark {
 </head> 
 <body>
 <header>
-	<div id='part1'>
-		<ul>
-			<li><p style='margin-left:1.15vw;'>NETWORK</p></li>
-			<li><p style='margin-left:6vw;'>KIEV GMT+2 (16:48)</p></li>
-			<li><p style='margin-left:11.4vw;'>SIGN UP<mark>OR</mark> LOGIN</p></li>
-		</ul>
-	</div>
-	<div id='part2'>
-		<ul id='menu'>
-			<ul id='disciplines'>
-				<li style='background-image:url(disciplineIcon.png);width:2vw;height:2.4vw;'></li>
-				<li>&nbsp;</li>
-				<li>&nbsp;</li>
-			</ul>
-			<li></li>
-			<ul id='leaguesHeader'>
-				<li>LEAGUES</li>
-				<li>STAR</li>
-				<li>PRO</li>
-				<li>SEMI</li>
-				<li>AM</li>
-			</ul>
-			<li>NEWS</li>
-			<li>TOURNAMENTS</li>
-			<li>RATING</li>
-			<li>MATCH CENTER</li>
-			<li>STATISTIC</li>
-			<ul id='lang'>
-				<li></li>
-				<li></li>
-				<li></li>
-			</ul>
-		</ul>
-	</div>
+		<svg viewBox='0 3 508 17.2' preserveAspectRatio='xMinYMid meet'>
+			<defs>
+		    <path id='arrowField' d='m 136.53963,15.614087 c 0,0.62426 0,0.62426 0.71311,0.62428 h 2.75477 c 0.71172,-2e-5 0.71172,0.002 0.71172,-0.62555 V 7.3429177 c 0,-0.62709 0,-0.62554 -0.71172,-0.62554 h -2.75477 c -0.71311,0 -0.71311,0 -0.71311,0.62428 z' style='fill:#2e2e2e;fill-opacity:1;stroke:none;'/>
+		    <path id='navArrow' style='fill:none;stroke:#a3a3a3;stroke-width:0.4;stroke-linecap:butt;' d='m 137.58187,10.997367 1.05513,1.17713 1.05523,-1.17713'/>
+		    <path id='slideArrow' style='fill:none;stroke:#a3a3a3;stroke-width:2;stroke-linecap:butt;' d='m -116.50441,82.01615 -7.29142,6.535774 7.29142,6.536334'/>
+		    <linearGradient id='mainSlideShadow' x1='0%' y1='0%' x2='0%' y2='100%'>
+		    	<stop offset='0%' stop-color='rgba(0,0,0,0)'/>
+		    	<stop offset='20%' stop-color='rgba(0,0,0,.3)'/>
+		    	<stop offset='70%' stop-color='rgba(0,0,0,.8)'/>
+		    	<stop offset='100%' stop-color='rgba(0,0,0,1)'/>
+		    </linearGradient>
+			</defs>
+			<g id='navbar'>
+		    <circle style='fill:none;stroke:#535252;stroke-width:0.5;' cx='238.4' cy='2.8' r='1.6'/>
+		    <path style='fill:none;stroke:#535252;stroke-width:0.4;stroke-linecap:butt;stroke-linejoin:miter;' d='m 237.8,3.1 h 0.68404 v -0.89661'/>
+	    	<!--<path style='fill:#1f1f1f;stroke:none;' d='m 269.63305,4.8970762 c 0,0.31271 0,0.31271 0.40599,0.31272 h 1.56835 c 0.4052,-1e-5 0.4052,10e-4 0.4052
+	    	,-0.31335 V 0.75389615 c 0,-0.31412001 0,-0.31335001 -0.4052,-0.31335001 h -1.56835 c -0.40599,0 -0.40599,0 -0.40599,0.31272001 z'/>-->
+				<use href='#navArrow' x='278' y='-7' transform='scale(.65)'/>
+				<use href='#navArrow' x='-.5' y='-.1'/>
+				<use href='#navArrow' x='90.5' y='-.1'/>
+				<use href='#navArrow' x='235' y='-.1'/>
+		    <text id='nav' x='123' y='4'>
+		    	<tspan x='130'>NETWORK</tspan>
+		    	<tspan x='242'>KIEV GMT+2 (23:39)</tspan>
+		    	<tspan x='355'>SIGN UP</tspan>
+		    	<tspan x='367.5' fill='rgb(82,82,82)'>OR</tspan>
+		    	<tspan x='373'>LOGIN</tspan>
+		    </text>
+		    <text id='bar' y='13'>
+		    	<tspan  x='209'>LEAGUES</tspan>
+		    	<tspan  x='236'>NEWS</tspan>
+		    	<tspan  x='252'>TOURNAMENTS</tspan>
+		    	<tspan  x='286'>RATINGS</tspan>
+		    	<tspan  x='307.5'>MATCH CENTER</tspan>
+		    	<tspan  x='341.5'>STATISTIC</tspan>
+		    </text>
+		    <image xlink:href='images/ui/networkIcon.png' x='124.5' y='.9' width='4' height='4'/>
+		    <image xlink:href='images/ui/signIcon.png' x='350' y='.9' width='4' height='4'/>
+		    <image xlink:href='images/ui/dotaDiscIcon.png' x='128' y='8' width='6.5' height='6.5'/>
+		    <image xlink:href='images/ui/starladderWhite.png' x='153' y='2.3' width='45' height='15'/>
+		    <image xlink:href='images/ui/gbLandIcon.png' x='364.3' y='8.3' width='6' height='6'/>
+  	</g>
+  	<g id='traps' style='fill:#8484ff;fill-opacity:0.4;stroke:none;'>
+    	<rect x='124' y='.5' width='20' height='5'/>
+    	<rect x='236' y='.5' width='35.7' height='5'/>
+    	<rect x='350' y='.5' width='17' height='5'/>
+    	<rect x='372' y='.5' width='11' height='5'/>
+    	<rect x='126' y='6.4' width='14.5' height='10'/>
+    	<rect x='208' y='6.4' width='23.5' height='10'/>
+    	<rect x='234.5' y='6.4' width='13.5' height='10'/>
+    	<rect x='251' y='6.4' width='31' height='10'/>
+    	<rect x='285' y='6.4' width='19' height='10'/>
+    	<rect x='306' y='6.4' width='32' height='10'/>
+    	<rect x='340.5' y='6.4' width='21.5' height='10'/>
+    	<rect x='364' y='6.4' width='14.5' height='10'/>
+  	</g>
+	</svg>
 </header>
 <div id='mainCoverCont'></div>
 <div id='secondaryCoverCont'>
 	<img id='secondaryCover' src='images/ui/secondaryCover.png'/>
 </div>
 <div id='content'>
-	<img id='primary' src='images/slides/slide0.png'/>
-	<img src='images/ui/partnersAndEllipse.png' style='height:7.6vw'/>
-	<div id='news_matches'>
+	<div id='mainSlideUi'>
+		<img id='primary' src='images/slides/slide0.png'/>
+		<svg viewBox='960 308 518 518' preserveAspectRatio='xMinYMid meet'>
+			<path d='m 971,640 l 1115,0 9,186 -1133,0 z' fill='url(#mainSlideShadow)'/>
+			<text>
+				<tspan x='1527.5' y='690'>SLTV SEA PLAY-OFF</tspan>
+				<tspan x='1527.5' y='755'>TEAM MALAYSIA ADVANCE</tspan>
+			</text>
+			<g id='mainSlideArrow' class='mainArrow'>
+				<use id='newsArrow' href='#slideArrow' x='0' y='0' transform='translate(1155,647)'/>
+				<path d='m 970,670 l 150,0 0,154 -158,0 z' style='fill:rgba(0,0,0,0);cursor:pointer;transform-origin:0px 0px'/>
+			</g>
+			<use class='mainArrow' href='#mainSlideArrow' x='0' y='0' transform='translate(3058,0) scale(-1, 1)'/>
+			<path class='timelineCover' d='m 962.3,825 l 1133,0' style='stroke:rgb(190,190,190);stroke-width:4px'/>
+			<path id='mainTimeline' d='m 962.3,825 l 1133,0' style='stroke:rgb(237,0,0);stroke-width:4px'/>
+		</svg>
+	</div>
+	<div id='partners'></div>
+	<div id='book'>
 		<div id='news'>
-			<img id='daily' src='images/slides/daily/slide1.png'/>
+			<div id='daily'>
+				<img id='daily' src='images/slides/daily/slide1.png'/>
+			</div>
+			<svg viewBox='50 308 518 518' preserveAspectRatio='xMinYMid meet'>
+				<text y='323'>
+					<tspan class='redLabel' x='100' text-anchor='start'>NEWS</tspan>
+          <tspan class='blackLabel' x='520' text-anchor='end'>All news</tspan>
+				</text>
+				<use id='newsArrow' href='#slideArrow' x='0' y='0' transform='translate(135,195) scale(4)'/>
+				<text><tspan></tspan><tspan></tspan></text>
+				<text><tspan></tspan><tspan></tspan></text>
+				<text><tspan></tspan><tspan></tspan></text>
+				<text><tspan></tspan><tspan></tspan></text>
+				<text><tspan></tspan><tspan></tspan></text>
+			</svg>
 		</div>
 		<div id='matches'>
-			<svg viewBox='960 308 518 518'>
+			<svg viewBox='960 308 518 518' preserveAspectRatio='xMinYMid meet'>
 			<defs>
 	      <image id='liveIcon' xlink:href='images/ui/liveIcon.png' x='0' y='388' width='45' height='23'/>
 	      <image id='twitchIcon' xlink:href='images/ui/twitchIcon.png' x='389' y='392' width='15' height='16'/>
 			</defs>
         <g id='data'>
-          <text id='chaptersLabel' y='323'>
-            <tspan x='502' text-anchor='start'>MATCHES</tspan>
-            <tspan x='1002' text-anchor='start'>NEWS</tspan>
-          </text>
-          <text id='allSome' y='323'>
-            <tspan x='830' text-anchor='end'>All news</tspan>
-            <tspan x='1430' text-anchor='end'>All matches</tspan>
+          <text y='323'>
+            <tspan class='redLabel' x='1002' text-anchor='start'>MATCHES</tspan>
+            <tspan class='blackLabel' x='1430' text-anchor='end'>All matches</tspan>
           </text>
           <text id='matchesDay'>
             <tspan x='1002' y='363' text-anchor='start'>Today</tspan>
@@ -311,6 +390,8 @@ mark {
       </g>
 			</svg>
 		</div>
+	</div>
+	<div id='news_matches'>
 	</div>
 </div>
 <script>
@@ -353,6 +434,7 @@ datePref = {
   'year':'numeric'
 },
 dateArray = [],
+dashoffset = 1150;
 wheelArray = [], //wheel steps counter
 oldDelta = -1, //last wheel position
 scrollData = 0, 
@@ -361,10 +443,13 @@ scrollCycle = null;
 
 $(document).ready(function(){
 	matchesParsing();
+  dateSetter();
+  recharge();
 });
 //PARSING OF MATCHES DATA
 function matchesParsing() {
   $('#today g').each(function(){
+  	console.log('today');
     var i=0,gIndex=$(this).index();
     while (i<=3) {
       $(this).find('tspan').eq(i).text(Object.values(mainObj.matches.today)[gIndex][i]);
@@ -376,6 +461,7 @@ function matchesParsing() {
     }
   });
   $('#tomorrow g').each(function(){
+  	console.log('tomorrow');
     var i=0,gIndex=$(this).index();
     while (i<=3) {
       $(this).find('tspan').eq(i).text(Object.values(mainObj.matches.tomorrow)[gIndex][i]);
@@ -386,7 +472,6 @@ function matchesParsing() {
       $(this).find('text tspan').eq(3).show();
     }
   });
-  dateSetter();
   //newsParsing();
 }
 //PARSING OF MATCHES DATA
@@ -394,13 +479,63 @@ function matchesParsing() {
 //THIS IS DATE SETTER SECTION
 function dateSetter() {
   dateArray = date.toLocaleString("en-US", datePref).replace(/[,]/g, '').split(' ');
-  $('#matchesDayData tspan').eq(0).text(dateArray[2]+' '+dateArray[1]+' '+dateArray[3]+', '+dateArray[0]);
+  $('#matchesDate tspan').eq(0).text(dateArray[2]+' '+dateArray[1]+' '+dateArray[3]+', '+dateArray[0]);
   date = new Date();
   date.setDate(date.getDate()+1);
   dateArray = date.toLocaleString("en-US", datePref).replace(/[,]/g, '').split(' ');
-  $('#matchesDayData tspan').eq(1).text(dateArray[2]+' '+dateArray[1]+' '+dateArray[3]+', '+dateArray[0]);
+  $('#matchesDate tspan').eq(1).text(dateArray[2]+' '+dateArray[1]+' '+dateArray[3]+', '+dateArray[0]);
+  i=0;
 }
+
 //THIS IS DATE SETTER SECTION
+function recharge() {
+	//$('#primary').css('opacity',0);
+	if (i==0) {
+		$('#mainTimeline').css({'stroke-dashoffset':1150,'transition':'none'});
+		i=1;
+		$('#mainTimeline').css({'transition':'none','stroke-dashoffset':1150-384*i});
+	}
+	else if (i!=0&&i<3) {
+		i++;
+		$('#mainTimeline').css('stroke-dashoffset',1150-384*i);
+	}
+	else {
+		i=0;
+		$('#mainTimeline').css('stroke-dashoffset',-1150+'px');
+	} 
+	setTimeout(function() {recharge();},6400);
+}
+/*
+function slideRecharge() {
+$('#mainTimeline').css('stroke-dashoffset',dashoffset*i+'px');
+i++
+setTimeout(function() {
+	$('#mainTimeline').css('stroke-dashoffset',dashoffset*i+'px');
+  console.log('recharge1');
+  // after 1000ms, call the `setTimeout` callback
+  // In the meantime, continue executing code below
+  setTimeout(function() {
+  	slideRecharge();
+    console.log('recharge2'); //runs second after 1100ms
+  },50);
+   //runs first, after 1000ms
+},50);
+}
+function slideRecharge() {
+setTimeout(function() {
+	$('#mainTimeline').css('stroke-dashoffset',dashoffset*i+'px');
+  console.log('recharge1');
+	$('#mainTimeline').css('stroke-dashoffset',dashoffset*i+'px');
+  // after 1000ms, call the `setTimeout` callback
+  // In the meantime, continue executing code below
+  setTimeout(function() {
+  	slideRecharge();
+    console.log('recharge2'); //runs second after 1100ms
+  },50);
+   //runs first, after 1000ms
+},50);
+}
+*/
 </script>
 </body>
 </html>
