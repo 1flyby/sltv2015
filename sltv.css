@@ -1,307 +1,55 @@
 
-:root {--scrollData;--scrollTime:800ms;}
-#cashCont img {
-  width: 1px;
-  height: 1px;
-}
 body {
-	--scrollData;
-	--scrollTime:400ms;
-  margin:0;
   padding:0;
-  width:100vw;
-  height:100vh;
-  background-color:rgb(11,10,10);
+  margin:0;
+  width:100%;
+  height:108vw;
   overflow-x:hidden;
-}
-header {
-  position:fixed;
-  z-index:4;
-  background-color: rgb(70,70,70);
-  width:100%;
-  height:3.33vw;
-  top:-3.33vw;
-  transition: top 500ms ease-out;
-  color:white;
-  font-weight: 800;
-  font-size:3vw;
-}
-.headerIn {
-  top:0vw;
-}
-#topHeaderFragment {
-  margin:0;
-  padding:0;
-  height:1.11vw;
-  width:100%;
-  background-image: url(images/ui/headerCoverFirst.png);
-  background-size: 100%;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-#bottomHeaderFragment {
-  margin:0;
-  padding:0;
-  height:2.22vw;
-  width:100%;
-  background-image: url(images/ui/headerCoverSecond.png);
-  background-size: 100%;
-  background-position: center center;
-  background-repeat: no-repeat;
-
-}
-#mainWrapper {
-  width:100%;
-  height: 114vw;
-  overflow:hidden;
-  z-index:0;
-  /*background-image: url(sltv_main_12.jpg);
-  background-size: 100%;*/
-}
-#mainCoverCont {
-  position:relative;
-  z-index:0;
-  width:100vw;
-  height:114vw;
-  opacity: .05;
-  filter: saturate(.1) blur(2px);
-  -webkit-filter: saturate(.1) blur(2px);
-  /*top:-50vw;*/
-}
-/*.unhideMainCover {
-  transition: top 600ms ease-out 400ms;
-  top:0vw !important;
-}*/
-.slidesPreloading {
-  display: none;
-}
-.slidesPreLoading:nth-child(1) {
-  display: inline;
-}
-#secondaryCoverCont {
-  position:relative;
-  z-index:1;
-  width:100vw;
-  height:114vw;
-  top:-114vw;
-}
-.saturatedSecondaryCover {
-  filter: saturate(.2);
-  -webkit-filter: saturate(.2);
-}
-#secondaryCoverCont svg use{
-  opacity: 1;
-}
-#preloader {
-  transition: opacity 400ms ease-out;
-}
-#svgCont {
-  position:relative;
-  z-index:2;
-  top:-229vw;
-  width:100vw;
-  height:114vw;
+  background-color: rgb(11,10,10);
 }
 svg {
   width:100%;
   height:100%;
-  font-family: 'Roboto Condensed', sans-serif;
 }
-#mainGlobalGroup {
-}
-#mainCoverCont,#mainGlobalGroup,#secondaryCoverGroup,#cheker {
-  transition:transform var(--scrollTime) ease-out;	
-}
-#cheker {
-	font-weight: 800;
-	font-size: 50px;
-  font-family: 'Roboto Condensed', sans-serif;
-  fill:green;
-}
-.mainSlideRefresh,.secondarySlideRefresh {
-  animation: slideFade 1500ms ease-out forwards;
-  -webkit-animation: slideFade 1500ms ease-out forwards;
-}
-@keyframes slideFade {
-  0%,5%,95%,100% {opacity:1}
-  48%,60% {opacity:0}
-}
-@-webkit-keyframes slideFade {
-  0%,5%,95%,100% {opacity:1}
-  48%,60% {opacity:0}
-}
-#leaguesTitle, #mainSliderTitle tspan:nth-child(1) {
-  font-size: 20px;
+mark { 
+  font-family: 'Roboto', sans-serif;
   font-weight: 800;
+  font-size: 12px;
+  background-color:rgba(0,0,0,0);
+  color:rgb(82,82,82);
+  padding: 0vw .2vw 0vw .25vw;
+}
+header {
+  position:fixed;
+  display:flex;
+  flex-direction:column;
+  z-index:3;
+  width:100vw;
+  height:4.6vw;
+  font-family:'Roboto', sans-serif;
+  list-style-type:none;
+  background-image: url(images/ui/headerCover.png);
+  background-size: 101%;
+  background-position:center top;
+  background-repeat: no-repeat;
+}
+#nav {
+  font-family:'Roboto',sans-serif;
+  font-weight:bold;
+  font-size:2.9px;
+  fill:#7a7a7a;
   stroke:none;
-  fill:rgb(213,0,0);
 }
-#mainSliderTitle tspan:nth-child(2) {
-  font-size: 50px;
-  font-weight: 800;
-  fill:rgb(255,255,255);
+#bar {
+  font-family:'Roboto Condensed',sans-serif;
+  font-weight:bold;
+  font-size:4.53px;
+  text-align:start;
+  fill:#ffffff;
+  stroke:none;
 }
-.mainArrowTrap {
-  cursor:pointer;
+#traps rect {
   fill:rgba(0,0,0,0);
-}
-.timelineCover {
-	stroke:rgb(175,175,175);
-}
-#mainTimeline,#secondaryTimeline {
-  transition: stroke-dashoffset 6000ms ease-out 1400ms;
-  stroke-dasharray:1020px;
-  stroke-dashoffset:1020px;
-}
-.timeline {
-	stroke:rgb(224,27,27);
-	stroke-width:4px;
-}
-/*THIS IS THE END OF MAIN SLIDER+COVER PROPERTIES*/
-
-#secondaryContent {
-  opacity: 1;
-  transition: opacity 800ms ease-out 1650ms;
-}
-#semiSliderTitle {
-  color:white;
-  font-weight:400;
-  font-size:34px;
-}
-#redTitles {
-  font-size:20px;
-  font-weight:800;
-  fill:rgb(224,27,27);
-}
-#blackTitles {
-  font-family: 'Roboto', sans-serif;
-  font-size:16px;
-  font-weight:400;
-}
-#matchesDay,#matchesDayData {
-  font-family: 'Roboto', sans-serif;
-  font-size: 15px;
-  fill: rgb(143,143,143);
-}
-#today g use {
-  display: none;
-}
-#today g text tspan:nth-child(4) {
-  display: none;
-}
-#news text tspan:nth-child(1) {
-	font-weight: 800;
-	font-size: 18px;
-  fill:rgb(20,20,20);
-	transition: fill 200ms ease-in;
-}
-.newsRow tspan:nth-child(1) {
-  font-size: 18px;
-  font-weight:600;
-}
-#newsArrow {
-	transition: transform 250ms ease-out;
-}
-.row text tspan:nth-child(2) {
-	font-weight: 800;
-	font-size: 18px;
-}
-.row text tspan:nth-child(3) {
-	font-weight: 800;
-	font-size: 18px;	
-}
-.dateRow tspan {
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-}
-.dateRow tspan:nth-child(2) {
-  fill: rgb(143,143,143);
-}
-.date {
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  fill: rgb(80,80,80);
-}
-.teamA, .teamB {
-  font-size: 18px;
-  font-weight:600;
-}
-.twich,.matchesRow tspan:nth-child(3) {
-  font-family: 'Roboto', sans-serif;
-  fill: rgb(80,80,80);
-  font-size: 14px;
-}
-#leaguesRow tspan {
-  font-size: 18px;
-  font-weight:800;
-  fill: rgb(143,143,143);
-}
-#leaguesRow tspan:nth-child(odd){
-  fill: rgb(247,247,247);
-}
-.seriesCover {
+  stroke:none;
   cursor:pointer;
-  opacity:.6;
-}
-.activeSeries {
-  opacity:1;
-}
-#locationRow tspan {
-  font-size: 23px;
-  font-weight:800;
-  fill: rgb(43,41,41);
-}
-#description tspan {
-  font-family: 'Roboto', sans-serif;
-  fill: rgb(120,120,120);
-  font-size: 17px;
-  font-weight:300
-}
-#series  {
-  font-family: 'Roboto', sans-serif;
-  font-size: 16px;
-  font-weight:800;
-}
-#series tspan:nth-child(1) {
-   fill:rgb(224,27,27);
-}
-#series tspan:nth-child(2) {
-   fill:rgb(43,41,41);
-}
-#learnMore tspan {
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-}
-#learnMore tspan:nth-child(1) {
-  cursor:pointer;
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  font-weight:800;
-}
-
-#learnMore tspan:nth-child(2) {
-  font-family: 'Roboto', sans-serif;
-  fill: rgb(110,110,110);
-  font-size: 14px;
-  font-weight:300;
-}
-#clickLearnMore:hover {
-  text-decoration: underline;
-}
-#footerRow tspan {
-  fill: rgb(247,247,247);
-  font-size: 14px;
-  font-weight:800;
-}
-#footerDescr {
-  font-family: 'Roboto', sans-serif;
-  fill: rgb(143,143,143);
-  font-size: 15px;
-  font-weight:300;
-}
-#copy {
-  font-family: 'Roboto', sans-serif;
-  fill: rgb(143,143,143);
-  font-size: 11px;
-  font-weight:800;
 }

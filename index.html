@@ -1,179 +1,77 @@
 <!DOCTYPE html>
-<!--0679115150 mursia kiev white volvo <area shape="" coords="" href="">3083bi-->
 <html>
 <head>
   <title>stratification</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet"/>
+<script src="jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.js"></script><link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&amp;subset=cyrillic" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
 <link rel='stylesheet' type='text/css' href='sltv.css'>
 </head> 
 <body>
 <header>
-  <div id='topHeaderFragment'></div>
-  <div id='bottomHeaderFragment'></div>
-</header>
-<div id='mainWrapper'>
-  <div id='mainCoverCont'>
-    <svg viewBox='0 633 1920 1080' preserveAspectRatio='xMidYMax meet'>
-      <!--<g class='mainSlideRefresh'>  
-        <image class='' class='mainSlideAnimation' xlink:href='' x='-5' y='-650' width='1930' height='1100'/>
-      </g>-->
-    </svg>
-  </div>
-  <div id='secondaryCoverCont'>
-    <svg viewBox='0 625 1920 1080' preserveAspectRatio='xMidYMax meet'>
+  <svg viewBox='0 3 508 17.2' preserveAspectRatio='xMinYMid meet'>
     <defs>
-      <mask id='secondaryCoverMask' maskUnits='objectBoundingBox'>
-        <path d='m -2,50 l 1924,-40 0,1400 -1924,0 z' stroke='none' fill='rgba(255,255,255,.08)'/>
-      </mask>
-    </defs>
-    <g id='secondaryCoverGroup' class='scroll'>
-      <path d='m -2,50 l 1924,-40 0,1400 -1924,0 z' stroke='none' fill='rgba(244,244,244,1)'/>
-      <!--<g class='secondarySlideRefresh'> 
-        <image class='secondarySlide' mask='url(#secondaryCoverMask)' xlink:href='' x='-155' y='-15' width='2250' height='1100'/>
-      </g>-->
-      <g id='preloader'>
-        <image id='preloadImage' xlink:href='images/ui/starseries.png' x='785' y='450' width='336' height='329'/>
-        <use href='#preloadImage' filter='url(#preloadFilter)'/>
-      </g>
-    </g>
-    </svg>
-  </div>
-  <div id='svgCont'>
-  <svg viewBox='0 625 1920 1080' preserveAspectRatio='xMidYMax meet'>
-    <defs>
-    <filter id='preloadFilter' height='1'>
-      <fecolormatrix type='saturate' values='0'/>
-    </filter>
-      <mask id='mainSliderMask'>
-        <path d='m 477,-370 l 966,0 21,469 -1008,0 z' fill='white'/>
-      </mask>
-      <path id='mainArrowTrap' d='m 455,-80 l 105,55 50,120 -285,0 z' fill='rgba(0,0,0,0)'/>
-      <linearGradient id='mainSliderShadow' x1='1' y1='1'>
-        <stop offset='0%'  stop-color='rgba(20,20,20,1)'/>
-        <stop offset='10%' stop-color='rgba(20,20,20,1)'/>
-        <stop offset='30%' stop-color='rgba(20,20,20,.6)'/>
-        <stop offset='40%' stop-color='rgba(20,20,20,.4)'/>
-        <stop offset='95%' stop-color='rgba(20,20,20,0)'/>
+      <path id='arrowField' d='m 136.53963,15.614087 c 0,0.62426 0,0.62426 0.71311,0.62428 h 2.75477 c 0.71172,-2e-5 0.71172,0.002 0.71172,-0.62555 V 7.3429177 c 0,-0.62709 0,-0.62554 -0.71172,-0.62554 h -2.75477 c -0.71311,0 -0.71311,0 -0.71311,0.62428 z' style='fill:#2e2e2e;fill-opacity:1;stroke:none;'/>
+      <path id='navArrow' style='fill:none;stroke:#a3a3a3;stroke-width:0.4;stroke-linecap:butt;' d='m 137.58187,10.997367 1.05513,1.17713 1.05523,-1.17713'/>
+      <path id='slideArrow' style='fill:none;stroke:#a3a3a3;stroke-width:2;stroke-linecap:butt;' d='m -116.50441,82.01615 -7.29142,6.535774 7.29142,6.536334'/>
+      <linearGradient id='mainSlideShadow' x1='0%' y1='0%' x2='0%' y2='100%'>
+        <stop offset='0%' stop-color='rgba(0,0,0,0)'/>
+        <stop offset='20%' stop-color='rgba(0,0,0,.3)'/>
+        <stop offset='70%' stop-color='rgba(0,0,0,.8)'/>
+        <stop offset='100%' stop-color='rgba(0,0,0,1)'/>
       </linearGradient>
-      <mask id='secondarySliderMask'>
-        <path d='m 720,534 l 795,0 0,426 -793,0 z' fill='rgba(255,255,255,1)'/>
-      </mask>
-      <image id='liveIcon' xlink:href='images/ui/liveIcon.png' x='0' y='388' width='45' height='23'/>
-      <image id='twitchIcon' xlink:href='images/ui/twitchIcon.png' x='389' y='392' width='15' height='16'/>
+      <image id='videoIcon' xlink:href='images/ui/videoIcon.png' x='0' y='0' width='14' height='10'/>
+      <path id='seriesBaseTmplt' style='fill:inherit;stroke:none;' d='m 1693.2242,445.70457 3.9258,-23.90016 -3.637,-6.35024 60.5006,1.78969 -5.0224,26.38236 z'/>
     </defs>
-    <g id='mainGlobalGroup' class='scroll'>
-      <g id='mainSlider'>
-        <path d='m 477,-370 l 966,0 21,469 -1008,0 z' fill='black'/>
-        <g class='mainSlideRefresh' mask='url(#mainSliderMask)'>  
-          <image class='mainSlide' xlink:href='' x='455' y='-373' width='1010' height='475'/>
-        </g>
-        <g id='mainSliderUi' mask='url(#mainSliderMask)'>
-          <rect x='455' y='-370' width='1010' height='470' fill='url(#mainSliderShadow)'/> 
-          <image xlink:href='images/leftArrow.png' x='515' y='5' width='9' height='14'/>
-          <image xlink:href='images/rightArrow.png' x='1397' y='5' width='9' height='14'/>
-          <g class='mainSlideRefresh'>
-          <text id='mainSliderTitle' text-anchor='middle'>
-            <tspan x='960' y='-15' >TEAM MALAYSIA ADVANCE</tspan>
-            <tspan x='960' y='45'>SLTV SEA PLAY-OFF</tspan>
-          </text>
-          </g>
-          <g>
-            <use class='mainArrowTrap' href='#mainArrowTrap'/>
-            <use class='mainArrowTrap' href='#mainArrowTrap' transform="translate(780,0) scale(-1, 1)" transform-origin='570 -0'/>
-          </g>
-          <path d='m 455.3,105 l 23.5,-474 962.8,0 23.1,474' style='stroke:rgb(50,50,50);stroke-width:1.5px;fill:none'/>
-        </g>
-        <path class='timelineCover' stroke-width='4px' d='m 456,101 l 1008,0'/>
-        <path id='mainTimeline' class='timeline' d='m 456,101 l 1008,0'/>
-      </g>
-      <g id='secondaryContent'>
-        <image id='partnersAndEllipse' xlink:href='images/partnersAndEllipse.png' x='455' y='114' width='1010' height='135'/>
-        <g id='secondaryCovers'>
-          <image id='partnersAndEllipse' xlink:href='images/ui/newsCover.png' x='445' y='280' width='518' height='596'/>
-          <image id='partnersAndEllipse' xlink:href='images/ui/tableMatchesCover.png' x='960' y='335' width='517' height='465'/>
-        </g>
-        <g id='statickIcons'>
-          <image xlink:href='images/ui/allNewsIcon.png' x='840' y='309' width='14' height='14'/>
-          <image xlink:href='images/ui/allMatchesIcon.png' x='1327' y='309' width='14' height='14'/>
-        </g>
-        <g id='secondaryTitles'>
-          <text id='redTitles'>
-            <tspan x='495' y='323'>NEWS</tspan>
-            <tspan x='1002' y='323' text-anchor='start'>MATCHES</tspan>
-          </text>
-          <text id='blackTitles'>
-            <tspan x='864' y='323'>All news</tspan>
-            <tspan x='1430' y='323' text-anchor='end'>All matches</tspan>
-          </text>
-          <text id='matchesDay'>
-            <tspan x='1002' y='363' text-anchor='start'>Today</tspan>
-            <tspan x='1002' y='614' text-anchor='start'>Tomorrow</tspan>
-          </text>
-          <text id='matchesDayData'>
-            <tspan x='1430' y='363' text-anchor='end'>26 Nov 2017, Sunday</tspan>
-            <tspan x='1430' y='614' text-anchor='end'>27 Nov 2017, Monday</tspan>
-          </text>
-        </g>
-        <g id='secondarySlider' transform='scale(.635)'>
-          <!--<rect id='secondarySliderCover' x='457' y='333' width='505' height='299' fill='black'/>
-          <path d='m 457,340 l 505,0 0,300 -505,0 z' fill='rgba(165,225,70,.6)'/>
-          <path d='m 457,339 l 505,0 0,270 -505,0 z' fill='rgba(0,0,0,.32)'/>-->
-          <path d='m 720,534 l 795,0 0,426 -793,0 z' fill='black'/>
-          <g class='secondarySlideRefresh' mask='url(#secondarySliderMask)'>  
-            <image class='secondarySlide' xlink:href='images/slides/slide4.png' x='630' y='520' width='980' height='440'/>
-          </g>
-          <path class='timelineCover' d='m 920,1225 l 1010,0' stroke-width='5' transform='scale(.785)'/>
-          <path id='secondaryTimeline' class='timeline' d='m 920,1225 l 1010,0' stroke-width='5' transform='scale(.785)'/>
-        </g>
-          <g id='news' transform='translate(495,650)'>
-            <text><tspan text-anchor='start' style='fill:rgb(224,27,27);'></tspan><tspan x='435' text-anchor='end'></tspan></text>
-            <text y='42'><tspan text-anchor='start'></tspan><tspan x='435' text-anchor='end'></tspan></text>
-            <text y='84'><tspan text-anchor='start'></tspan><tspan x='435' text-anchor='end'></tspan></text>
-            <text y='126'><tspan text-anchor='start'></tspan><tspan x='435' text-anchor='end'></tspan></text>
-            <text y='168'><tspan text-anchor='start'></tspan><tspan x='435' text-anchor='end'></tspan></text>
-            <image id='newsArrow' xlink:href='images/ui/newsArrow.png' x='-19' width='9' y='-12' height='12'/>
-            <image xlink:href='images/ui/streamIcon.png' x='340' width='24' y='157' height='10'/>
-          </g>
-        <g id='matches'>
-          <g id='today' transform='translate(1000)'>
-            <g class='row'>
-              <text y='405'>
-                <tspan x='23'  text-anchor='middle'></tspan>
-                <tspan x='173' text-anchor='end'></tspan>
-                <tspan x='254' text-anchor='start'></tspan>
-                <tspan x='425' text-anchor='end'></tspan>
-                <tspan x='212' text-anchor='middle'>vs</tspan>
-              </text>
-              <use href='#liveIcon'/>
-              <use href='#twitchIcon'/>
-            </g>
-            <g class='row' transform='translate(0,42)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text><use href='#liveIcon'/><use href='#twitchIcon'/></g>
-            <g class='row' transform='translate(0,84)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text><use href='#liveIcon'/><use href='#twitchIcon'/></g>
-            <g class='row' transform='translate(0,126)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text><use href='#liveIcon'/><use href='#twitchIcon'/></g>
-            <g class='row' transform='translate(0,168)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text><use href='#liveIcon'/><use href='#twitchIcon'/></g>
-          </g>
-          <g id='tomorrow' transform='translate(1000,250)'>
-            <g class='row'><text y='405'><tspan x='23' text-anchor='middle'></tspan><tspan x='173' text-anchor='end'></tspan><tspan x='254' text-anchor='start'></tspan><tspan x='212' text-anchor='middle'>vs</tspan></text></g>
-            <g class='row' transform='translate(0,42)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='212' text-anchor='middle'>vs</tspan></text></g>
-            <g class='row' transform='translate(0,84)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='212' text-anchor='middle'>vs</tspan></text></g>
-            <g class='row' transform='translate(0,126)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='212' text-anchor='middle'>vs</tspan></text></g>
-            <g class='row' transform='translate(0,168)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='212' text-anchor='middle'>vs</tspan></text></g>
-          </g>
-        </g>
-      </g>
-      <g id='leagues'>
-        <text x='495' y='910' style='font-size:20px;font-weight:800;fill:rgb(224,27,27);'>LEAGUES</text>
-        <image id='starseries' xlink:href='images/ui/starseries.png' x='560' width='336' y='895' height='329'/>
-      </g>
+    <g id='navbar'>
+      <circle style='fill:none;stroke:#535252;stroke-width:0.5;' cx='238.4' cy='2.8' r='1.6'/>
+      <path style='fill:none;stroke:#535252;stroke-width:0.4;stroke-linecap:butt;' d='m 237.8,3.1  0.68404  -0.89661'/>
+        <!--<path style='fill:#1f1f1f;stroke:none;' d='m 269.63305,4.8970762 c 0,0.31271 0,0.31271 0.40599,0.31272 h 1.56835 c 0.4052,-1e-5 0.4052,10e-4 0.4052
+        ,-0.31335 V 0.75389615 c 0,-0.31412001 0,-0.31335001 -0.4052,-0.31335001 h -1.56835 c -0.40599,0 -0.40599,0 -0.40599,0.31272001 z'/>-->
+      <use href='#navArrow' x='278' y='-7' transform='scale(.65)'/>
+      <use href='#navArrow' x='0' y='-.1'/>
+      <use href='#navArrow' x='91.2' y='-.1'/>
+      <use href='#navArrow' x='242' y='-.1'/>
+      <text id='nav' x='123' y='4'>
+        <tspan x='130'>NETWORK</tspan>
+        <tspan x='242'>KIEV GMT+2 (23:39)</tspan>
+        <tspan x='360.2'>SIGN UP</tspan>
+        <tspan x='372.5' fill='rgb(82,82,82)'>OR</tspan>
+        <tspan x='378'>LOGIN</tspan>
+      </text>
+      <text id='bar' y='13'>
+        <tspan  x='209'>LEAGUES</tspan>
+        <tspan  x='237'>NEWS</tspan>
+        <tspan  x='253'>TOURNAMENTS</tspan>
+        <tspan  x='287'>RATINGS</tspan>
+        <tspan  x='307.5'>MATCH CENTER</tspan>
+        <tspan  x='341.5'>STATISTIC</tspan>
+      </text>
+      <image xlink:href='images/ui/networkIcon.png' x='124.5' y='.9' width='4' height='4'/>
+      <image xlink:href='images/ui/signIcon.png' x='355' y='.9' width='4' height='4'/>
+      <image xlink:href='images/ui/dotaDiscIcon.png' x='128' y='8' width='6.5' height='6.5'/>
+      <image xlink:href='images/ui/starladderWhite.png' x='153' y='2.3' width='45' height='15'/>
+      <image xlink:href='images/ui/gbLandIcon.png' x='370' y='8.3' width='6' height='6'/>
     </g>
-    <text id='cheker' x='1600' y='100'>ZONE A</text>
-  </svg>  
-</div>
-<div id='cashCont'>
-</div>
+    <g id='traps' style='fill:#8484ff;fill-opacity:0.4;stroke:none;'>
+      <rect x='124' y='.5' width='20' height='5'/>
+      <rect x='236' y='.5' width='35.7' height='5'/>
+      <rect x='350' y='.5' width='17' height='5'/>
+      <rect x='372' y='.5' width='11' height='5'/>
+      <rect x='126' y='6.4' width='14.5' height='10'/>
+      <rect x='208' y='6.4' width='23.5' height='10'/>
+      <rect x='234.5' y='6.4' width='13.5' height='10'/>
+      <rect x='251' y='6.4' width='31' height='10'/>
+      <rect x='285' y='6.4' width='19' height='10'/>
+      <rect x='306' y='6.4' width='32' height='10'/>
+      <rect x='340.5' y='6.4' width='21.5' height='10'/>
+      <rect x='364.7' y='6.4' width='14.5' height='10'/>
+    </g>
+  </svg>
+</header>
+</body>
 <script>
+/*
 var i = 0, //through counter
 range = 3, //slider recharge range (main have 3, secondary have 5)
 preloadStep = .66, //this is saturate filter position on preload star
@@ -435,7 +333,6 @@ $(document).on('click','.'+screenSwitcher+'ArrowTrap',function(){
 
 //MOUSEWHEEL SECTION
 
-/*
 $(window).on('mousewheel', function(event){
   clearInterval(scenario);
   var delta = Math.round(event.originalEvent.deltaY);
@@ -528,8 +425,8 @@ $(window).on('mousewheel', function(event){
     sliderFreeze();
   },450);
 });
-*/
 //MOUSEWHEEL SECTION
+*/
 </script>
 </body>
 </html>
