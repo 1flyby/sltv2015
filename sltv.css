@@ -1,23 +1,158 @@
+/*--------------------------------------*/
+/*styles presented in alphabetical order*/
+/*--------------------------------------*/
+/*DEFS ELEMENTS PROPERTIES*/
+#arrowField {
+  fill:#2e2e2e;
+  stroke:none;
+}
+#navArrow,#slideArrow {
+  fill:none;
+  stroke:#a3a3a3;
+  stroke-linecap:butt;
+}
+#seriesBaseTmplt {
+  fill:inherit;
+  stroke:none;
+}
+/*DEFS ELEMENTS PROPERTIES*/
 
+/*TRUE ELEMENTS PROPERTIES*/
+/*TRUE ELEMENTS PROPERTIES*/
+
+/*CUSTOM PROPERTIES AND RELATIONSHIPS*/
+#bar {
+  font-family:'Roboto Condensed',sans-serif;
+  font-weight:bold;
+  font-size:4.53px;
+  text-align:start;
+  fill:#ffffff;
+  stroke:none;
+}
+.blackLabel {
+  font-family: 'Roboto', sans-serif;
+  font-size:15px;
+  font-weight:400;
+}
 body {
   padding:0;
   margin:0;
   width:100%;
-  height:108vw;
+  height:113vw;
   overflow-x:hidden;
-  background-color: rgb(11,10,10);
 }
-svg {
-  width:100%;
-  height:100%;
+#book {
+  position:relative;
+  top:14.6vw;
+  right:.65vw;
+  height:31vw;
+  width:53.8vw;
+  display:flex;
+  flex-direction:row;
+  background-color:rgba(75,195,210,0);
+  background-image: url(images/ui/newsCover.png),
+                    url(images/ui/matchesCover.png);
+  background-size:50.3%,50%;
+  background-position:0% 0%,100% 51%;
+  background-repeat: no-repeat;
 }
-mark { 
-  font-family: 'Roboto', sans-serif;
-  font-weight: 800;
-  font-size: 12px;
-  background-color:rgba(0,0,0,0);
-  color:rgb(82,82,82);
-  padding: 0vw .2vw 0vw .25vw;
+#content {
+  position:relative;
+  bottom:138vw;
+  z-index:2;
+  margin-left:23.7vw;
+  width:52.6vw;
+  height:70vw;
+  display:flex;
+  flex-direction:column;
+  background-image: url(images/ui/ellipse.png), url(file:///home/ghett/Documents/sltv/images/ui/partners.png);
+  background-size:100%,100%;
+  background-position:0% 45%,0% 49.6%;
+  background-repeat: no-repeat;
+}
+.dailyArrow {
+  cursor:pointer;
+  fill:rgba(0,0,0,0);
+}
+#dailyTitle {
+  cursor:pointer;
+  font-family:'Roboto Condensed', sans-serif;
+  font-size:35px;
+  font-weight:400;
+  line-height:112%;
+  word-spacing:-1px;
+  letter-spacing:-.085vw;
+  color:rgb(255,255,255);
+  transition:opacity 800ms ease-in-out 400ms;
+}
+#divisionDescr {
+  width:25.5vw;
+  height:6vw;
+  font-size:1.5vw;
+  font-weight:400;
+  font-family:'Roboto', sans-serif;
+  fill:rgb(82,82,82);
+  line-height:1.3;
+}
+#followCont {
+  position:relative;
+  bottom:18vw;
+  left:32.7vw;
+  width:20vw;
+  height:10vw;
+  font-family:'Roboto Condensed',sans-serif;
+  font-weight:bold;
+  font-size:135px;
+  fill:rgb(204,23,23);
+}
+footer {
+  overflow:hidden;
+  position:relative;
+  display:flex;
+  flex-direction:row;
+  z-index:5;
+  bottom:137.7vw;
+  height:22vw;
+  background-image:url(images/ui/footerCover.png);
+  background-size:101%;
+  background-repeat:no-repeat;
+  background-position:50% 2%;
+  /*background-color:greenyellow;*/
+}
+footer .middleCont div:first-child {
+  background-image:url(images/ui/footerSlGrey.png);
+  background-size:28%;
+  background-repeat:no-repeat;
+  background-position: 13% 55%;
+}
+footer .middleCont div:nth-child(3) {
+  width:24vw;
+  font-family:'Roboto',sans-serif;
+  font-size:11.7px;
+  font-weight:400;
+  line-height:1.4;
+  color:darkgrey;
+  padding:.65vw 0vw 0vw 2.2vw;
+}
+footer .middleCont div:nth-child(4) {
+  width:24vw;
+  font-family:'Roboto',sans-serif;
+  font-size:12px;
+  font-weight:400;
+  line-height:1.4;
+  color:darkgrey;
+  margin:3.55vw 0vw 0vw 0vw;
+}
+footer p {
+  display:inline;
+  font-family:'Roboto Condensed',sans-serif;
+  font-weight:bold;
+  font-size:.68vw;
+  color:rgb(70,70,70);
+  padding:.5vw 0vw 0vw 2.2vw;
+}
+footer p:last-child {
+  padding-left:2.6vw;
 }
 header {
   position:fixed;
@@ -33,6 +168,124 @@ header {
   background-position:center top;
   background-repeat: no-repeat;
 }
+#leagues {
+  position:relative;
+  z-index:4;
+  bottom:137.7vw;
+  height:22vw;
+  /*background-color:lightseagreen;*/
+  background-image:url(images/ui/leaguesGradient.png);
+  background-size: 100%;
+  background-position: 0% 110%;
+  background-repeat: no-repeat;
+
+}
+#learnMore {
+  cursor:pointer;
+  fill:rgba(230,110,210,0 );
+}
+#mainCoverCont {
+  position: relative;
+  z-index: 0;
+  width:100vw;
+  height:50vw;
+  background-image: url(images/ui/mainCover.jpg);
+  background-size: 102%;
+  background-position: 1% 1%;
+  background-repeat: no-repeat;
+}
+#mainSlider {
+  position:relative;
+  top:5.5vw;
+  height:24.7vw;
+  background-color:rgba(145,219,180,0);
+  background-image:url(images/ui/mainSlideBase.png);
+  background-size:100%;
+  background-repeat:no-repeat;
+  background-position:50% 10%;
+}
+#mainSlide {
+  -webkit-clip-path: polygon(2% 0%, 98% 0%, 100% 100%, 0% 100%);
+  clip-path: polygon(2% 0%, 98% 0%, 100% 100%, 0% 100%);
+  margin-bottom:1vw;
+  width:100%;
+  height:100%;
+  transform:scale(.993);
+  transition:opacity 800ms ease-in-out 200ms;
+}
+#mainSliderUi {
+  position: relative;
+  bottom:26vw;
+  width:52.6vw;
+  height:24.7vw;
+  font-family:'Roboto Condensed', sans-serif;
+  text-anchor: middle;
+}
+#mainSliderUi text {
+  transition:opacity 800ms ease-in-out 200ms;
+}
+#mainSliderUi tspan:first-child {
+  font-size:23px;
+  font-weight:800;
+  stroke:none;
+  fill:rgb(213,0,0);
+}
+#mainSliderUi tspan:last-child {
+  font-size:60px;
+  font-weight:800;
+  fill:rgb(255,255,255);
+}
+mark { 
+  font-size:16px;
+  background-color:rgba(0,0,0,0);
+  color:rgb(180,21,21);
+  padding:0vw;
+  margin:0vw;
+}
+#matches {
+  position:relative;
+  width:28.2vw;
+  height:30.5vw;
+}
+#matchesDay {
+  font-family: 'Roboto', sans-serif;
+  font-size:15px;
+}
+#matchesDate {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  fill: rgb(143,143,143);
+}
+.middleCont {
+  position:relative;
+  top:0vw;
+  left:23.7vw;
+  height:22vw;
+  width:52.6vw;
+}
+.middleCont div,ul {
+  margin-top:2vw;
+  width:25vw;
+  height:3vw;
+}
+.middleCont ul {
+  width:28vw;
+  height:1.2vw;
+  margin:1.1vw 0vw 0vw -1vw;
+}
+.middleCont ul li {
+  cursor:pointer;
+  padding:0vw .7vw 0vw .5vw;
+  display:inline;
+  font-family:'Roboto Condensed',sans-serif;
+  font-weight:bold;
+  font-size:.68vw;
+  color:white;
+  border-right:1px lightgrey solid;
+}
+.middleCont ul li:last-child {
+  border:none;
+}
 #nav {
   font-family:'Roboto',sans-serif;
   font-weight:bold;
@@ -40,16 +293,162 @@ header {
   fill:#7a7a7a;
   stroke:none;
 }
-#bar {
-  font-family:'Roboto Condensed',sans-serif;
-  font-weight:bold;
-  font-size:4.53px;
-  text-align:start;
-  fill:#ffffff;
-  stroke:none;
+#news {
+  position:relative;
+  width:28.3vw;
+  height:31vw;
+  background-color:rgba(132,215,155,0);
+}
+#newsTable text tspan:first-child {
+  font-family:'Roboto Condensed', sans-serif;
+  font-weight:600;
+  font-size:18px;
+  text-anchor:start;
+  fill:rgb(41,41,41);
+}
+#newsTable text tspan:last-child {
+  font-family:'Roboto', sans-serif;
+  font-weight:400;
+  font-size:13px;
+  text-anchor:end;
+  fill:rgb(80,80,80);
+}
+#newsTraps rect {
+  cursor:pointer;
+  fill:rgba(0,0,0,0);
+}
+#pixelPerfect {
+  display:none;
+  position:relative;
+  z-index:6;
+  bottom:252vw;
+  width:100vw;
+  height:113vw;
+  background-image: url(/home/ghett/Documents/sltv/sources/sltv_main_12.jpg);
+  background-size:100%;
+  background-repeat:no-repeat;
+  opacity:.6;
+  /*clip-path:url(#pixelPerfect); 
+  -webkit-clip-path:url(#pixelPerfect); */
+}
+.redLabel {
+  font-family:'Roboto Condensed', sans-serif;
+  font-size:20px;
+  font-weight:800;
+  fill:rgb(224,27,27);
+}
+#regions {
+  font-family:'Roboto Condensed', sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  fill:rgb(31,31,31);
+}
+#regionTraps {
+  fill:rgba(110,150,165,0);
+}
+#regionTeams {
+  font-family:'Roboto Condensed', sans-serif;
+  text-anchor:center;
+}
+#regionTeams tspan:first-child {
+  font-size:58px;
+  font-weight:600;
+  fill:rgb(31,31,31);
+}
+#regionTeams tspan:last-child {
+  font-size: 15px;
+  font-weight: 400;
+  fill:rgb(143,143,143);
+  letter-spacing:1.5px;
+}
+.row {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+.row text tspan:nth-child(2) {
+  font-weight:600;
+  font-size:18px;
+}
+.row text tspan:nth-child(3) {
+  font-weight:600;
+  font-size:18px; 
+}
+#secondaryCover {
+  position: relative;
+  width:121vw;
+}
+#secondaryCoverCont {
+  position: relative;
+  z-index: 1;
+  width:100vw;
+  height:88vw;
+  bottom:24.6vw;
+  background-color: rgb(245,245,245);
+  -webkit-clip-path: polygon(0% 2%, 100% 0%, 100% 100%, 0% 100%);
+  clip-path: polygon(0% 2%, 100% 0%, 100% 100%, 0% 100%);
+  overflow:hidden;
+}
+.series {
+  font-family:'Roboto Condensed', sans-serif;
+  font-style:italic;
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing:1px;
+}
+.series tspan:nth-child(odd) {
+  fill:rgb(235,235,235);
+}
+.series tspan:nth-child(even) {
+  fill:rgb(82,82,82);
+}
+.series rect {
+  cursor:pointer;
+  fill:rgba(0,0,0,0);
+}
+svg {
+  width:100%;
+  height:100%;
+}
+#timeline {
+  stroke-dasharray:1122px;
+  stroke-dashoffset:1122px;
+}
+#today g use {
+  display: none;
+}
+#today g text tspan:nth-child(4) {
+  display: none;
 }
 #traps rect {
   fill:rgba(0,0,0,0);
   stroke:none;
   cursor:pointer;
 }
+use.seriesBase:first-child {
+  fill:rgb(224,27,27);
+}
+use.seriesBase:nth-child(2) {
+  fill:rgb(27,106,224);
+  opacity:.6;
+}
+use.seriesBase:nth-child(3) {
+  fill:rgb(20,163,29);
+  opacity:.6;
+}
+use.seriesBase:last-child {
+  fill:rgb(143,143,143);
+  opacity:.6;
+  transform:scale(.8,1);
+}
+use.socialIcon {
+  fill:darkred;
+}
+#videoIcons use {
+  display:none;
+}
+
+
+
+/*TRANSPORTED UNSORTED*/
+
+
+/*CUSTOM PROPERTIES AND RELATIONSHIPS

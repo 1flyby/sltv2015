@@ -11,21 +11,36 @@
 <header>
   <svg viewBox='0 3 508 17.2' preserveAspectRatio='xMinYMid meet'>
     <defs>
-      <path id='arrowField' d='m 136.53963,15.614087 c 0,0.62426 0,0.62426 0.71311,0.62428 h 2.75477 c 0.71172,-2e-5 0.71172,0.002 0.71172,-0.62555 V 7.3429177 c 0,-0.62709 0,-0.62554 -0.71172,-0.62554 h -2.75477 c -0.71311,0 -0.71311,0 -0.71311,0.62428 z' style='fill:#2e2e2e;fill-opacity:1;stroke:none;'/>
-      <path id='navArrow' style='fill:none;stroke:#a3a3a3;stroke-width:0.4;stroke-linecap:butt;' d='m 137.58187,10.997367 1.05513,1.17713 1.05523,-1.17713'/>
-      <path id='slideArrow' style='fill:none;stroke:#a3a3a3;stroke-width:2;stroke-linecap:butt;' d='m -116.50441,82.01615 -7.29142,6.535774 7.29142,6.536334'/>
+      <path id='arrowField' d='m 136.53963,15.614087 c 0,0.62426 0,0.62426 0.71311,0.62428 h 2.75477 c 0.71172,-2e-5 0.71172,0.002 0.71172,-0.62555 V 7.3429177 c 0,-0.62709 0,-0.62554 -0.71172,-0.62554 h -2.75477 c -0.71311,0 -0.71311,0 -0.71311,0.62428 z'/>
+      <path id='navArrow' stroke-width='stroke-width:0.4' d='m 137.58187,10.997367 1.05513,1.17713 1.05523,-1.17713'/>
+      <path id='slideArrow' stroke-width='stroke-width:2' d='m -116.50441,82.01615 -7.29142,6.535774 7.29142,6.536334'/>
       <linearGradient id='mainSlideShadow' x1='0%' y1='0%' x2='0%' y2='100%'>
-        <stop offset='0%' stop-color='rgba(0,0,0,0)'/>
-        <stop offset='20%' stop-color='rgba(0,0,0,.3)'/>
-        <stop offset='70%' stop-color='rgba(0,0,0,.8)'/>
-        <stop offset='100%' stop-color='rgba(0,0,0,1)'/>
+        <stop offset='0%' stop-color='rgba(10,10,10,0)'/>
+        <stop offset='13%' stop-color='rgba(10,10,10,.3)'/>
+        <stop offset='42%' stop-color='rgba(10,10,10,.8)'/>
+        <stop offset='80%' stop-color='rgba(10,10,10,1)'/>
+        <stop offset='100%' stop-color='rgba(10,10,10,1)'/>
       </linearGradient>
       <image id='videoIcon' xlink:href='images/ui/videoIcon.png' x='0' y='0' width='14' height='10'/>
-      <path id='seriesBaseTmplt' style='fill:inherit;stroke:none;' d='m 1693.2242,445.70457 3.9258,-23.90016 -3.637,-6.35024 60.5006,1.78969 -5.0224,26.38236 z'/>
+      <path id='seriesBaseTmplt' d='m 1693.2242,445.70457 3.9258,-23.90016 -3.637,-6.35024 60.5006,1.78969 -5.0224,26.38236 z'/>
+      <clipPath id='pixelPerfect'>
+        <path id='pixelPerfectWindow' fill='url(#pixelGrad)' d='m 0,0 l 1920,0 0,360 -1920,0 z'/>
+      </clipPath>
+      <linearGradient id='pixelGrad' x1='0%' y1='0%' x2='0%' y2='100%'>
+        <stop offset='0%' stop-color='rgba(255,255,255,0)'/>
+        <stop offset='50%' stop-color='rgba(255,255,255,0)'/>
+        <stop offset='100%' stop-color='rgba(255,255,255,0)'/>
+      </linearGradient>
+      <image id='liveIcon' xlink:href='images/ui/liveIcon.png' x='0' y='388' width='45' height='23'/>
+      <image id='twitchIcon' xlink:href='images/ui/twitchIcon.png' x='389' y='392' width='15' height='16'/>
+      <image xlink:href='images/ui/socialIcons.svg'/>
+      <path id='twitterIcon' d='m 45.489139,17.420834 c -0.05215,-0.06281 -0.142929,-0.08366 -0.219594,-0.04887 -1.12288,0.499923 -2.30364,0.857589 -3.518765,1.069197 1.291965,-0.972973 2.253431,-2.315145 2.745679,-3.8572 0.02299,-0.07327 2.8e-5,-0.153391 -0.06277,-0.202203 -0.06277,-0.04531 -0.14643,-0.05225 -0.212646,-0.01534 -1.453757,0.861355 -3.030498,1.469059 -4.684042,1.807559 -1.465225,-1.522742 -3.511094,-2.391835 -5.630074,-2.391837 -4.307156,-2e-6 -7.814417,3.503425 -7.814415,7.814419 -4e-6,0.522914 0.04881,1.038169 0.149911,1.538428 -5.964643,-0.373011 -11.544725,-3.237911 -15.340394,-7.891317 -0.03843,-0.04531 -0.09766,-0.07319 -0.156872,-0.06968 -0.06277,0.0039 -0.115024,0.03835 -0.146391,0.09064 -0.6922861,1.188457 -1.0576941,2.545922 -1.0577871,3.930242 0,2.396021 1.0883731,4.634051 2.9419501,6.114652 -0.957642,-0.115043 -1.888088,-0.415213 -2.7265051,-0.884444 -0.05925,-0.0308 -0.125486,-0.03078 -0.184739,2.1e-5 -0.05923,0.0308 -0.09064,0.09064 -0.09066,0.156873 l 2.3e-5,0.101081 c 0,3.441863 2.2687731,6.460717 5.4916361,7.464446 -0.849917,0.139448 -1.730515,0.125505 -2.595774,-0.03835 -0.06623,-0.0116 -0.132448,0.0116 -0.174296,0.05923 -0.04181,0.04883 -0.05933,0.118504 -0.03837,0.181277 0.969144,3.018992 3.653396,5.137797 6.783774,5.399326 -2.607277,1.911449 -5.691604,2.918939 -8.9527441,2.918941 -0.599962,-2e-6 -1.203761,-0.03461 -1.796057,-0.104582 -0.08364,-0.0077 -0.170816,0.04183 -0.195221,0.122025 -0.03083,0.08014 0.0039,0.174296 0.07672,0.21963 3.5264691,2.261109 7.6029131,3.4572 11.7908401,3.457196 13.702153,4e-6 21.88575,-11.12938 21.88575,-21.885748 8e-6,-0.299806 -0.0039,-0.596127 -0.01927,-0.895935 1.476728,-1.080701 2.74568,-2.403691 3.768751,-3.934144 0.04525,-0.06974 0.04183,-0.156873 -0.0116,-0.22311 z'/>
+      <path id='vkIcon' d='m 111.29365,31.472735 c -1.26375,-1.515732 -2.75536,-2.813381 -4.16429,-4.18848 -1.26864,-1.239635 -1.34624,-1.956087 -0.32854,-3.384796 1.11385,-1.559069 2.31469,-3.060121 3.43795,-4.614612 1.05091,-1.452476 2.12559,-2.900407 2.67778,-4.638798 0.34948,-1.104035 0.0384,-1.592969 -1.09426,-1.786585 -0.19223,-0.03392 -0.39701,-0.03392 -0.59553,-0.03392 l -6.73062,-0.0097 c -0.82794,-0.01459 -1.28823,0.34949 -1.57864,1.084815 -0.39702,0.992549 -0.80382,1.985445 -1.27352,2.944091 -1.07016,2.17417 -2.2661,4.275643 -3.94155,6.052725 -0.36802,0.392126 -0.77969,0.885952 -1.39446,0.6829 -0.76993,-0.279592 -0.99745,-1.554175 -0.98766,-1.985444 l -0.0104,-7.776543 c -0.15022,-1.108926 -0.39702,-1.602755 -1.496162,-1.820834 h -6.99214 c -0.934524,0 -1.399343,0.358224 -1.898074,0.944317 -0.286578,0.339005 -0.372889,0.556735 0.216686,0.668221 1.162058,0.216685 1.815945,0.973327 1.989993,2.135377 0.276102,1.859279 0.25513,3.723626 0.09778,5.592728 -0.04885,0.547299 -0.139776,1.089354 -0.35822,1.597859 -0.338998,0.798933 -0.886306,0.963542 -1.602749,0.469714 -0.649017,-0.445599 -1.104057,-1.075029 -1.55419,-1.704456 -1.675456,-2.367788 -3.016783,-4.924506 -4.106171,-7.611898 -0.314553,-0.774816 -0.856951,-1.244529 -1.680346,-1.258857 -2.019344,-0.03389 -4.038374,-0.03845 -6.057579,0 -1.215527,0.02419 -1.578656,0.615098 -1.084815,1.714241 2.198275,4.890604 4.648511,9.650464 7.844345,13.984192 1.641547,2.222396 3.525115,4.188514 5.960719,5.578222 2.759922,1.578641 5.728305,2.053245 8.856333,1.907858 1.46225,-0.0664 1.90295,-0.450142 1.97075,-1.907858 0.042,-0.997441 0.16069,-1.989989 0.65354,-2.89097 0.4844,-0.881412 1.21551,-1.046019 2.05778,-0.498719 0.42114,0.276095 0.7797,0.624534 1.11384,0.992548 0.82304,0.900629 1.61741,1.830269 2.47437,2.701894 1.07503,1.089356 2.34367,1.738355 3.94153,1.607646 h 6.18828 c 0.99745,-0.06291 1.51573,-1.287864 0.93944,-2.401682 -0.40192,-0.779709 -0.92966,-1.472048 -1.49127,-2.145162 z'/>
+      <path id='fbIcon' d='m 170.97242,9.9648711 h -4.05256 c -3.17568,0 -3.79311,1.5118939 -3.79311,3.7260529 v 4.88453 h 7.57729 l -0.005,7.653348 h -7.5728 v 19.636599 h -7.90387 v -19.63214 h -6.60666 v -7.65335 h 6.60666 v -5.640477 c 0.005,-6.5529759 4.00339,-10.1179796 9.84514,-10.1179796 l 5.90439,0.00901 z'/>
     </defs>
-    <g id='navbar'>
-      <circle style='fill:none;stroke:#535252;stroke-width:0.5;' cx='238.4' cy='2.8' r='1.6'/>
-      <path style='fill:none;stroke:#535252;stroke-width:0.4;stroke-linecap:butt;' d='m 237.8,3.1  0.68404  -0.89661'/>
+    <g id='navbar' style='fill:none;stroke:#535252;stroke-linecap:butt;'>
+      <circle stroke-width='0.5' cx='238.4' cy='2.8' r='1.6'/>
+      <path stroke-width='0.4' d='m 237.8,3.1  0.68404  -0.89661'/>
         <!--<path style='fill:#1f1f1f;stroke:none;' d='m 269.63305,4.8970762 c 0,0.31271 0,0.31271 0.40599,0.31272 h 1.56835 c 0.4052,-1e-5 0.4052,10e-4 0.4052
         ,-0.31335 V 0.75389615 c 0,-0.31412001 0,-0.31335001 -0.4052,-0.31335001 h -1.56835 c -0.40599,0 -0.40599,0 -0.40599,0.31272001 z'/>-->
       <use href='#navArrow' x='278' y='-7' transform='scale(.65)'/>
@@ -34,23 +49,23 @@
       <use href='#navArrow' x='242' y='-.1'/>
       <text id='nav' x='123' y='4'>
         <tspan x='130'>NETWORK</tspan>
-        <tspan x='242'>KIEV GMT+2 (23:39)</tspan>
+        <tspan x='242.1'>KIEV GMT+2 (23:39)</tspan>
         <tspan x='360.2'>SIGN UP</tspan>
         <tspan x='372.5' fill='rgb(82,82,82)'>OR</tspan>
         <tspan x='378'>LOGIN</tspan>
       </text>
       <text id='bar' y='13'>
         <tspan  x='209'>LEAGUES</tspan>
-        <tspan  x='237'>NEWS</tspan>
+        <tspan  x='236.6'>NEWS</tspan>
         <tspan  x='253'>TOURNAMENTS</tspan>
-        <tspan  x='287'>RATINGS</tspan>
-        <tspan  x='307.5'>MATCH CENTER</tspan>
-        <tspan  x='341.5'>STATISTIC</tspan>
+        <tspan  x='286.8'>RATINGS</tspan>
+        <tspan  x='307.9'>MATCH CENTER</tspan>
+        <tspan  x='341.9'>STATISTIC</tspan>
       </text>
       <image xlink:href='images/ui/networkIcon.png' x='124.5' y='.9' width='4' height='4'/>
       <image xlink:href='images/ui/signIcon.png' x='355' y='.9' width='4' height='4'/>
       <image xlink:href='images/ui/dotaDiscIcon.png' x='128' y='8' width='6.5' height='6.5'/>
-      <image xlink:href='images/ui/starladderWhite.png' x='153' y='2.3' width='45' height='15'/>
+      <image xlink:href='images/ui/starladderWhite.png' x='154' y='2.4' width='44' height='15'/>
       <image xlink:href='images/ui/gbLandIcon.png' x='370' y='8.3' width='6' height='6'/>
     </g>
     <g id='traps' style='fill:#8484ff;fill-opacity:0.4;stroke:none;'>
@@ -69,22 +84,242 @@
     </g>
   </svg>
 </header>
+<div id='mainCoverCont'></div>
+<div id='secondaryCoverCont'>
+  <img id='secondaryCover' src='images/ui/secondaryCover.png'/>
+</div>
+<div id='content'>
+  <div id='mainSlider'>
+    <img id='mainSlide' src='images/slides/slide0.png'/>
+    <div id='mainSliderUi'>
+      <svg viewBox='965 304 525 525' preserveAspectRatio='xMinYMid meet'>
+        <path d='m 971,640 l 1096,0 10,186 -1113,0 z' fill='url(#mainSlideShadow)'/>
+        <text>
+          <tspan x='1527.5' y='691'>SLTV SEA PLAY-OFF</tspan>
+          <tspan x='1527.5' y='757'>TEAM MALAYSIA ADVANCE</tspan>
+        </text>
+        <g id='mainSlideArrow' class='mainArrow'>
+          <use id='newsArrow' href='#slideArrow' x='0' y='0' transform='translate(1155,647)'/>
+          <path d='m 970,670 l 150,0 0,154 -158,0 z' style='fill:rgba(0,0,0,0);cursor:pointer;'/>
+        </g>
+        <use href='#mainSlideArrow' class='mainArrow' x='0' y='0' transform='translate(3045,0) scale(-1, 1)'/>
+        <path class='timelineCover' d='m 965.3,825 l 1118,0' style='stroke:rgb(190,190,190);stroke-width:3.5px'/>
+        <path id='timeline' d='m 962.3,825 l 1118,0' style='stroke:rgb(237,0,0);stroke-width:4px'/>
+      </svg>
+    </div>
+  </div>
+  <div id='book'>
+    <div id='news'>
+      <svg viewBox='50 306 518 518' preserveAspectRatio='xMinYMid meet'>
+        <path style="fill:none;stroke:#ed0000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;transform:translate(440px,190px) scale(.85);" d='m 17.762447,143.59853 h 4.3452 l -4e-6,-4.43386 -0.417946,0.003 -3.92725,4.43027 -0.0035,3.01551 m -4.761807,-6.17593 h 4.468144 l -7e-6,-4.60437 m 4.084637,3.33093 4.898163,0.002 v 10.74991 h -8.688549 v -3.31347 h -4.76236 v -6.16485 l 4.46814,-4.60436 h 4.079817 z'/>
+        <text y='317'>
+          <tspan class='redLabel' x='107' text-anchor='start'>NEWS</tspan>
+          <tspan class='blackLabel' x='526' text-anchor='end'>All news</tspan>
+        </text>
+        <image id='dailySlide' xlink:href='images/slides/daily/slide0.png' x='63' y='335' width='505' height='280'/>
+        <!--<div id='dailyTitle'>3 shiny new sets for Dota 2 Heroes by Staladder</div>-->
+        <foreignObject x='103' y='465' width='245' height='115'>
+          <div id='dailyTitle'>3 shiny new sets for Dota 2 Heroes by Staladder</div>
+        </foreignObject>
+        <text x='103' y='406.5' style='fill:rgb(220,220,220);font-family:"Roboto ",sans-serif;font-size:14px;'>Today</text>
+        <use href='#slideArrow' x='0' y='0' transform='translate(570,337) scale(.7)'/>
+        <use href='#slideArrow' x='0' y='0' transform='translate(440,337) scale(-1, 1) scale(.7)'/>
+        <rect class='dailyArrow' x='458' y='381' width='45' height='35'/>
+        <rect class='dailyArrow' x='507' y='381' width='45' height='35'/>
+        <g id='newsTable' transform='translate(107,658)'>
+          <text><tspan style='fill:rgb(217,0,0)'></tspan><tspan x='420'></tspan></text>
+          <text y='41'><tspan></tspan><tspan x='420'></tspan></text>
+          <text y='83'><tspan></tspan><tspan x='420'></tspan></text>
+          <text y='125'><tspan></tspan><tspan x='420'></tspan></text>
+          <text y='167'><tspan></tspan><tspan x='420'></tspan></text>
+        </g>
+        <g id='videoIcons' transform='translate(445,636)'>
+          <use href='#videoIcon'/>
+          <use href='#videoIcon' y='44'/>
+          <use href='#videoIcon' y='88'/>
+          <use href='#videoIcon' y='132'/>
+          <use href='#videoIcon' y='176'/>
+        </g>
+        <g id='newsTraps'>
+          <rect x='65' y='632' width='500' height='35'/>
+          <rect x='65' y='675' width='500' height='35'/>
+          <rect x='65' y='717' width='500' height='35'/>
+          <rect x='65' y='758' width='500' height='35'/>
+          <rect x='65' y='800' width='500' height='35'/>
+        </g>
+        <use id='newsArrow' href='#slideArrow' x='0' y='0' transform='translate(25,605) scale(-1, 1) scale(.5)'/>
+      </svg>
+    </div>
+    <div id='matches'>
+      <svg viewBox='960 302 518 518' preserveAspectRatio='xMinYMid meet'>
+      <path style='fill:#ed0000;fill-opacity:1;fill-rule:evenodd;stroke:none;transform:translate(1328px,303px) scale(.85);' d='m 1.5498763,2.6560814 h 4.324573 L 3.9428063,7.2401313 8.1808883,6.5770315 3.0490612,17.532612 4.0292983,10.152011 0.28133222,10.613302 Z'/>
+        <g id='data'>
+          <text y='317'>
+            <tspan class='redLabel' x='1002' text-anchor='start'>MATCHES</tspan>
+            <tspan class='blackLabel' x='1425' text-anchor='end'>All matches</tspan>
+          </text>
+          <text id='matchesDay'>
+            <tspan x='1002' y='365' text-anchor='start'>Today</tspan>
+            <tspan x='1002' y='616' text-anchor='start'>Tomorrow</tspan></text>
+          <text id='matchesDate'>
+            <tspan x='1425' y='363' text-anchor='end'>26 Nov 2017, Sunday</tspan>
+            <tspan x='1425' y='615' text-anchor='end'>27 Nov 2017, Monday</tspan>
+          </text>
+        </g>
+        <g id='matches'>
+          <g id='today' transform='translate(1000)'>
+            <g class='row' transform='translate(0,0)'>
+              <text y='405'>
+                <tspan x='25'  text-anchor='middle'></tspan>
+                <tspan x='173' text-anchor='end'></tspan>
+                <tspan x='254' text-anchor='start'></tspan>
+                <tspan x='425' text-anchor='end'></tspan>
+                <tspan x='212' text-anchor='middle'>vs</tspan>
+              </text>
+              <use href='#liveIcon'/>
+              <use href='#twitchIcon'/>
+            </g>
+            <g class='row' transform='translate(0,44)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text><use href='#liveIcon'/><use href='#twitchIcon'/></g>
+            <g class='row' transform='translate(0,86)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text><use href='#liveIcon'/><use href='#twitchIcon'/></g>
+            <g class='row' transform='translate(0,126)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text><use href='#liveIcon'/><use href='#twitchIcon'/></g>
+            <g class='row' transform='translate(0,169.5)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='422' text-anchor='end'/><tspan x='212' text-anchor='middle'>vs</tspan></text><use href='#liveIcon'/><use href='#twitchIcon'/></g>
+          </g>
+          <g id='tomorrow' transform='translate(1000,253)'>
+            <g class='row'><text y='405'><tspan x='23' text-anchor='middle'></tspan><tspan x='173' text-anchor='end'></tspan><tspan x='254' text-anchor='start'></tspan><tspan x='212' text-anchor='middle'>vs</tspan></text></g>
+            <g class='row' transform='translate(0,42)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='212' text-anchor='middle'>vs</tspan></text></g>
+            <g class='row' transform='translate(0,84)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='212' text-anchor='middle'>vs</tspan></text></g>
+            <g class='row' transform='translate(0,126)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='212' text-anchor='middle'>vs</tspan></text></g>
+            <g class='row' transform='translate(0,169.5)'><text y='405'><tspan x='23' text-anchor='middle'/><tspan x='170' text-anchor='end'/><tspan x='254' text-anchor='start'/><tspan x='212' text-anchor='middle'>vs</tspan></text></g>
+          </g>
+        </g>
+      </g>
+      </svg>
+    </div>
+  </div>
+</div>
+<div id='leagues'>
+  <div class='middleCont'>
+    <svg viewBox='960 335 571 572' preserveAspectRatio='xMinYMid meet'>
+      <text  x='1020' y='440'>
+        <tspan class='redLabel' style='font-size:27px'>LEAGUES</tspan>
+      </text>
+      <image xlink:href='images/ui/starseries.png' x='1013' y='380' width='640' height='443'/>
+      <g id='seriesBases'>
+        <use class='seriesBase' href='#seriesBaseTmplt'/>
+        <use class='seriesBase' href='#seriesBaseTmplt' x='150'/>
+        <use class='seriesBase' href='#seriesBaseTmplt' x='305'/>
+        <use class='seriesBase' href='#seriesBaseTmplt' x='997'/>
+      </g>
+      <g class='series'>
+        <text y='437'>
+          <tspan x='1697'>STAR</tspan>
+          <tspan x='1755'>SERIES</tspan>
+        </text>
+        <rect x='1685' y='410' width='140' height='40' fill='rgba(75,165,225,1)'/>
+      </g>
+      <g class='series'>
+        <text y='437'>
+          <tspan x='1857'>PRO</tspan>
+          <tspan x='1905'>SERIES</tspan>
+        </text>
+        <rect x='1844' y='410' width='130' height='40' fill='rgba(75,165,225,1)'/>
+      </g>
+      <g class='series'>
+        <text y='437'>
+          <tspan x='2004'>SEMI</tspan>
+          <tspan x='2060'>SERIES</tspan>
+        </text>
+        <rect x='1992' y='410' width='140' height='40' fill='rgba(75,165,225,1)'/>
+      </g>
+      <g class='series'>
+        <text y='437'>
+          <tspan x='2162'>AM</tspan>
+          <tspan x='2202'>SERIES</tspan>
+        </text>
+        <rect x='2148' y='410' width='120' height='40' fill='rgba(75,165,225,1)'/>
+      </g>
+      <text id='regions' y='575'>
+        <tspan x='1698' style='fill:rgb(224,27,27);'>AMERICA</tspan>
+        <tspan x='1845'>EU+RU</tspan>
+        <tspan x='1955'>CHINA</tspan>
+        <tspan x='2066'>SEA</tspan>
+      </text>
+      <g id='regionTraps'>
+        <rect x='1692' y='545' width='135' height='35'/>
+        <rect x='1840' y='545' width='95' height='35'/>
+        <rect x='1950' y='545' width='95' height='35'/>
+        <rect x='2063' y='545' width='61' height='35'/>
+      </g>
+      <text id='regionTeams'>
+        <tspan x='2167' y='672'>16</tspan>
+        <tspan x='2171' y='705'>TEAMS</tspan>
+      </text>
+      <foreignObject x='1701' y='595'>
+        <div id='divisionDescr'>A group tournament league, division or conferense involves all competitors playing a number of fixtures</div>
+      </foreignObject>
+      <text y='827' style='font-family:"Roboto", sans-serif;font-size: 19px;fill:rgb(31,31,31);'>
+        <tspan x='1700' style='font-weight:600;'>Learn more</tspan>
+        <tspan x='1806'>about this tournament</tspan>
+      </text>
+      <rect id='learnMore' x='1696' y='806' width='105' height='24'/>
+    </svg>
+  </div>
+</div>
+<footer><div class='middleCont'>
+  <div></div>
+  <ul>
+    <li>LEAGUES</li>
+    <li>NEWS</li>
+    <li>TOURNAMETS</li>
+    <li>RATINGS</li>
+    <li>MATCH CENTER</li>
+    <li>STATISTIC</li>
+  </ul>
+  <div>This is a big fukin project that will help you grow professionally and fill your daily life interesting moments.</div>
+  <div>
+    <p>&#13252;&nbsp;2017 TRMT&amp;SSTT</p>
+    <p>WE
+      <mark>&nbsp;&hearts;&nbsp;</mark>
+    ESPORTS</p>
+  </div>
+  <div id='followCont'><svg viewBox='0 0 1920 250' preserveAspectRatio='xMaxYMin meet'>
+    <use class='socialIcon' href='#twitterIcon' x='75' y='105' transform='scale(3.5)'/>
+    <use class='socialIcon' href='#vkIcon' x='95' y='105' transform='scale(3.5)'/>
+    <use class='socialIcon' href='#fbIcon' x='100' y='105' transform='scale(3.5)'/>
+    <text>
+      <tspan x='220' y='300'>FOLLOW US</tspan>
+      <tspan x='900' y='300' style='fill:rgb(270,270,270)'>ON</tspan>
+    </text>
+  </svg></div>
+</div></footer>
+<div id='pixelPerfect'></div>
 </body>
 <script>
-/*
 var i = 0, //through counter
 range = 3, //slider recharge range (main have 3, secondary have 5)
 preloadStep = .66, //this is saturate filter position on preload star
 scenario = null, //contain setInterval with slider recharges
+timelineCycle = null,
+timeoutCycle = null,
 screenSwitcher = 'main', //animating class console
 mainObj = {
-  "mainSlider" : [
-    ["images/slides/slide0.png","TEAM MALAYSIA ADVANCE","SEA PLAY-OFF",false,"16:56"],
-    ["images/slides/slide1.png","Backdoor regen increased!","gameplay update",false,"18:08"],
-    ["images/slides/slide2.png","Resolut1on","in da OG house!",false,"Tomorrow"],
-    ["images/slides/slide3.png","We got a partner!","DreamTeam with us!",true,"Tomorrow"],
-    ["images/slides/slide4.png","Dota Summit 8","Смотри вместе с нами!",false,"23 Jan"],
-    ["images/slides/slide5.png","title","semiTitle","Easterday"]
+  "main" : [
+    ["images/slides/primary/slide0.png","TEAM MALAYSIA ADVANCE","SEA PLAY-OFF",false,"16:56"],
+    ["images/slides/primary/slide1.png","Backdoor regen increased!","gameplay update",false,"18:08"],
+    ["images/slides/primary/slide2.png","Resolut1on","in da OG house!",false,"Tomorrow"],
+    ["images/slides/primary/slide3.png","We got a partner!","DreamTeam with us!",true,"Tomorrow"]
+  ],
+  "daily" : [
+    ["images/slides/daily/slide0.png","Dota Summit 8","Смотри вместе с нами!",false,"23 Jan"],
+    ["images/slides/daily/slide1.png","title","semiTitle","Easterday"],
+    ["images/slides/daily/slide2.png","title","semiTitle","Easterday"]
+  ],
+  "news" : [
+    ["AM League Dota2 $1500 Prizes",false,"18:56"],
+    ["Pro League Dota2 $2500 + Star Series slot",false,"18:08"],
+    ["Ladder Challenge $1000 Prizes",false,"Tomorrow"],
+    ["50$ WeekendCups every monday",false,"Tomorrow"],
+    ["ProSeries S21: semifinal preview",true,"23 Dec"]
   ],
   "matches":{ 
     "today":[
@@ -111,93 +346,23 @@ datePref = {
   'year':'numeric'
 },
 dateArray = [],
+dashoffset = 1122,
+step = 374,delay = 400, //sliderCounters
 wheelArray = [], //wheel steps counter
-oldDelta = -1, //last wheel position
+oldDelta = 0, //last wheel position
+flag = 0,
 scrollData = 0, 
 scrollTime = 800,
 scrollCycle = null;
 
-//DOC READY
-$('document').ready(function(){
-  $(window).scrollTop(0);
-  $('header').addClass('headerIn');
-  i=0;
-  initiation();
-  //preload();
-  //sliderRecharge();
+$(document).ready(function(){
+  matchesParsing();
+  //slideRefresh();
+  setTimeout(timelineRun(),2000);
 });
-//DOC READY
-
-
-//////////////////////////////////////////////////////////////////////
-//IMAGES PRECASH AND AJAX REQUEST DATA DISTRIBUTION
-/////////////////////////////////////////////////////////////////////
-
-//PRELOADING SECTION
-function initiation() {
-  var preloadStep = window['cash'+i];
-  cashedImg = new Image();
-  cashedImg.onload = function(){preloadStep();}
-  cashedImg.src = Object.values(mainObj)[0][i][0];
-  $('#cashCont').append(cashedImg);
-}
-//preloading steps
-function cash0() {
-  $('.mainSlide').attr('xlink:href',Object.values(mainObj)[0][i][0]);
-  preloadCycle = setInterval(function(){
-    if (i>preloadStep) {
-    $('#preloadFilter').attr('height',i);
-    i=i-.008;
-    }
-    else {
-      clearInterval(preloadCycle);
-      i=1,preloadStep=.33;
-      setTimeout(initiation(),400);
-    }
-  },15);
-}
-function cash1() {
-  $('.secondaryAnimationClassRefresh').attr('xlink:href',Object.values(mainObj)[0][4][0]);
-  i=.66;
-  preloadCycle = setInterval(function(){
-    if (i>preloadStep) {
-      $('#preloadFilter').attr('height',i);
-      i=i-.008;
-    }
-    else {
-      clearInterval(preloadCycle);
-      i=2,preloadStep=0;
-      initiation();
-    }
-  },15);
-}
-function cash2() {
-  i=.33;
-  preloadCycle = setInterval(function(){
-    if (i>preloadStep) {
-      $('#preloadFilter').attr('height',i);
-      i=i-.008;
-    }
-    else {
-      clearInterval(preloadCycle);
-      i=3;
-      initiation();
-      sliderRecharge();
-    }
-  },15);
-}
-function cash3() {$('#preloader').css('opacity',0);i++;initiation();matchesParsing();}
-function cash4() {
-  //$('#secondaryCoverCont').css('transform','translateY(0px)');
-  i++;initiation();
-}
-function cash5() {i=0;setTimeout(function(){
-  $('#preloader').remove();
-  $('#secondaryCoverCont').addClass('saturatedSecondaryCover');
-  //$('#mainGlobalGroup').css('transform','translateY(0px)');
-},400);}
-//PRELOADING SECTION
-
+$('header rect').click(function(){
+  alert($(this).index());
+});
 //PARSING OF MATCHES DATA
 function matchesParsing() {
   $('#today g').each(function(){
@@ -223,209 +388,306 @@ function matchesParsing() {
     }
   });
   dateSetter();
-  newsParsing();
+  //newsParsing();
 }
 //PARSING OF MATCHES DATA
 
 //THIS IS DATE SETTER SECTION
 function dateSetter() {
   dateArray = date.toLocaleString("en-US", datePref).replace(/[,]/g, '').split(' ');
-  $('#matchesDayData tspan').eq(0).text(dateArray[2]+' '+dateArray[1]+' '+dateArray[3]+', '+dateArray[0]);
+  $('#matchesDate tspan').eq(0).text(dateArray[2]+' '+dateArray[1]+' '+dateArray[3]+', '+dateArray[0]);
   date = new Date();
   date.setDate(date.getDate()+1);
   dateArray = date.toLocaleString("en-US", datePref).replace(/[,]/g, '').split(' ');
-  $('#matchesDayData tspan').eq(1).text(dateArray[2]+' '+dateArray[1]+' '+dateArray[3]+', '+dateArray[0]);
+  $('#matchesDate tspan').eq(1).text(dateArray[2]+' '+dateArray[1]+' '+dateArray[3]+', '+dateArray[0]);
+  i=0;
+  newsParsing();
 }
 //THIS IS DATE SETTER SECTION
-
-//NEWS DATA PARSING FOR NEWS TABLE
 function newsParsing() {
-  $('#news text').each(function(){
-    var newsIndex=$(this).index();
-    $(this).find('tspan').eq(0).text(Object.values(mainObj.mainSlider)[newsIndex][2]+': '+Object.values(mainObj.mainSlider)[newsIndex][1]);
-    $(this).find('tspan').eq(1).text(Object.values(mainObj.mainSlider)[newsIndex][4]);
+  $('#newsTable text').each(function(){
+    $(this).find('tspan').eq(0).text(Object.values(mainObj)[2][i][0]);
+    $(this).find('tspan').eq(1).text(Object.values(mainObj)[2][i][2]);
+    if (Object.values(mainObj)[2][i][1]==true) {$('#videoIcons use').eq(i).show();}
+    i++
   });
-  
+  i=0;
+  console.log('newsParsing outer i=',i);
 }
-//NEWS DATA PARSING FOR NEWS TABLE
 
 
 
-//////////////////////////////////////////////////////////////////////
-//ANIMATION CYCLES AND USER'S EVENTS
-/////////////////////////////////////////////////////////////////////
 
-//THIS STUFF FOR FREEZE SLIDER RECHARGE WHILE USER IS DOING SOMETHING
-function sliderFreeze() {clearInterval(scenario);setTimeout(sliderRecharge(),4500);}
-//THIS STUFF FOR FREEZE SLIDER RECHARGE WHILE USER IS DOING SOMETHING
 
-//SLIDER RECHARGE SECTION
-function sliderRecharge() {
-  scenario = setInterval(function(){
-    timelineRunForward();
-    contentRefresh();
-  },6000);
-}
-function contentRefresh() {
-  $('.'+screenSwitcher+'SlideRefresh').each(function(){
-    var el = $(this),
-    newone = el.clone(true);
-    el.before(newone);
-    $(this).remove();
-  });
+
+function slideRefresh() {
+  $('#mainSlide, #mainSliderUi text').css('opacity',0);
   setTimeout(function(){
-    if (i<range) {
-      $('#news text').eq(i).children(0).css('fill','rgb(20,20,20)');
-      i++; 
-      $('.'+screenSwitcher+'Slide').attr('xlink:href',Object.values(mainObj)[0][i][0]);
-      $('#'+screenSwitcher+'SliderTitle tspan').eq(0).text(Object.values(mainObj)[0][i][2].toUpperCase());
-      $('#'+screenSwitcher+'SliderTitle tspan').eq(1).text(Object.values(mainObj)[0][i][1].toUpperCase());
-      $('#news text').eq(i).children(0).css('fill','rgb(224,27,27)');
-      $('#newsArrow').css('transform','translateY('+42*i+'px)');
+    $('#mainSlide').attr('src',Object.values(mainObj)[0][i][0]);
+    $('#mainSliderUi text tspan').eq(0).text(Object.values(mainObj)[0][i][2].toUpperCase());
+    $('#mainSliderUi text tspan').eq(1).text(Object.values(mainObj)[0][i][1].toUpperCase());
+    $('#mainSlide,#mainSliderUi text').css('opacity',1);
+  },1000);
+}
+function timelineRun() {
+  timelineCycle = setInterval(function(){
+    if (dashoffset>(1122-(step+step*i))){
+      dashoffset=dashoffset-1;
+      $('#timeline').css('stroke-dashoffset',dashoffset+'px');
+    }
+    else if (dashoffset<1) {
+      clearInterval(timelineCycle);
+      i++;
+      slideRefresh();
+      timeoutCycle = setTimeout(function(){
+        $('#timeline').css({
+          'transition':'stroke-dashoffset 600ms linear',
+          'stroke-dashoffset':'-1122px'
+        });
+        slideRefresh();
+        timeoutCycle = setTimeout(function(){
+          i=0;
+          $('#timeline').css('transition','none');
+          dashoffset=1122;
+          timeoutCycle = setTimeout(function(){timelineRun();},1196);
+        },604);
+      },5000);//delay equal of timelinerun-600ms
     }
     else {
-      $('#news text').eq(i).children(0).css('fill','rgb(20,20,20)');
-      i=0;
-      $('.'+screenSwitcher+'Slide').attr('xlink:href',Object.values(mainObj)[0][i][0]);
-      $('#'+screenSwitcher+'SliderTitle tspan').eq(0).text(Object.values(mainObj)[0][i][2].toUpperCase());
-      $('#'+screenSwitcher+'SliderTitle tspan').eq(1).text(Object.values(mainObj)[0][i][1].toUpperCase());
-      $('#news text').eq(0).children(0).css('fill','rgb(224,27,27)');
-      $('#newsArrow').css('transform','translateY(0px)');
+      clearInterval(timelineCycle);
+      console.log('normal recharge',dashoffset,i);
+      slideRefresh();
+      setTimeout(function(){timelineRun();},1800);
+      i++;
     }
-  },700);
-}
-//SLIDER RECHARGE SECTION
-
-//TIMELINE RUN SECTION
-function timelineRunForward() {
-  var timelinePosion=1020-1020/range*(i+1);
-  if (i<range) {$('#'+screenSwitcher+'Timeline').css('stroke-dashoffset',timelinePosion+'px');}
-  else {$('#'+screenSwitcher+'Timeline').css('stroke-dashoffset','1020px');}
-}
-function timelineRunBack() {
-  var timelinePosion=1020-1020/range*(i+1);
-  if (i<range-1) {$('#'+screenSwitcher+'Timeline').css('stroke-dashoffset',timelinePosion+'px');}
-  else {$('#'+screenSwitcher+'Timeline').css('stroke-dashoffset','0px');}
-}
-//TIMELINE RUN SECTION
-
-//MAIN SLIDER ARROWS CLICK
-$(document).on('click','.'+screenSwitcher+'ArrowTrap',function(){
-  sliderFreeze();
-  if ($(this).index()==0) {
-    if (i>0) {
-      i=i-2;
-      timelineRunBack();
-      contentRefresh();
-    }
-    else {
-      i = 2;
-      timelineRunBack();
-      contentRefresh();
-    }
-  }
-  else {
-    contentRefresh();
-    timelineRunForward();
-  }
-});
-//MAIN SLIDER ARROWS CLICK
-
-//MOUSEWHEEL SECTION
-
-$(window).on('mousewheel', function(event){
-  clearInterval(scenario);
-  var delta = Math.round(event.originalEvent.deltaY);
-  scrollData = scrollData - delta*2;
-  if (scrollData<=0&&scrollData>=-1150) {
-    if (scrollData>-530) {
-      $('#cheker').text('ZONE A '+scrollData).css('fill','green');
-      screenSwitcher='main';
-      range=3;
-    }
-    else if (scrollData>-840&&scrollData<=-530) {
-      $('#cheker').text('ZONE B '+scrollData).css('fill','blue');
-      screenSwitcher='secondary';
-      range=4;
-    }
-    else  {
-      $('#cheker').text('ZONE C '+scrollData).css('fill','red');
-      screenSwitcher='footer';
-    }
-  wheelArray.push(delta);
-  scrollTime = scrollTime-(scrollTime/wheelArray.length)/4;
-  
-  $('#mainGlobalGroup').css('transform','translateY('+scrollData+'px');
-  $('#secondaryCoverCont').css({
-    'transform':'translateY('+scrollData+'px',
-    'transition':'transform 450ms ease-out'
-  });
-  sliderFreeze();
-  }
-  else if (scrollData>0 ){scrollData=0;sliderFreeze();}
-  else if (scrollData<=-1150){scrollData=-1150;sliderFreeze();}
-});
-$(window).on('mousewheel', function(event){
-  clearInterval(scenario);
-  var delta = Math.round(event.originalEvent.deltaY);
-  wheelArray.push(delta);
-  scrollTime = scrollTime-(scrollTime/wheelArray.length)/4;
-  clearTimeout(scrollCycle);
-  scrollCycle = setTimeout(function (){
-    if (wheelArray.length<5||scrollData==-608) {
-      if (delta>oldDelta) {
-        if (scrollData==0) {
-          scrollData = -608;
-          $('#secondaryCoverImage').css('opacity',1); //unhide second slider cover
-          $('header').css('top','-3.33vw'); //hide header
-          $('#mainCoverCont,#mainSlider').delay(1500).hide(1);
-        }
-        else if (scrollData==-608) {
-          scrollData= -1308;
-          clearInterval(scenario);
-        }
-        oldDelta = delta-1;
-      }
-      else if (delta<oldDelta) {
-        if (scrollData> -1308&&scrollData< 0) {
-          scrollData= 0;
-          $('header').css('top','0vw'); //unhide header
-          $('#secondaryCoverImage').css('opacity',0); //hide second slider cover
-          $('#mainCoverCont,#mainSlider').show();
-        }
-        else if (scrollData== -1308) {
-          sliderFreeze();
-          scrollData= -543;
-          $('header').css('top','0vw'); //unhide header
-        }
-        oldDelta = delta+1;
-      }
-    }
-    else {
-      if (delta>oldDelta) {
-        scrollData = -1308;
-        clearInterval(scenario);
-        $('header').css('top','-3.33vw'); //hide header
-        $('#secondaryCoverImage').css('opacity',1); //unhide second slider cover
-        $('#mainCoverCont,#mainSlider').delay(1500).hide(1);
+    /*else if (dashoffset<=0) {
+      if (dashoffset>-1122) {
+        dashoffset=dashoffset-3;
+        console.log('8ing by the time to run',dashoffset);
       }
       else {
-        scrollData = 0;
-        sliderFreeze();
-        $('header').css('top','0vw'); //unhide header
-        $('#secondaryCoverImage').css('opacity',0); //unhide second slider cover
-        $('#mainCoverCont,#mainSlider').show();
+        clearInterval(timelineCycle);
+        console.log('last recharge i:',i,' dashoffset:',dashoffset);
+        $('#timeline').css({
+          'transition':'stroke-dashoffset 800ms linear 3200ms',
+          'stroke-dashoffset':'-1122px'
+        });
+        i=0;
+        setTimeout(function(){dashoffset=1122;},4004);
+        slideRefresh();
       }
+    }*/
+  },12);
+}
+
+$(document).on('click','.mainArrow',function(){
+  clearInterval(timelineCycle);
+  clearTimeout(timeoutCycle);
+  console.log($(this).index());
+  if ($(this).index()==3) {
+    console.log('normal swipe!');
+    if (i<3) {
+      $('#timeline').css({
+        'transition':'stroke-dashoffset 1600ms linear',
+        'stroke-dashoffset':1122-(step+step*i)+'px'
+      });
+      slideRefresh();
+      i++;
+      timeoutCycle = setTimeout(function(){
+        timelineRun();
+      },1800);
     }
-    $('#mainGlobalGroup').css('transform','translateY('+scrollData+'px');
-    setTimeout(function(){
-      $('#secondaryCoverGroup').css('transform','translateY('+scrollData+'px');
-      wheelArray = [];
-    },450);
-    sliderFreeze();
-  },450);
+    else {
+      console.log('last slide!');
+      $('#timeline').css({
+        'transition':'stroke-dashoffset 600ms linear',
+        'stroke-dashoffset':'-1122px'
+      });
+      setTimeout(function(){
+        $('#timeline').css({
+          'transition':'none',
+          'stroke-dashoffset':'1122px'
+        });
+        dashoffset=1122;
+        timeoutCycle = setTimeout(function(){
+          timelineRun()},1800
+        );
+      },604);
+      i=0;
+      slideRefresh();
+    }
+  }
+  else  if ($(this).index()==2) {
+    console.log('runForward!',i);
+    if (i>0&&i<4) {
+      console.log('normal forward!',i);
+      $('#timeline').css({
+        'transition':'stroke-dashoffset 1600ms linear',
+        'stroke-dashoffset':1122-(step*(i-1))+'px'
+      });
+      i--;
+      slideRefresh();
+      timeoutCycle = setTimeout(function(){timelineRun()},1800);
+    }
+    else {
+      console.log('zero forward!',i);
+      $('#timeline').css({
+        'transition':'stroke-dashoffset 1600ms linear',
+        'stroke-dashoffset':'-1122px'
+      });
+      i=3;
+      slideRefresh();
+      timeoutCycle = setTimeout(function(){timelineRun()},1800);
+    }
+  }
 });
-//MOUSEWHEEL SECTION
+
+    /*else if (dashoffset<=0) {
+      dashoffset=-1122;
+      $('#timeline').css('stroke-dashoffset',dashoffset+'px');
+      setTimeout(function(){dashoffset=1122;timelineRun();},2000);
+      i=0;
+    }
+    else {
+      clearInterval(timelineCycle);
+      i++;
+      setTimeout(function(){timelineRun();},2000);
+      console.log(dashoffset,i);
+    }*/
+/*
+  if (i<3) {i++;
+    $('#timeline').css({
+      'stroke-dashoffset':1122-step*i,
+      'transition':'stroke-dashoffset 4s ease-in-out'
+    });
+  }
+  else {i=0;
+    $('#timeline').css({
+      'stroke-dashoffset':'-1122px',
+      'transition':'stroke-dashoffset 800ms ease-in-out 3200ms'
+    });
+    setTimeout(function(){
+      $('#timeline').css({
+        'stroke-dashoffset':'1122px',
+        'transition':'none'
+      });
+    },delay*10);
+  }
+  slideCycle = setTimeout(function(){slideRefresh();},4000);
+}
+
+
+
+
+
+
+
+
+
+
+      delay=0;
+      i=0;
+      slideRefresh();
+      $('#timeline').css({
+        'stroke-dashoffset':'-1122px',
+        'transition':'stroke-dashoffset 800ms ease-in-out 3200ms'
+      });
+      setTimeout(function(){
+        $('#timeline').css({
+          'stroke-dashoffset':'1122px',
+          'transition':'none'
+        });
+      },delay*10);
+      setTimeout(function(){sliderRecharge()},2500);
+      */
+/*
+    //else {delay=0;i=0;slideRefresh();}
+      /*$('#timeline').css({
+        'stroke-dashoffset':1122-step*i,
+        'transition':'stroke-dashoffset 2400ms ease-in-out'
+      });
+
+    $('#mainSlide').attr('src',Object.values(mainObj)[0][i][0]);
+    $('#mainSliderUi text tspan').eq(0).text(Object.values(mainObj)[0][i][2].toUpperCase());
+    $('#mainSliderUi text tspan').eq(1).text(Object.values(mainObj)[0][i][1].toUpperCase());
+    $('#mainSlide,#mainSliderUi text').css('opacity',1);
+    console.log(Object.values(mainObj)[0][i][0],i);
+
+
+
+function timelinerun() {
+  if (step>1122-374*i) {
+    step=step-1;
+    console.log(step,1122-374*i);
+    $('#timeline').css('stroke-dashoffset',step+'px');
+  }
+  else if (i<3) {clearInterval(scenario);console.log('HOPA!');i++;}
+  else {clearInterval(scenario);console.log('HOPA!');i=0;step=1122;}
+}
+function timelineRun() {
+  if (i==0) {
+    i++;
+    $('#timeline').css({
+      'transition':'stroke-dashoffset 2880ms linear',
+      'stroke-dashoffset':1150-383.3*i+'px'
+    });
+  }
+  else if (i>0&&i<3) {
+    i++;
+    $('#timeline').css(
+      'stroke-dashoffset',1150-383.3*i+'px'
+    );
+  }
+  else {
+    i=0;
+    $('#timeline').css({
+      'transition':'stroke-dashoffset 400ms 2440ms linear',
+      'stroke-dashoffset':-1150+'px'
+    });
+    setTimeout(function(){
+      $('#timeline').css({
+        'transition':'none',
+        'stroke-dashoffset':'1150px'
+      });
+    },2875);
+  }
+  setTimeout(function(){slideRefresh();},3360);
+}
+function slideRefresh() {
+  $('#mainSlide,#mainSliderUi text').css('opacity',0);
+  setTimeout(function(){
+    $('#mainSlide').attr('src',Object.values(mainObj)[0][i][0]);
+    $('#mainSliderUi text tspan').eq(0).text(Object.values(mainObj)[0][i][2].toUpperCase());
+    $('#mainSliderUi text tspan').eq(1).text(Object.values(mainObj)[0][i][1].toUpperCase());
+    $('#mainSlide,#mainSliderUi text').css('opacity',1);
+    console.log(Object.values(mainObj)[0][i][0],i);
+    timelineRun();
+  },2010);
+}
+/*
+window.onscroll = function() {
+  var delta = window.pageYOffset || document.documentElement.scrollTop,
+      deltaPercent = delta*100/$(window).width();
+  if (deltaPercent>27) {
+    if (flag!=1) {
+      flag=1;
+    }
+    else 
+    screenSwitcher='daily';
+    console.log(screenSwitcher);
+  }
+  else {
+    screenSwitcher='main';
+    console.log(screenSwitcher);
+  }
+};
+//RECHARGE FREEZE
+function rechargeFreeze() {
+  console.log('interval is clear!');
+  clearInterval(scenario);
+  setTimeout(function(){rechargeCycle();console.log('interval has been started!');},9000);
+}
+//RECHARGE FREEZE
 */
 </script>
 </body>
