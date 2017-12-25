@@ -18,9 +18,6 @@
 }
 /*DEFS ELEMENTS PROPERTIES*/
 
-/*TRUE ELEMENTS PROPERTIES*/
-/*TRUE ELEMENTS PROPERTIES*/
-
 /*CUSTOM PROPERTIES AND RELATIONSHIPS*/
 #bar {
   font-family:'Roboto Condensed',sans-serif;
@@ -41,6 +38,7 @@ body {
   width:100%;
   height:113vw;
   overflow-x:hidden;
+  overflow-y:hidden;
 }
 #book {
   position:relative;
@@ -57,7 +55,17 @@ body {
   background-position:0% 0%,100% 51%;
   background-repeat: no-repeat;
 }
+#cashCont {
+  width:0vw;
+  height:0vw;
+}
+#cashCont img {
+  width:0vw;
+  height:0vw;
+}
 #content {
+  transform:translateY(60vw);
+  transition:transform 800ms ease-in-out;
   position:relative;
   bottom:138vw;
   z-index:2;
@@ -66,7 +74,7 @@ body {
   height:70vw;
   display:flex;
   flex-direction:column;
-  background-image: url(images/ui/ellipse.png), url(file:///home/ghett/Documents/sltv/images/ui/partners.png);
+  background-image: url(images/ui/ellipse.png), url(images/ui/partners.png);
   background-size:100%,100%;
   background-position:0% 45%,0% 49.6%;
   background-repeat: no-repeat;
@@ -165,6 +173,8 @@ footer p:last-child {
   transition:opacity 800ms ease-in-out;
 }
 header {
+  transform:translateY(-4.6vw);
+  transition:transform 800ms ease-in-out;
   position:fixed;
   display:flex;
   flex-direction:column;
@@ -349,12 +359,17 @@ mark {
   bottom:252vw;
   width:100vw;
   height:113vw;
-  background-image: url(/home/ghett/Documents/sltv/sources/sltv_main_12.jpg);
+  background-image: url(images/sltv_main_12.jpg);
   background-size:100%;
   background-repeat:no-repeat;
   opacity:.6;
   /*clip-path:url(#pixelPerfect); 
   -webkit-clip-path:url(#pixelPerfect); */
+}
+#preloader {
+  transition:opacity 800ms linear;
+  position:relative;  
+  transform:translateY(-105vw);
 }
 .redLabel {
   font-family:'Roboto Condensed', sans-serif;
@@ -399,9 +414,11 @@ mark {
 }
 #secondaryCover {
   position: relative;
-  width:121vw;
+  width:122vw;
 }
 #secondaryCoverCont {
+  transform:translateY(-27vw);
+  transition:transform 800ms ease-in-out;
   position: relative;
   z-index: 1;
   width:100vw;

@@ -2,15 +2,22 @@
 <html>
 <head>
   <title>stratification</title>
-<script src="jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.js"></script><link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&amp;subset=cyrillic" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
 <link rel='stylesheet' type='text/css' href='sltv.css'>
+<meta property="og:type" content="article" />
+<meta property="og:title" content='best cybersport platform' />
+<meta property="og:description" content='cool style design for you' />
+<meta property="og:url" content='summerstreet.pp.ua' />
+<meta property="og:image" content='images/ui/starseries.png' />
 </head> 
 <body>
 <header>
   <svg viewBox='0 3 508 17.2' preserveAspectRatio='xMinYMid meet'>
     <defs>
+      <filter id='preloadFilter' height='1'>
+        <fecolormatrix type='saturate' values='0'/>
+      </filter>
       <path id='arrowField' d='m 136.53963,15.614087 c 0,0.62426 0,0.62426 0.71311,0.62428 h 2.75477 c 0.71172,-2e-5 0.71172,0.002 0.71172,-0.62555 V 7.3429177 c 0,-0.62709 0,-0.62554 -0.71172,-0.62554 h -2.75477 c -0.71311,0 -0.71311,0 -0.71311,0.62428 z'/>
       <path id='navArrow' stroke-width='stroke-width:0.4' d='m 137.58187,10.997367 1.05513,1.17713 1.05523,-1.17713'/>
       <path id='slideArrow' stroke-width='stroke-width:2' d='m -116.50441,82.01615 -7.29142,6.535774 7.29142,6.536334'/>
@@ -123,6 +130,10 @@
 <div id='mainCoverCont'></div>
 <div id='secondaryCoverCont'>
   <img id='secondaryCover' src='images/ui/secondaryCover.png'/>
+  <svg id='preloader' viewBox='-165 110 2210 1230' preserveAspectRatio='xMinYMid meet'>
+    <image id='preloadImage' xlink:href='images/ui/starseries.png' x='785' y='450' width='336' height='329'/>
+    <use href='#preloadImage' filter='url(#preloadFilter)'/>
+  </svg>
 </div>
 <div id='content'>
   <div id='mainSlider'>
@@ -332,11 +343,14 @@
   </svg></div>
 </div></footer>
 <div id='pixelPerfect'></div>
+<div id='cashCont'></div>
 </body>
 <script>
 var i = 0, //through counter
 range = 3, //slider recharge range (main have 3, secondary have 5)
 preloadStep = .66, //this is saturate filter position on preload star
+cash = 0,
+preloadCycle = null,
 scenario = null, //contain setInterval with slider recharges
 frame = 0, //index of daily slide frame
 timelineCycle = null,
@@ -377,7 +391,17 @@ mainObj = {
       ["20:00","DF","iLight",0],
       ["20:30","Moskow 5","NiP",0]
     ]
-  }
+  },
+  "cash" : [
+    "images/ui/mainCover.jpg",
+    "images/slides/primary/slide0.png",
+    "images/slides/primary/slide1.png",
+    "images/ui/secondaryCover.png",
+    "images/slides/daily/slide0.png",
+    "images/slides/daily/slide1.png",
+    "images/slides/primary/slide2.png",
+    "images/slides/primary/slide3.png"
+  ]
 },
 date = new Date(),
 datePref = {
@@ -397,13 +421,109 @@ scrollCycle = null;
 
 $(document).ready(function(){
   scenario = window[screenSwitcher+'SlideRefresh']; //this var contain name of slider
-  matchesParsing();
+  initiation();
   //mainSlideRefresh();
-  setTimeout(timelineRun(),2000);
 });
 $('header rect').click(function(){
   alert($(this).index());
 });
+
+
+
+//////////////////////////////////////////////////////////////////////
+/////////IMAGES PRECASH AND AJAX REQUEST DATA DISTRIBUTION///////////
+////////////////////////////////////////////////////////////////////
+
+//PRELOADING SECTION
+function initiation() {
+  var preloadStep = window['cash'+cash];
+  cashedImg = new Image();
+  cashedImg.onload = function(){preloadStep();}
+  cashedImg.src = Object.values(mainObj.cash)[cash];
+  $('#cashCont').append(cashedImg);
+}
+//preloading steps
+function cash0() {
+  console.log('cash0');
+  $('#mainCover').attr('src',Object.values(mainObj.cash)[0]);
+  cash=1,preloadStep=0;
+  $('header').css('transform','translateY(0vw)');
+  initiation();
+}
+function cash1() {
+  console.log('cash1');
+  $('#mainSlide').attr('src',Object.values(mainObj.cash)[1]);
+  preloadCycle = setInterval(function(){
+    if (cash>preloadStep) {
+    $('#preloadFilter').attr('height',cash);
+    cash=cash-.008;
+    }
+    else {
+      clearInterval(preloadCycle);
+      cash=2,preloadStep=.66;
+      setTimeout(initiation(),400);
+    }
+  },15);
+}
+function cash2() {
+  console.log('cash2');
+  cash=3;
+  initiation();
+}
+function cash3() {
+  console.log('cash3');
+  $('#secondaryCover').attr('src',Object.values(mainObj.cash)[3]);
+  cash=.66;
+  preloadCycle = setInterval(function(){
+    if (cash>preloadStep) {
+      $('#preloadFilter').attr('height',cash);
+      cash=cash-.008;
+    }
+    else {
+      clearInterval(preloadCycle);
+      cash=4,preloadStep=.33;
+      initiation();
+    }
+  },15);
+}
+function cash4() {
+  console.log('cash4');
+  cash=5;
+  initiation();
+}
+function cash5() {
+  console.log('cash5');
+  $('#frame0').attr('xlink:href',Object.values(mainObj.cash)[4]);
+  cash=.33; 
+  preloadCycle = setInterval(function(){
+    if (cash>preloadStep) {
+      $('#preloadFilter').attr('height',cash);
+      cash=cash-.008;
+    }
+    else {
+      clearInterval(preloadCycle);
+      cash=6;
+      initiation();
+    }
+  },15);
+}
+function cash6() {
+  console.log('cash6');
+  $('#preloader').css('opacity',0);
+  $('#secondaryCoverCont').css('transform','translateY(0vw)');
+  $('#content').css('transform','translateY(0px)');
+  i=0;
+  matchesParsing();
+  setTimeout(function(){
+    console.log('cash6');
+    $('#preloader').remove();
+    $('#secondaryCover').css('width','121vw');
+    $('body').css('overflow-y','auto');
+    timelineRun();
+  },800);
+}
+//PRELOADING SECTION
+
 //PARSING OF MATCHES DATA
 function matchesParsing() {
   $('#today g').each(function(){
@@ -455,6 +575,11 @@ function newsParsing() {
   i=0;
   console.log('newsParsing outer i=',i);
 }
+
+//////////////////////////////////////////////////////////////////////
+/////////IMAGES PRECASH AND AJAX REQUEST DATA DISTRIBUTION///////////
+////////////////////////////////////////////////////////////////////
+
 
 
 ////////////////////////////////////////////
