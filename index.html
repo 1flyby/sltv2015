@@ -66,7 +66,7 @@
       <image xlink:href='images/ui/signIcon.png' x='355' y='.9' width='4' height='4'/>
       <image xlink:href='images/ui/dotaDiscIcon.png' x='128' y='8' width='6.5' height='6.5'/>
       <image xlink:href='images/ui/starladderWhite.png' x='154' y='2.4' width='44' height='15'/>
-      <image xlink:href='images/ui/gbLandIcon.png' x='370' y='8.3' width='6' height='6'/>
+      <image xlink:href='images/ui/gbLangIcon.png' x='370' y='8.3' width='6' height='6'/>
     </g>
     <g id='traps' style='fill:#8484ff;fill-opacity:0.4;stroke:none;'>
       <rect x='124' y='.5' width='20' height='5'/>
@@ -81,6 +81,42 @@
       <rect x='306' y='6.4' width='32' height='10'/>
       <rect x='340.5' y='6.4' width='21.5' height='10'/>
       <rect x='364.7' y='6.4' width='14.5' height='10'/>
+    </g>
+    <g id='headerListGroup'>
+      <rect id='headerListPanel' width='254.8' height='40' x='126.5' y='16.8' fill='rgb(31,31,31)'/>
+      <g id='disciplinesList'>
+        <image xlink:href='images/ui/disciplineIconsSprite.svg' x='94.8' y='17.7' width='111' height='35'/>
+        <g id='disciplinesListTraps'>
+          <rect x='126.5' y='16.8' width='9.5' height='9'/>
+          <rect x='136' y='16.8' width='10' height='9'/>
+          <rect x='146' y='16.8' width='10' height='9'/>
+          <rect x='156' y='16.8' width='9' height='9'/>
+          <rect x='165' y='16.8' width='9' height='9'/>
+          <rect x='174' y='16.8' width='9' height='9'/>
+        </g>
+      </g>
+      <g id='leaguesList'>
+        <text id='leaguesListTxt' y='23'>
+          <tspan x='214.7'>STAR</tspan>
+          <tspan x='227'>PRO</tspan>
+          <tspan x='238.5'>SEMI</tspan>
+          <tspan x='248.5'>AM</tspan>
+        </text>
+        <g id='leaguesListTraps'>
+          <rect x='208' y='16.8' width='12' height='9'/>
+          <rect x='221' y='16.8' width='11' height='9'/>
+          <rect x='233' y='16.8' width='10' height='9'/>
+          <rect x='244' y='16.8' width='9' height='9'/>
+        </g>
+      </g>
+      <g id='langList'>
+        <image xlink:href='images/ui/gbLangIcon.png' x='370' y='18.1' width='6' height='6'/>
+        <image xlink:href='images/ui/ruLangIcon.png' x='361' y='18.1' width='6' height='6'/>
+        <g id='langsListTraps'>
+          <rect x='359.5' y='16.8' width='9' height='9'/>
+          <rect x='368.6' y='16.8' width='9' height='9'/>
+        </g>
+      </g>
     </g>
   </svg>
 </header>
@@ -104,7 +140,7 @@
         </g>
         <use href='#mainSlideArrow' class='mainArrow' x='0' y='0' transform='translate(3045,0) scale(-1, 1)'/>
         <path class='timelineCover' d='m 965.3,825 l 1118,0' style='stroke:rgb(190,190,190);stroke-width:3.5px'/>
-        <path id='timeline' d='m 962.3,825 l 1118,0' style='stroke:rgb(237,0,0);stroke-width:4px'/>
+        <path id='mainTimeline' d='m 962.3,825 l 1118,0' style='stroke:rgb(237,0,0);stroke-width:4px'/>
       </svg>
     </div>
   </div>
@@ -116,9 +152,10 @@
           <tspan class='redLabel' x='107' text-anchor='start'>NEWS</tspan>
           <tspan class='blackLabel' x='526' text-anchor='end'>All news</tspan>
         </text>
-        <image id='dailySlide' xlink:href='images/slides/daily/slide0.png' x='63' y='335' width='505' height='280'/>
+        <image id='frame1' xlink:href='images/slides/daily/slide1.png' x='63' y='335' width='505' height='280'/>
+        <image id='frame0' xlink:href='images/slides/daily/slide0.png' x='63' y='335' width='505' height='280'/>
         <!--<div id='dailyTitle'>3 shiny new sets for Dota 2 Heroes by Staladder</div>-->
-        <foreignObject x='103' y='465' width='245' height='115'>
+        <foreignObject x='63' y='470' width='265' height='146'>
           <div id='dailyTitle'>3 shiny new sets for Dota 2 Heroes by Staladder</div>
         </foreignObject>
         <text x='103' y='406.5' style='fill:rgb(220,220,220);font-family:"Roboto ",sans-serif;font-size:14px;'>Today</text>
@@ -126,6 +163,8 @@
         <use href='#slideArrow' x='0' y='0' transform='translate(440,337) scale(-1, 1) scale(.7)'/>
         <rect class='dailyArrow' x='458' y='381' width='45' height='35'/>
         <rect class='dailyArrow' x='507' y='381' width='45' height='35'/>
+        <path class='timelineCover' d='m 965.3,825 l 1118,0' style='stroke:rgb(190,190,190);stroke-width:6px;transform:translate(-372px,242px) scale(.452);'/>
+        <path id='dailyTimeline' d='m 962.3,825 l 1118,0' style='stroke:rgb(237,0,0);stroke-width:6px;transform:translate(-372px,242px) scale(.452);'/>
         <g id='newsTable' transform='translate(107,658)'>
           <text><tspan style='fill:rgb(217,0,0)'></tspan><tspan x='420'></tspan></text>
           <text y='41'><tspan></tspan><tspan x='420'></tspan></text>
@@ -299,6 +338,7 @@ var i = 0, //through counter
 range = 3, //slider recharge range (main have 3, secondary have 5)
 preloadStep = .66, //this is saturate filter position on preload star
 scenario = null, //contain setInterval with slider recharges
+frame = 0, //index of daily slide frame
 timelineCycle = null,
 timeoutCycle = null,
 screenSwitcher = 'main', //animating class console
@@ -310,9 +350,10 @@ mainObj = {
     ["images/slides/primary/slide3.png","We got a partner!","DreamTeam with us!",true,"Tomorrow"]
   ],
   "daily" : [
-    ["images/slides/daily/slide0.png","Dota Summit 8","Смотри вместе с нами!",false,"23 Jan"],
-    ["images/slides/daily/slide1.png","title","semiTitle","Easterday"],
-    ["images/slides/daily/slide2.png","title","semiTitle","Easterday"]
+    ["images/slides/daily/slide1.png","3 shiny new sets for Dota 2 Heroes by Staladder",false,"23 Jan"],
+    ["images/slides/daily/slide0.png","Dota Summit 8: Смотри вместе с нами!","Easterday"],
+    ["images/slides/daily/slide1.png","title, semiTitle","Easterday"],
+    ["images/slides/daily/slide0.png","Daily lol: 6 tombs from Morf+Zombie!","Easterday"]
   ],
   "news" : [
     ["AM League Dota2 $1500 Prizes",false,"18:56"],
@@ -349,15 +390,15 @@ dateArray = [],
 dashoffset = 1122,
 step = 374,delay = 400, //sliderCounters
 wheelArray = [], //wheel steps counter
-oldDelta = 0, //last wheel position
 flag = 0,
-scrollData = 0, 
-scrollTime = 800,
+scroll = 0,
+oldScroll = 0, //last wheel position
 scrollCycle = null;
 
 $(document).ready(function(){
+  scenario = window[screenSwitcher+'SlideRefresh']; //this var contain name of slider
   matchesParsing();
-  //slideRefresh();
+  //mainSlideRefresh();
   setTimeout(timelineRun(),2000);
 });
 $('header rect').click(function(){
@@ -416,11 +457,48 @@ function newsParsing() {
 }
 
 
+////////////////////////////////////////////
+//////AUTOEVENTS SECTOR////////////////////
+//////////////////////////////////////////
 
+//TIMELINE LIKE A ROOT OF SLIDER RECHARGE
+function timelineRun() {
+  timelineCycle = setInterval(function(){
+    if (dashoffset>(1122-(step+step*i))){
+      dashoffset=dashoffset-1;
+      $('#'+screenSwitcher+'Timeline').css('stroke-dashoffset',dashoffset+'px');
+    }
+    else if (dashoffset<1) {
+      clearInterval(timelineCycle);
+      i++;
+      scenario();
+      timeoutCycle = setTimeout(function(){
+        $('#'+screenSwitcher+'Timeline').css({
+          'transition':'stroke-dashoffset 600ms linear',
+          'stroke-dashoffset':'-1122px'
+        });
+        scenario();
+        timeoutCycle = setTimeout(function(){
+          i=0;
+          $('#'+screenSwitcher+'Timeline').css('transition','none');
+          dashoffset=1122;
+          timeoutCycle = setTimeout(function(){timelineRun();},1196);
+        },604);
+      },5000);//delay equal of timelineRun-600ms
+    }
+    else {
+      clearInterval(timelineCycle);
+      console.log('normal recharge',dashoffset,i);
+      scenario();
+      setTimeout(function(){timelineRun();},1800);
+      i++;
+    }
+  },12);
+}
+//TIMELINE LIKE A ROOT OF SLIDER RECHARGE
 
-
-
-function slideRefresh() {
+//MAIN SLIDER RECHARGE 
+function mainSlideRefresh() {
   $('#mainSlide, #mainSliderUi text').css('opacity',0);
   setTimeout(function(){
     $('#mainSlide').attr('src',Object.values(mainObj)[0][i][0]);
@@ -429,56 +507,56 @@ function slideRefresh() {
     $('#mainSlide,#mainSliderUi text').css('opacity',1);
   },1000);
 }
-function timelineRun() {
-  timelineCycle = setInterval(function(){
-    if (dashoffset>(1122-(step+step*i))){
-      dashoffset=dashoffset-1;
-      $('#timeline').css('stroke-dashoffset',dashoffset+'px');
-    }
-    else if (dashoffset<1) {
-      clearInterval(timelineCycle);
-      i++;
-      slideRefresh();
-      timeoutCycle = setTimeout(function(){
-        $('#timeline').css({
-          'transition':'stroke-dashoffset 600ms linear',
-          'stroke-dashoffset':'-1122px'
-        });
-        slideRefresh();
-        timeoutCycle = setTimeout(function(){
-          i=0;
-          $('#timeline').css('transition','none');
-          dashoffset=1122;
-          timeoutCycle = setTimeout(function(){timelineRun();},1196);
-        },604);
-      },5000);//delay equal of timelinerun-600ms
-    }
-    else {
-      clearInterval(timelineCycle);
-      console.log('normal recharge',dashoffset,i);
-      slideRefresh();
-      setTimeout(function(){timelineRun();},1800);
-      i++;
-    }
-    /*else if (dashoffset<=0) {
-      if (dashoffset>-1122) {
-        dashoffset=dashoffset-3;
-        console.log('8ing by the time to run',dashoffset);
-      }
-      else {
-        clearInterval(timelineCycle);
-        console.log('last recharge i:',i,' dashoffset:',dashoffset);
-        $('#timeline').css({
-          'transition':'stroke-dashoffset 800ms linear 3200ms',
-          'stroke-dashoffset':'-1122px'
-        });
-        i=0;
-        setTimeout(function(){dashoffset=1122;},4004);
-        slideRefresh();
-      }
-    }*/
-  },12);
+//MAIN SLIDER RECHARGE 
+
+//DAILY SLIDER RECHARGE
+function dailySlideRefresh() {
+  if (frame==0) {
+    frame=1;
+    timeoutCycle = setTimeout(function(){
+      $('#frame0').addClass('hideFrame');
+    },50);
+  }
+  else {
+    frame=0;
+    timeoutCycle = setTimeout(function(){
+      $('#frame0').removeClass('hideFrame');
+    },50);
+  }
+  console.log(frame,i);
+  $('#frame'+frame).attr('xlink:href',Object.values(mainObj)[1][i][0]);
+  $('#dailyTitle').text(Object.values(mainObj)[1][i][1]);
 }
+//DAILY SLIDER RECHARGE 
+
+
+//SCROLL SCRIPT window[screenSwitcher+'SlideRefresh'];
+window.onscroll = function() {
+  var scroll = window.pageYOffset || document.documentElement.scrollTop,
+      scrollPercent = scroll*100/$(window).width();
+  if (scrollPercent>27) {
+    if (flag!=1) {
+      flag=1;
+      screenSwitcher='daily';
+      scenario=window[screenSwitcher+'SlideRefresh'];
+      console.log(screenSwitcher);
+    }
+  }
+  else {
+    if (flag!=0) {
+      flag=0;
+      screenSwitcher='main';
+      scenario=window[screenSwitcher+'SlideRefresh'];
+      console.log(screenSwitcher);
+    }
+  }
+};
+//SCROLL SCRIPT
+
+////////////////////////////////////////////
+//////AUTOEVENTS SECTOR////////////////////
+//////////////////////////////////////////
+
 
 $(document).on('click','.mainArrow',function(){
   clearInterval(timelineCycle);
@@ -487,11 +565,11 @@ $(document).on('click','.mainArrow',function(){
   if ($(this).index()==3) {
     console.log('normal swipe!');
     if (i<3) {
-      $('#timeline').css({
+      $('#'+screenSwitcher+'Timeline').css({
         'transition':'stroke-dashoffset 1600ms linear',
         'stroke-dashoffset':1122-(step+step*i)+'px'
       });
-      slideRefresh();
+      scenario();
       i++;
       timeoutCycle = setTimeout(function(){
         timelineRun();
@@ -499,12 +577,12 @@ $(document).on('click','.mainArrow',function(){
     }
     else {
       console.log('last slide!');
-      $('#timeline').css({
+      $('#'+screenSwitcher+'Timeline').css({
         'transition':'stroke-dashoffset 600ms linear',
         'stroke-dashoffset':'-1122px'
       });
       setTimeout(function(){
-        $('#timeline').css({
+        $('#'+screenSwitcher+'Timeline').css({
           'transition':'none',
           'stroke-dashoffset':'1122px'
         });
@@ -514,29 +592,29 @@ $(document).on('click','.mainArrow',function(){
         );
       },604);
       i=0;
-      slideRefresh();
+      scenario();
     }
   }
   else  if ($(this).index()==2) {
     console.log('runForward!',i);
     if (i>0&&i<4) {
       console.log('normal forward!',i);
-      $('#timeline').css({
+      $('#'+screenSwitcher+'Timeline').css({
         'transition':'stroke-dashoffset 1600ms linear',
         'stroke-dashoffset':1122-(step*(i-1))+'px'
       });
       i--;
-      slideRefresh();
+      scenario();
       timeoutCycle = setTimeout(function(){timelineRun()},1800);
     }
     else {
       console.log('zero forward!',i);
-      $('#timeline').css({
+      $('#'+screenSwitcher+'Timeline').css({
         'transition':'stroke-dashoffset 1600ms linear',
         'stroke-dashoffset':'-1122px'
       });
       i=3;
-      slideRefresh();
+      scenario();
       timeoutCycle = setTimeout(function(){timelineRun()},1800);
     }
   }

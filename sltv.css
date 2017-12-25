@@ -10,6 +10,7 @@
   fill:none;
   stroke:#a3a3a3;
   stroke-linecap:butt;
+  stroke-width:.55px;
 }
 #seriesBaseTmplt {
   fill:inherit;
@@ -73,8 +74,7 @@ body {
 .dailyArrow {
   cursor:pointer;
   fill:rgba(0,0,0,0);
-}
-#dailyTitle {
+}#dailyTitle {
   cursor:pointer;
   font-family:'Roboto Condensed', sans-serif;
   font-size:35px;
@@ -84,6 +84,13 @@ body {
   letter-spacing:-.085vw;
   color:rgb(255,255,255);
   transition:opacity 800ms ease-in-out 400ms;
+  background-color:rgba(31,31,31,.3);
+  padding:.9vw .3vw 1vw 1.5vw;
+}
+#disciplinesListTraps,#leaguesListTraps,#langsListTraps,#repostTraps rect {
+  cursor:pointer;
+  fill:rgba(165,225,76,0);
+  stroke:none;
 }
 #divisionDescr {
   width:25.5vw;
@@ -154,6 +161,9 @@ footer p {
 footer p:last-child {
   padding-left:2.6vw;
 }
+#frame0 {
+  transition:opacity 800ms ease-in-out;
+}
 header {
   position:fixed;
   display:flex;
@@ -168,6 +178,13 @@ header {
   background-position:center top;
   background-repeat: no-repeat;
 }
+#headerListGroup {
+  transition:transform 800ms ease-in-out;
+  display:none;
+}
+.hideFrame {
+  opacity: 0;
+}
 #leagues {
   position:relative;
   z-index:4;
@@ -178,6 +195,14 @@ header {
   background-size: 100%;
   background-position: 0% 110%;
   background-repeat: no-repeat;
+
+}
+#leaguesListTxt {
+  font-family:'Roboto Condensed', sans-serif;
+  text-anchor: middle;
+  font-size:4.5px;
+  font-weight:800;
+  fill:white;
 
 }
 #learnMore {
@@ -408,9 +433,9 @@ svg {
   width:100%;
   height:100%;
 }
-#timeline {
+#mainTimeline,#dailyTimeline {
   stroke-dasharray:1122px;
-  stroke-dashoffset:1122px;
+  stroke-dashoffset:1122px; 
 }
 #today g use {
   display: none;
@@ -440,7 +465,18 @@ use.seriesBase:last-child {
   transform:scale(.8,1);
 }
 use.socialIcon {
-  fill:darkred;
+  cursor:pointer;
+  transition: fill 600ms ease-in-out;
+  fill:rgb(160,160,160);
+}
+use.socialIcon:nth-child(1):hover {
+  fill:#00aced;
+}
+use.socialIcon:nth-child(2):hover {
+  fill:#3b5998;
+}
+use.socialIcon:nth-child(3):hover {
+  fill:#45668e;
 }
 #videoIcons use {
   display:none;
