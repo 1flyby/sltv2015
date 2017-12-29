@@ -365,8 +365,13 @@ cash = 0,
 preloadCycle = null,
 scenario = null, //contain setInterval with slider recharges
 frame = 1, //index of daily slide frame
-timelineCycle = null,
-timeoutCycle = null,
+dashoffset = 1125,
+ms = 2970,
+msKoef = 4.95,
+step = 375,
+delay = 330,
+delayTrans = 0,
+slideTmt = null,
 screenSwitcher = 'main', //animating class console
 mainObj = {
   "main" : [
@@ -423,8 +428,6 @@ datePref = {
   'year':'numeric'
 },
 dateArray = [],
-dashoffset = 1122,
-step = 374,delay = 400, //sliderCounters
 wheelArray = [], //wheel steps counter
 flag = 0,
 scroll = 0,
@@ -517,7 +520,7 @@ function cash6() {
   setTimeout(function(){
     $('#preloadCont').remove();
     $('body').css('overflow-y','auto');
-    timelineRun();
+    observer();
   },800);
 }
 //PRELOADING SECTION
@@ -581,58 +584,58 @@ function newsParsing() {
 //////AUTOEVENTS SECTOR////////////////////
 //////////////////////////////////////////
 
-//TIMELINE LIKE A ROOT OF SLIDER RECHARGE
-function timelineRun() {
-  timelineCycle = setInterval(function(){
-    if (dashoffset>(1122-(step+step*i))){
-      dashoffset=dashoffset-1;
-      $('#'+screenSwitcher+'Timeline').css('stroke-dashoffset',dashoffset+'px');
-    }
-    else if (dashoffset<1) {
-      clearInterval(timelineCycle);
+function observer() {
+  clearTimeout(slideTmt);
+  document.body.style.setProperty('--delay','0ms');
+  if (i==0) {
+    ms = 0;
+    dashoffset = 1125;
+  }
+  if (i<3) {
+    i++;
+    ms = 600*msKoef;
+    dashoffset = 1125-step*i;
+    timelineRun();
+    slideTmt = setTimeout(function(){scenario();},delay*9);
+    console.log('normal refresh, where i:',i,' and dashoffset:',dashoffset);
+  }
+  else {
+    i=0;
+    ms=600;
+    dashoffset = -1125;
+    document.body.style.setProperty('--delay','1750ms');
+    timelineRun();
+    slideTmt = setTimeout(function(){
       scenario();
-      i++;
-      console.log('timeline out last, index:',i);
-      timeoutCycle = setTimeout(function(){
-        $('#'+screenSwitcher+'Timeline').css({
-          'transition':'stroke-dashoffset 600ms linear',
-          'stroke-dashoffset':'-1122px'
-        });
-        i=0;
-        scenario();
-        timeoutCycle = setTimeout(function(){
-          $('#'+screenSwitcher+'Timeline').css('transition','none');
-          dashoffset=1122;
-          timeoutCycle = setTimeout(function(){timelineRun();},1196);
-        },604);
-      },5000);//delay equal of timelineRun-600ms
-    }
-    else {
-      clearInterval(timelineCycle);
-      scenario();
-      setTimeout(function(){timelineRun();},1800);
-      i++;
-      console.log('timeline out normal, index:',i);
-    }
-  },12);
+      document.body.style.setProperty('--dashoffset',1125);
+      document.body.style.setProperty('--ms','0ms');
+    },2370);
+    //console.log('last refresh, where i:',i,' and dashoffset:',dashoffset);
+  } 
 }
-//TIMELINE LIKE A ROOT OF SLIDER RECHARGE
-
-//MAIN SLIDER RECHARGE 
+function timelineRun() {
+  //console.log('timelineRun intro props, where dashoffset:',dashoffset,' and ms:',ms);
+  document.body.style.setProperty('--dashoffset',dashoffset);
+  document.body.style.setProperty('--ms',ms+'ms');
+}
 function mainSlideRefresh() {
+  console.log('mainSlideRefresh');
+  msKoef=4.95;
+  delay=330;
   $('#mainSlide, #mainSliderUi text').css('opacity',0);
   setTimeout(function(){
     $('#mainSlide').attr('src',Object.values(mainObj)[0][i][0]);
     $('#mainSliderUi text tspan').eq(0).text(Object.values(mainObj)[0][i][2].toUpperCase());
     $('#mainSliderUi text tspan').eq(1).text(Object.values(mainObj)[0][i][1].toUpperCase());
     $('#mainSlide,#mainSliderUi text').css('opacity',1);
+    slideTmt = setTimeout(function(){observer();},delay*5);
   },1000);
 }
-//MAIN SLIDER RECHARGE 
-
 //DAILY SLIDER RECHARGE
 function dailySlideRefresh() {  
-  console.log('at the start of daily script frame:',frame,' i:',i);
+  console.log('mainSlideRefresh');
+  msKoef=4.95;
+  delay=330;
   if (frame==1) {
     frame=0;
     setTimeout(function(){
@@ -647,13 +650,12 @@ function dailySlideRefresh() {
       $('.dailySlide').eq(1).removeClass('hideFrame');
     },50);
   }
-  console.log('at the end of daily script frame:',frame,' i:',i);
-  setTimeout(function(){$('#dailyTitle').text(Object.values(mainObj)[1][i][1]);},305);
+  setTimeout(function(){
+    $('#dailyTitle').text(Object.values(mainObj)[1][i][1]);
+    slideTmt = setTimeout(function(){observer();},delay*5);
+},305);
 }
 //DAILY SLIDER RECHARGE 
-
-
-
 
 ////////////////////////////////////////////
 //////AUTOEVENTS SECTOR////////////////////
@@ -666,103 +668,52 @@ function dailySlideRefresh() {
 
 //MAIN SLIDER ARROWS CLICK
 $(document).on('click','.mainArrow',function(){
-  clearInterval(timelineCycle);
-  clearTimeout(timeoutCycle);
   if ($(this).index()==3) {
-    console.log('normal slide!');
-    if (i<3) {
-      $('#'+screenSwitcher+'Timeline').css({
-        'transition':'stroke-dashoffset 1600ms linear',
-        'stroke-dashoffset':1122-(step+step*i)+'px'
-      });
-      i++;
-      scenario();
-      timeoutCycle = setTimeout(function(){timelineRun();},1800);
-    }
-    else {
-      console.log('last slide!');
-      $('#'+screenSwitcher+'Timeline').css({
-        'transition':'stroke-dashoffset 600ms linear',
-        'stroke-dashoffset':'-1122px'
-      });
-      setTimeout(function(){
-        $('#'+screenSwitcher+'Timeline').css({
-          'transition':'none',
-          'stroke-dashoffset':'1122px'
-        });
-        dashoffset=1122;
-        timeoutCycle = setTimeout(function(){timelineRun()},1800);
-      },604);
-      i=0;
-      scenario();
-    }
+    clearTimeout(slideTmt);
+    delay=0;
+    msKoef=1;
+    observer();
   }
-  else  if ($(this).index()==2) {
-    console.log('runForward!',i);
-    if (i>0&&i<4) {
-      console.log('normal forward!',i);
-      $('#'+screenSwitcher+'Timeline').css({
-        'transition':'stroke-dashoffset 1600ms linear',
-        'stroke-dashoffset':1122-(step*(i-1))+'px'
-      });
-      i--;
-      scenario();
-      timeoutCycle = setTimeout(function(){timelineRun()},1800);
+  else if ($(this).index()==2) {
+    clearTimeout(slideTmt);
+    delay=0;
+    msKoef=1;
+    if (i==0) {
+      i=2;
+      observer();
     }
     else {
-      console.log('zero forward!',i);
-      $('#'+screenSwitcher+'Timeline').css({
-        'transition':'stroke-dashoffset 1600ms linear',
-        'stroke-dashoffset':'-1122px'
-      });
-      i=3;
-      scenario();
-      timeoutCycle = setTimeout(function(){timelineRun()},1800);
+      i=i-2;
+      observer();
     }
   }
 });
 //MAIN SLIDER ARROWS CLICK
 
 //DAILY SLIDER ARROWS CLICK
-$('.dailyArrow').click(function(){
-  clearInterval(timelineCycle);
-  clearTimeout(timeoutCycle);
+$(document).on('click','.dailyArrow',function(){
   if ($(this).index()==10) {
-    console.log('daily arrow forward click');
-    if (i<3) {
-      $('#'+screenSwitcher+'Timeline').css({
-        'transition':'stroke-dashoffset 600ms linear',
-        'stroke-dashoffset':1122-(step+step*i)+'px'
-      });
-      i++;
-      scenario();
-      timeoutCycle = setTimeout(function(){timelineRun()},1800);
+    clearTimeout(slideTmt);
+    delay=0;
+    msKoef=1;
+    observer();
+  }
+  else if ($(this).index()==9) {
+    clearTimeout(slideTmt);
+    delay=0;
+    msKoef=1;
+    if (i==0) {
+      i=2;
+      observer();
     }
     else {
-      console.log('last slide!');
-      $('#'+screenSwitcher+'Timeline').css({
-        'transition':'stroke-dashoffset 600ms linear',
-        'stroke-dashoffset':'-1122px'
-      });
-      setTimeout(function(){
-        $('#'+screenSwitcher+'Timeline').css({
-          'transition':'none',
-          'stroke-dashoffset':'1122px'
-        });
-        dashoffset=1122;
-        timeoutCycle = setTimeout(function(){timelineRun()},1800);
-      },604);
-      scenario();
-      i=0;
+      i=i-2;
+      observer();
     }
-  }
-  else {
-    console.log('daily arrow back click');
-    scenario();
-    timeoutCycle = setTimeout(function(){timelineRun()},1800);
   }
 });
 //DAILY SLIDER ARROWS CLICK
+
 
 //SCROLL SCRIPT window[screenSwitcher+'SlideRefresh'];
 window.onscroll = function() {
@@ -804,6 +755,8 @@ HEADER RUDIMENT*/
 /////////////////////////////////////////////
 //////USER EVENTS SECTOR////////////////////
 ///////////////////////////////////////////
+
+
 </script>
 </body>
 </html>

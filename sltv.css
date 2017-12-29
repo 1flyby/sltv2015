@@ -2,6 +2,12 @@
 /*styles presented in alphabetical order*/
 /*--------------------------------------*/
 /*DEFS ELEMENTS PROPERTIES*/
+
+:root {
+  --dashoffset:1125;
+  --ms:2570ms;
+  --delay:0ms;
+}
 use.arrowColor1 {
   stroke:#a3a3a3;
   stroke-width:.45px;
@@ -445,9 +451,15 @@ svg {
   width:100%;
   height:100%;
 }
-#mainTimeline,#dailyTimeline {
-  stroke-dasharray:1122px;
-  stroke-dashoffset:1122px; 
+#mainTimeline {
+  stroke-dasharray:1125;
+  stroke-dashoffset:calc(var(--dashoffset) * 1px);
+  transition:stroke-dashoffset var(--ms) linear var(--delay);
+}
+#dailyTimeline {
+  stroke-dasharray:1125;
+  stroke-dashoffset:calc(var(--dashoffset) * 1px);
+  transition:stroke-dashoffset var(--ms) linear var(--delay);
 }
 #today g use {
   display: none;
